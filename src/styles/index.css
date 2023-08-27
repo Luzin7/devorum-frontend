@@ -1,0 +1,42 @@
+:root {
+  --text: #0a0d10;
+  --bg: #fcfcfd;
+  --primary: #baa28c;
+  --secondary: #e5e5d1;
+  --accent: #92595b;
+  color-scheme: light dark;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #fcfcfd;
+    --bg: #0a0d10;
+    --primary: #baa28c;
+    --secondary: #13130b;
+    --accent: #d1b3b4;
+  }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+::-moz-selection {
+  background: var(--primary);
+}
+::selection {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 1em;
+  border: 1px solid var(--bg);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+} /*# sourceMappingURL=index.css.map */
