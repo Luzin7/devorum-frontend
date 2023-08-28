@@ -19,11 +19,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 ::-moz-selection {
   background: var(--primary);
 }
-
 ::selection {
   background: var(--primary);
 }
@@ -34,10 +32,10 @@
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
-  border: 1px solid var(--bg);
   border-radius: 1em;
+  border: 1px solid var(--bg);
 }
 
 ::-webkit-scrollbar-track {
   background: var(--secondary);
-} /*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
