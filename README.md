@@ -46,7 +46,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 1. Clone o projeto
 
 ```bash
-  git clone git@github.com:Luzin7/TurmaQA-Frontend.git
+  git clone https://github.com/Luzin7/TurmaQA-Frontend.git
 ```
 
 2. Entre no diretório do projeto
@@ -93,7 +93,7 @@ O primeiro passo é fazer um fork do repositório principal para a sua própria 
 Agora você precisa clonar o seu fork do repositório para a sua máquina local para que você possa fazer alterações.
 
 ```bash
-git clone git@github.com:Luzin7/TurmaQA-Frontend.git
+git clone https://github.com/Luzin7/TurmaQA-Frontend.git
 ```
 
 ### Passo 3: Crie uma Branch
@@ -149,7 +149,7 @@ Parabéns, você contribuiu para o projeto!
 Mantenha seu fork atualizado com as últimas alterações do projeto principal. Para fazer isso, primeiro atualize seu fork localmente:
 
 ```bash
-git remote add upstream git@github.com:Luzin7/TurmaQA-Backend.git
+git remote add upstream https://github.com/Luzin7/TurmaQA-Frontend.git
 git fetch upstream
 git checkout main
 git merge upstream/main
