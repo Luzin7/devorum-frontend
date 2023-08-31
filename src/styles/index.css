@@ -19,9 +19,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  font-family: "Inter", sans-serif;
+}
+
 ::-moz-selection {
   background: var(--primary);
 }
+
 ::selection {
   background: var(--primary);
 }
