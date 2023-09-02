@@ -7,6 +7,7 @@ export default {
         text: 'var(--text)',
         background: 'var(--bg)',
         primary: 'var(--primary)',
+        input: 'var(--input)',
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',
       },
