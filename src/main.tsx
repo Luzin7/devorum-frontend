@@ -4,10 +4,13 @@ import './styles/index.css';
 import { RouterProvider } from 'react-router-dom';
 
 import router from './routes/Router';
+import { UserDataProvider } from './contexts/userData';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserDataProvider>
+      <RouterProvider router={router} />
+    </UserDataProvider>
   </React.StrictMode>,
 );

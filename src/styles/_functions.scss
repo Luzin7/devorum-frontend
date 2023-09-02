@@ -4,6 +4,7 @@ $colors: (
   text: $text,
   bg: $background,
   primary: $primary,
+  input: $input,
   secondary: $secondary,
   accent: $accent
 );
@@ -12,6 +13,7 @@ $colors-dark: (
   text: $dm-text,
   bg: $dm-background,
   primary: $dm-primary,
+  input: $dm-input,
   secondary: $dm-secondary,
   accent: $dm-accent
 );
@@ -20,8 +22,10 @@ $colors-dark: (
   @each $name, $color in $colors {
     --#{$name}: #{$color};
   }
+
   color-scheme: light dark;
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     @each $name, $color in $colors-dark {

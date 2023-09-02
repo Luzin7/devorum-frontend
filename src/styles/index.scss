@@ -1,14 +1,16 @@
 @import "./variables";
 @import "./functions";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 *{
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 ::selection {
-  background: getColor(primary);
+  background: getcolor(primary);
 }
 
 ::-webkit-scrollbar {
@@ -16,11 +18,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: getColor(primary);
+  background-color: getcolor(primary);
+  border: 1px solid getcolor(bg);
   border-radius: 1em;
-  border: 1px solid getColor(bg);
 }
 
 ::-webkit-scrollbar-track {
-  background: getColor(secondary);
+  background: getcolor(secondary);
 }
