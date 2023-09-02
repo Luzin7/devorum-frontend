@@ -2,6 +2,7 @@
   --text: #0a030d;
   --bg: #faf2fc;
   --primary: #a0e689;
+  --input: rgba(10, 3, 13, 0.2);
   --secondary: #f7e9fb;
   --accent: #2b6a16;
   color-scheme: light dark;
@@ -12,6 +13,7 @@
     --text: #faf2fc;
     --bg: #0a030d;
     --primary: #a0e689;
+    --input: rgba(250, 242, 252, 0.7);
     --secondary: #350c40;
     --accent: #67d841;
   }
@@ -20,15 +22,15 @@
 @tailwind components;
 @tailwind utilities;
 * {
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 ::-moz-selection {
-  background: var(--primary);
+  background: getcolor(primary);
 }
 
 ::selection {
-  background: var(--primary);
+  background: getcolor(primary);
 }
 
 ::-webkit-scrollbar {
@@ -36,11 +38,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
+  background-color: getcolor(primary);
+  border: 1px solid getcolor(bg);
   border-radius: 1em;
-  border: 1px solid var(--bg);
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--secondary);
+  background: getcolor(secondary);
 }/*# sourceMappingURL=index.css.map */
