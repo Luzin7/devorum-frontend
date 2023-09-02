@@ -1,23 +1,21 @@
-import { type ReactElement } from 'react';
+import { type ReactElement, useContext } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-import { HOME, REGISTER } from '../utils/routePaths';
+import { HOME, LOGIN, ROOT } from '../utils/routePaths';
+import { UserDataContext } from '../contexts/userData';
 
 export const PrivateRoutes = (): ReactElement => {
-  const location = useLocation();
-  const currentLocation = location.pathname;
-  const isUserLoggedIn = true;
-  // const { isUserLoggedIn } = useContext(UserDataContext);
-  if (!isUserLoggedIn) {
-    return <Navigate to={REGISTER} />;
-  }
+  const { isUserLoggedIn } = useContext(UserDataContext);
+  const currentLocation = useLocation().pathname;
 
-  if (isUserLoggedIn) {
-    if (currentLocation === '/') {
-      return <Navigate to={HOME} />;
-    }
-    return <Outlet />;
-  }
-
-  return <>Erro interno</>;
+  return !isUserLoggedIn ? (
+    <>
+      <Navigate to={LOGIN} />
+      <Outlet />
+    </>
+  ) : currentLocation === ROOT ? (
+    <Navigate to={HOME} />
+  ) : (
+    <Outlet />
+  );
 };
