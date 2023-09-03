@@ -7,6 +7,7 @@ import { HOME, REGISTER } from '../../../utils/routePaths';
 import { type loginProps, schemaLoginForm } from './schemas';
 import { handleLoginSubmit } from './functions';
 import { UserDataContext } from '../../../contexts/userData';
+import * as S from './styleds';
 
 export default function Login(): ReactElement {
   const { setUserData } = useContext(UserDataContext);
@@ -42,7 +43,7 @@ export default function Login(): ReactElement {
       setUserData(result.user);
     }
     localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('l_storage.pub_info', JSON.stringify(result.user));
+    localStorage.setItem('l_storage.user_info', JSON.stringify(result.user));
 
     setIsLoading(false);
 
@@ -50,33 +51,23 @@ export default function Login(): ReactElement {
   };
 
   return (
-    <form
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col items-center justify-evenly w-11/12  md:w-10/12 lg:w-6/12 xl:w-11/12 2xl:w-6/12
-    text-center bg-[#350C4040] rounded-3xl"
-    >
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    <S.FormWrapper onSubmit={handleSubmit(onSubmit)}>
       <h2 className="font-bold text-text text-2xl lg:text-3xl xl:text-4xl pt-10">
         Acessar Conta
       </h2>
       <div className="flex py-7 gap-7 flex-col w-11/12 lg:w-3/4">
-        <input
+        <S.InputField
           type="text"
           placeholder="Nome"
-          className="w-full rounded-2xl py-4 px-6 placeholder:opacity-70 placeholder:text-black
-             bg-input border-transparent border-2 transition-colors focus:border-accent focus:border-2 outline-none
-              text-black bg-opacity-70"
           {...register('userData.name')}
         />
         {errors.userData?.name?.message != null && (
           <span className="text-red-400">{errors.userData?.name?.message}</span>
         )}
-        <input
+        <S.InputField
           type="password"
           placeholder="Senha"
-          className="w-full rounded-2xl py-4 px-6 placeholder:opacity-70 placeholder:text-black
-          bg-input border-transparent border-2 transition-colors focus:border-accent focus:border-2 outline-none
-           text-black bg-opacity-70"
           {...register('userData.password')}
         />
         {errors.userData?.password?.message != null && (
@@ -84,18 +75,13 @@ export default function Login(): ReactElement {
             {errors.userData?.password?.message}
           </span>
         )}
+        <S.Button type="submit" disabled={!!isLoading}>
+          {isLoading ? 'Acessando...' : 'Entrar'}
+        </S.Button>
       </div>
-      <button
-        type="submit"
-        className="font-bold py-4 w-11/12 lg:w-3/4
-         bg-secondary rounded-full text-xl transition-colors focus:text-primary"
-        disabled={!!isLoading}
-      >
-        {isLoading ? 'Acessando...' : 'Entrar'}
-      </button>
       <span className="my-8 text-primary underline text-lg hover:text-accent transition-colors ">
         <Link to={REGISTER}>Não tenho uma conta</Link>
       </span>
-    </form>
+    </S.FormWrapper>
   );
 }

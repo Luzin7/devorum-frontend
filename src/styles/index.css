@@ -1,48 +1,32 @@
 :root {
   --text: #0a030d;
+  --placeholder: rgb(10 3 13 / 50%);
   --bg: #faf2fc;
   --primary: #a0e689;
-  --input: rgba(10, 3, 13, 0.2);
+  --input: rgb(10 3 13 / 20%);
   --secondary: #f7e9fb;
   --accent: #2b6a16;
+
   color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #faf2fc;
+    --placeholder: rgb(10 3 13 / 50%);
     --bg: #0a030d;
     --primary: #a0e689;
-    --input: rgba(250, 242, 252, 0.7);
+    --input: rgb(247 233 251 / 70%);
     --secondary: #350c40;
     --accent: #67d841;
   }
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   font-family: Inter, sans-serif;
 }
 
-::-moz-selection {
-  background: getcolor(primary);
-}
-
-::selection {
-  background: getcolor(primary);
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: getcolor(primary);
-  border: 1px solid getcolor(bg);
-  border-radius: 1em;
-}
-
-::-webkit-scrollbar-track {
-  background: getcolor(secondary);
-}/*# sourceMappingURL=index.css.map */
