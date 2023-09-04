@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --text: #0a030d;
   --placeholder: rgb(10 3 13 / 50%);
@@ -22,11 +27,34 @@
   }
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root[theme="dark"]{
+  --text: #faf2fc;
+  --placeholder: rgb(10 3 13 / 50%);
+  --bg: #0a030d;
+  --primary: #a0e689;
+  --input: rgb(247 233 251 / 70%);
+  --secondary: #350c40;
+  --accent: #67d841;
+}
+
+:root[theme="light"]{
+  --text: #0a030d;
+  --placeholder: rgb(10 3 13 / 50%);
+  --bg: #faf2fc;
+  --primary: #a0e689;
+  --input: rgb(10 3 13 / 20%);
+  --secondary: #f7e9fb;
+  --accent: #2b6a16;
+}
+
+
+body{
+  background: var(--bg);
+}
+
 
 * {
+  color: var(--text);
   font-family: Inter, sans-serif;
 }
 
