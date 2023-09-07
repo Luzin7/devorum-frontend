@@ -1,4 +1,4 @@
-import React, { useState, type ReactElement, useEffect } from 'react';
+import React, { useState, type ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 
 import ThemeSwitchButton from '../ThemeSwitchButton';
@@ -6,58 +6,40 @@ import { HOME } from '../../utils/routePaths';
 import logo from '../../assets/images/logo.png';
 
 export function Header(): ReactElement {
-  const [menuAberto, setMenuAberto] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const toggleMenu = (): void => {
-    !menuAberto ? setMenuAberto(!menuAberto) : setMenuAberto(false);
+    setOpenMenu(!openMenu);
   };
 
-  const closeMenu = (): void => {
-    setMenuAberto(false);
-  };
-
-  useEffect(() => {
-    const handleResize = (): void => {
-      if (menuAberto && window.innerWidth > 640) {
-        closeMenu();
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [menuAberto]);
+  if (openMenu && window.innerWidth > 640) {
+    setOpenMenu(false);
+  }
 
   return (
-    <header
-      className={`h-[7vh] relative w-screen bg-footerUp ${
-        menuAberto ? '' : ''
-      }`}
-    >
+    <header className={`h-[7vh] relative w-full bg-footerUp`}>
       <div
         className={`flex px-2 justify-between ${
-          menuAberto
+          openMenu
             ? 'h-[100vh] w-[50vw] z-10 absolute right-0 bg-footerUp'
             : 'h-[7vh]'
         }`}
       >
         <div
           className={`flex justify-center item-center my-auto h-[7vh] w-[40px] ${
-            menuAberto ? 'absolute -left-full ml-2' : ''
+            openMenu ? 'absolute -left-full ml-6' : ''
           }`}
         >
           <img src={logo} alt="Logo" className={`w-[40px] h-[40px] my-auto`} />
         </div>
         <div
           className={`w-screen items-center justify-center ${
-            menuAberto ? '' : 'hidden'
+            openMenu ? '' : 'hidden'
           } sm:flex`}
         >
           <ul
             className={`gap-3 flex ${
-              menuAberto ? 'flex-col text-center my-[50vh]' : ''
+              openMenu ? 'flex-col text-center my-[50vh]' : ''
             }`}
           >
             <li>
@@ -80,14 +62,14 @@ export function Header(): ReactElement {
         </div>
         <div
           className={`items-center ${
-            menuAberto ? 'absolute bottom-6' : 'hidden'
+            openMenu ? 'absolute bottom-6' : 'hidden'
           } sm:flex`}
         >
           <ThemeSwitchButton></ThemeSwitchButton>
         </div>
         <figure
-          className={`items-center text-center sm:flex justify-end flex-col ${
-            menuAberto ? 'flex absolute bottom-2 right-2' : 'hidden'
+          className={`items-center text-center sm:flex justify-center flex-col ${
+            openMenu ? 'flex absolute bottom-2 right-2' : 'hidden'
           }`}
         >
           <img
@@ -100,7 +82,7 @@ export function Header(): ReactElement {
         <button className="sm:hidden text-4xl" onClick={toggleMenu}>
           <i
             className={`bx mt-2 ${
-              menuAberto ? 'bx-x absolute right-1 top-0' : 'bx-menu'
+              openMenu ? 'bx-x absolute right-0 top-0' : 'bx-menu'
             }`}
           ></i>
         </button>
