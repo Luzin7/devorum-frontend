@@ -5,6 +5,7 @@ export const theme = {
     bg: 'var(--bg)',
     primary: 'var(--primary)',
     input: 'var(--input)',
+    inputText: 'var(--input-text)',
     secondary: 'var(--secondary)',
     accent: 'var(--accent)',
   },
