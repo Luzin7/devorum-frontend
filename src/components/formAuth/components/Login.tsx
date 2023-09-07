@@ -31,23 +31,24 @@ export default function Login(): ReactElement {
   });
 
   const onSubmit = async (data: loginProps): Promise<void> => {
-    setIsLoading(true);
+    setIsLoading(!isLoading);
 
     const result = await handleLoginSubmit(data);
 
     if (!result.success) {
       console.log(result.message);
+      setIsLoading(false);
     }
 
-    if (result.user !== undefined) {
+    if (result.success && result.user !== undefined) {
       setUserData(result.user);
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('l_storage.user_info', JSON.stringify(result.user));
+
+      setIsLoading(false);
+
+      navigate(HOME);
     }
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('l_storage.user_info', JSON.stringify(result.user));
-
-    setIsLoading(false);
-
-    navigate(HOME);
   };
 
   return (
