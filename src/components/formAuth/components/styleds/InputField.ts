@@ -7,14 +7,14 @@ export const InputField = styled.input`
   background-color: ${(props) => props.theme.colors.input};
   border: solid 2px transparent;
   outline: none;
-  color: black;
+  color: ${(props) => props.theme.colors.inputText};
 
   &::placeholder {
     color: ${(props) => props.theme.colors.placeholder};
   }
 
   &:focus {
-    border: solid 2px ${(props) => props.theme.colors.secondary};
+    border: solid 2px ${(props) => props.theme.colors.primary};
   }
 
   &:disabled {
