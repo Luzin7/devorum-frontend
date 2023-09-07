@@ -7,7 +7,7 @@ export const FormWrapper = styled.form`
   justify-content: space-evenly;
   width: 90%;
   text-align: center;
-  background-color: rgba(53, 12, 64, 0.25);
+  background-color: ${(props) => props.theme.colors.background};
   border-radius: 40px;
 
   & {
