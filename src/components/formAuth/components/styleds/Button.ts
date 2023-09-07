@@ -9,6 +9,7 @@ export const Button = styled.button`
   font-size: 1.25rem;
   line-height: 1.75rem;
   transition: all 400ms;
+  color: ${(props) => props.theme.colors.text};
 
   &:hover {
     color: ${(props) => props.theme.colors.primary};
