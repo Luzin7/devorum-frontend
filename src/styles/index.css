@@ -11,6 +11,9 @@
   --input: rgb(10 3 13 / 20%);
   --secondary: #f7e9fb;
   --accent: #2b6a16;
+  --footer-up: #a0a0a0;
+  --footer-mid: #797979;
+  --footer-down: #8d8d8d;
 
   color-scheme: light dark;
 }
@@ -24,6 +27,9 @@
     --input: rgb(247 233 251 / 70%);
     --secondary: #350c40;
     --accent: #67d841;
+    --footer-up: #3E3D42;
+    --footer-mid: #333237;
+    --footer-down: #343436;
   }
 }
 
@@ -48,7 +54,6 @@
   --secondary: #f0f0f0;
   --accent: #ff8640;
 }
-
 
 body{
   background: var(--bg);

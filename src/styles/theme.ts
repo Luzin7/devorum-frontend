@@ -8,5 +8,8 @@ export const theme = {
     inputText: 'var(--input-text)',
     secondary: 'var(--secondary)',
     accent: 'var(--accent)',
+    footerUp: 'var(--footer-up)',
+    footerMid: 'var(--footer-mid)',
+    footerDown: 'var(--footer-down)',
   },
 };
