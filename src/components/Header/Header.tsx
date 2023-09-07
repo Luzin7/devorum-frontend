@@ -73,7 +73,7 @@ export function Header(): ReactElement {
           }`}
         >
           <img
-            src={logo}
+            src=""
             alt="Foto de perfil"
             className="w-[30px] h-[30px] rounded-full cursor-pointer"
           />
