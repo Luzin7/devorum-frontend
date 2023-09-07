@@ -7,13 +7,13 @@ export function Layout(): ReactElement {
   return (
     <>
       <header>
-        <nav className="fixed w-screen flex items-center justify-evenly h-[7vh] top-0 text-center">
+        <nav className="flex items-center justify-evenly h-[7vh]">
           Nav
           <ThemeSwitchButton />
         </nav>
       </header>
       <Outlet />
-      <footer className="fixed w-screen flex items-center justify-center h-[20vh] bottom-0 text-center">
+      <footer className="flex items-center justify-center h-[7vh]">
         Footer
       </footer>
     </>

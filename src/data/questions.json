@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "date": 20230905221125,
+      "id": "iU324-3958109js-2895dm",
+      "author": "iU324-3958109js-2895de",
+      "title": "Estou realmente indo no caminho correto?",
+      "question": "Que conselhos você tem para um desenvolvedor que está buscando avançar de júnior para pleno?",
+      "comments": []
+    },
+    {
+      "date": 20230905221127,
+      "id": "iU324-3958109js-2895da",
+      "author": "iU324-3958109js-2895di",
+      "title": "Quero saber se estou realmente indo no caminho correto",
+      "question": "Como faço para saber se estou no caminho certo da programação, pois já perguntei para o ChatGPT e ele disse que eu deveria desistir de tudo e ir para outra área?"
+    },
+    {
+      "date": 20230905221115,
+      "id": "iU324-3958109js-2895do",
+      "author": "iU324-3958109js-2895da",
+      "title": "Estou realmente indo no caminho correto?",
+      "question": "Quais conselhos você tem para um desenvolvedor que está buscando avançar de júnior para pleno?"
+    },
+    {
+      "date": 20230905221230,
+      "id": "iU324-3958109js-2895db",
+      "author": "iU324-3958109js-2895dc",
+      "title": "Avaliação de habilidades de programação",
+      "question": "Como posso avaliar minhas habilidades de programação de forma objetiva para entender meu nível atual?"
+    },
+    {
+      "date": 20230905221345,
+      "id": "iU324-3958109js-2895dd",
+      "author": "iU324-3958109js-2895de",
+      "title": "Escolha de linguagem de programação",
+      "question": "Qual é a melhor linguagem de programação para um iniciante aprender e por quê?"
+    },
+    {
+      "date": 20230905221615,
+      "id": "iU324-3958109js-2895dh",
+      "author": "iU324-3958109js-2895di",
+      "title": "Aprendizado de máquina e inteligência artificial",
+      "question": "Como começar a aprender sobre aprendizado de máquina e inteligência artificial, mesmo sem experiência prévia?"
+    },
+    {
+      "date": 20230905221845,
+      "id": "iU324-3958109js-2895dl",
+      "author": "iU324-3958109js-2895dm",
+      "title": "Segurança na programação",
+      "question": "Quais são as melhores práticas de segurança que todo desenvolvedor deve seguir ao escrever código?"
+    }
+  ]
+}
