@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --text: #0a030d;
   --placeholder: rgb(10 3 13 / 50%);
@@ -11,9 +10,6 @@
   --input: rgb(10 3 13 / 20%);
   --secondary: #f7e9fb;
   --accent: #2b6a16;
-  --footer-up: #a0a0a0;
-  --footer-mid: #797979;
-  --footer-down: #8d8d8d;
 
   color-scheme: light dark;
 }
@@ -27,13 +23,10 @@
     --input: rgb(247 233 251 / 70%);
     --secondary: #350c40;
     --accent: #67d841;
-    --footer-up: #3E3D42;
-    --footer-mid: #333237;
-    --footer-down: #343436;
   }
 }
 
-:root[theme="dark"]{
+:root[theme='dark'] {
   --text: #f7f7f7;
   --placeholder: rgb(255 255 255 / 50%);
   --bg: #2b2b2b;
@@ -44,7 +37,7 @@
   --accent: #f83;
 }
 
-:root[theme="light"]{
+:root[theme='light'] {
   --text: #333;
   --placeholder: #d1d1d1;
   --bg: #ebebeb;
@@ -55,35 +48,28 @@
   --accent: #ff8640;
 }
 
-body{
+body {
   background: var(--bg);
 }
-
 
 * {
   font-family: Inter, sans-serif;
 }
-
 
 ::-webkit-scrollbar {
   background-color: var(--bg);
   width: 8px;
 }
 
-
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
   border-radius: 4px;
 }
 
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent);
-
 }
 
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--input);
 }
-
-
