@@ -1,12 +1,14 @@
 import { type ReactElement } from 'react';
 import { MdDarkMode, MdLightMode } from 'react-icons/md';
 
-export function IconMode(): ReactElement {
-  const userTheme = localStorage.getItem('userTheme');
+interface IconModeProps {
+  isDarkModeActive: boolean;
+}
 
-  if (userTheme === 'dark') {
-    return <MdDarkMode />;
-  } else {
+export function IconMode({ isDarkModeActive }: IconModeProps): ReactElement {
+  if (isDarkModeActive) {
     return <MdLightMode />;
+  } else {
+    return <MdDarkMode />;
   }
 }
