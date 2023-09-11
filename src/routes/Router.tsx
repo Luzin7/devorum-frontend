@@ -1,11 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { HOME, LOGIN, REGISTER, ROOT } from '../utils/routePaths';
+import { HOME, LOGIN, QUESTION, REGISTER, ROOT } from '../utils/routePaths';
 import { ErrorPage } from '../components/ErrorPage/ErrorPage';
 import { PrivateRoutes } from '../helpers/privateRoutes';
 import { Layout } from '../components/Layout/Layout';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
+import Question from '../components/Question';
 
 const router = createBrowserRouter([
   {
@@ -23,16 +24,16 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: QUESTION,
-      //   element: <Layout />,
-      //   children: [
-      //     {
-      //       path: ':id/:username',
-      //       element: <Question />,
-      //     },
-      //   ],
-      // },
+      {
+        path: QUESTION,
+        element: <Layout />,
+        children: [
+          {
+            path: ':questionId',
+            element: <Question />,
+          },
+        ],
+      },
       { path: REGISTER, element: <Register /> },
       { path: LOGIN, element: <Register /> },
     ],
