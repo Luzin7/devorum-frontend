@@ -3,52 +3,61 @@
     {
       "date": 20230905221125,
       "id": "iU324-3958109js-2895dm",
-      "author": "iU324-3958109js-2895de",
+      "authorId": "iU324-3958109js-2895de",
+      "author": "José Elias",
       "title": "Estou realmente indo no caminho correto?",
       "question": "Que conselhos você tem para um desenvolvedor que está buscando avançar de júnior para pleno?",
+      "upvotes": 0,
+      "comments": [
+        {
+          "date": 1694179876453,
+          "id": "5bb5acc7-b7eb-4d8c-982f-b7506fb5f3b9",
+          "authorId": "e8363805-8a4e-43e9-9e2b-2694de5c9b83",
+          "author": "Victor",
+          "comment": "Meu amigo você deveria ter vergonha de fazer uma pergunta dessa. Vá estudar que você vai chegar num nível mínimo de inteligencia e vai aprender a não perguntar besteira na internet! Ta de sacanagem que você acha que alguem vai te dar o conselho correto pra isso, só pode! 🤬🤬🤬😡",
+          "upvotes": 0
+        }
+      ]
+    },
+    {
+      "date": 20230905221125,
+      "id": "iU324-3928109js-2895da",
+      "authorId": "iU314-3958109ts-2895dr",
+      "author": "Pedro Antonio",
+      "title": "Sou burro?",
+      "question": "Tava tentando aprender nodejs fora do curso mas to achando muito difícil, sou burro?",
+      "upvotes": 0,
       "comments": []
     },
     {
-      "date": 20230905221127,
-      "id": "iU324-3958109js-2895da",
-      "author": "iU324-3958109js-2895di",
-      "title": "Quero saber se estou realmente indo no caminho correto",
-      "question": "Como faço para saber se estou no caminho certo da programação, pois já perguntei para o ChatGPT e ele disse que eu deveria desistir de tudo e ir para outra área?"
+      "date": 20230905221125,
+      "id": "iU324-3928109js-2895db",
+      "authorId": "iU314-3958109ts-2895ds",
+      "author": "Ana Carolina",
+      "title": "Como melhorar minhas habilidades de programação?",
+      "question": "Quais são as práticas recomendadas para melhorar minhas habilidades de programação em JavaScript?",
+      "upvotes": 0,
+      "comments": []
     },
     {
-      "date": 20230905221115,
-      "id": "iU324-3958109js-2895do",
-      "author": "iU324-3958109js-2895da",
-      "title": "Estou realmente indo no caminho correto?",
-      "question": "Quais conselhos você tem para um desenvolvedor que está buscando avançar de júnior para pleno?"
+      "date": 20230905221125,
+      "id": "iU324-3928109js-2895dc",
+      "authorId": "iU314-3958109ts-2895dt",
+      "author": "Maria Silva",
+      "title": "Frontend ou Backend?",
+      "question": "Estou em dúvida sobre me especializar em desenvolvimento frontend ou backend. Quais são as considerações que devo levar em conta ao fazer essa escolha?",
+      "upvotes": 0,
+      "comments": []
     },
     {
-      "date": 20230905221230,
-      "id": "iU324-3958109js-2895db",
-      "author": "iU324-3958109js-2895dc",
-      "title": "Avaliação de habilidades de programação",
-      "question": "Como posso avaliar minhas habilidades de programação de forma objetiva para entender meu nível atual?"
-    },
-    {
-      "date": 20230905221345,
-      "id": "iU324-3958109js-2895dd",
-      "author": "iU324-3958109js-2895de",
-      "title": "Escolha de linguagem de programação",
-      "question": "Qual é a melhor linguagem de programação para um iniciante aprender e por quê?"
-    },
-    {
-      "date": 20230905221615,
-      "id": "iU324-3958109js-2895dh",
-      "author": "iU324-3958109js-2895di",
-      "title": "Aprendizado de máquina e inteligência artificial",
-      "question": "Como começar a aprender sobre aprendizado de máquina e inteligência artificial, mesmo sem experiência prévia?"
-    },
-    {
-      "date": 20230905221845,
-      "id": "iU324-3958109js-2895dl",
-      "author": "iU324-3958109js-2895dm",
-      "title": "Segurança na programação",
-      "question": "Quais são as melhores práticas de segurança que todo desenvolvedor deve seguir ao escrever código?"
+      "date": 20230905221125,
+      "id": "iU324-3928109js-2895dd",
+      "authorId": "iU314-3958109ts-2895du",
+      "author": "Carlos Alberto",
+      "title": "Melhores recursos para aprender React",
+      "question": "Quais são os melhores recursos e cursos online para aprender React de forma eficaz?",
+      "upvotes": 0,
+      "comments": []
     }
   ]
 }
