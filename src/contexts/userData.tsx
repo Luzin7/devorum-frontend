@@ -6,6 +6,8 @@ const isUserThemeDark = window.matchMedia(
   '(prefers-color-scheme: dark)',
 ).matches;
 const userTheme = localStorage.getItem('userTheme');
+const userInfo = localStorage.getItem('l_storage.user_info');
+
 interface ProviderProp {
   children: React.ReactNode;
 }
@@ -16,20 +18,28 @@ const initialUser: PublicUserProps = {
   questions: [],
 };
 
+const prevUserInfo = (): PublicUserProps => {
+  if (userInfo !== null && userInfo !== undefined) {
+    return JSON.parse(userInfo);
+  } else {
+    return initialUser;
+  }
+};
+
 export const UserDataContext = createContext<{
   userData: PublicUserProps;
   setUserData: React.Dispatch<React.SetStateAction<PublicUserProps>>;
   isUserLoggedIn: boolean;
   setIsUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
-  userData: initialUser,
+  userData: prevUserInfo(),
   setUserData: () => {},
   isUserLoggedIn: false,
   setIsUserLoggedIn: () => {},
 });
 
 export const UserDataProvider = ({ children }: ProviderProp): ReactElement => {
-  const [userData, setUserData] = useState<PublicUserProps>(initialUser);
+  const [userData, setUserData] = useState(prevUserInfo);
   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(isLoggedIn);
 
