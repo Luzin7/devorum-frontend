@@ -1,14 +1,20 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { HOME, LOGIN, QUESTION, REGISTER, ROOT, ABOUT_US } from '../utils/routePaths';
+import {
+  HOME,
+  LOGIN,
+  QUESTION,
+  REGISTER,
+  ROOT,
+  ABOUT_US,
+} from '../utils/routePaths';
 import { ErrorPage } from '../components/ErrorPage/ErrorPage';
 import { PrivateRoutes } from '../helpers/privateRoutes';
 import { Layout } from '../components/Layout/Layout';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
-import { AboutUs } from '../components/AboutusPage/AboutUs';
 import Question from '../components/Question';
-
+import AboutUs from '../pages/AboutUs';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +33,16 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: ABOUT_US,
+        element: <Layout />,
+        children: [
+          {
+            path: '',
+            element: <AboutUs />,
+          },
+        ],
+      },
+      {
         path: QUESTION,
         element: <Layout />,
         children: [
@@ -38,7 +54,6 @@ const router = createBrowserRouter([
       },
       { path: REGISTER, element: <Register /> },
       { path: LOGIN, element: <Register /> },
-      { path: ABOUT_US, element: <AboutUs /> },
     ],
   },
 ]);
