@@ -1,9 +1,12 @@
 import { useState, type ReactElement } from 'react';
 import { BiLike } from 'react-icons/bi';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import * as S from '../components/styleds';
 import { API_URL_BASE, QUESTIONS_ENDPOINT } from '../../../utils/api';
+import { QUESTION } from '../../../utils/routePaths';
+import convertTimezone from '../../../functions/timezoneConverter';
 
 interface DataProps {
   author: string;
@@ -51,13 +54,6 @@ export function Question(): ReactElement {
     }
   }
 
-  const convertTimezone = (timezone: number): string => {
-    const date = new Date(timezone);
-
-    const formattedDate = date.toLocaleDateString('pt-BR');
-    return formattedDate;
-  };
-
   return (
     <>
       <div className="flex m-auto justify-between text-text opacity-70 text-sm lg:w-3/5 xl:w-2/4 2xl:w-2/5">
@@ -65,7 +61,7 @@ export function Question(): ReactElement {
         <span>{data.length}</span>
       </div>
       <S.QuestionsWrapper>
-        {data.map(({ author, title, question, date }: DataProps) => (
+        {data.map(({ id, author, title, question, date }: DataProps) => (
           <S.QuestionWrapper key={author}>
             <div>
               <div className="flex flex-col gap-1">
@@ -84,12 +80,14 @@ export function Question(): ReactElement {
               <button type="button" className="self-end">
                 <BiLike className="text-accent text-3xl active:text-primary transition-colors" />
               </button>
-              <button
-                type="button"
-                className="font-bold bg-accent rounded-full py-2 px-4 text-sm active:bg-primary transition-colors"
-              >
-                Responder
-              </button>
+              <Link to={`${QUESTION}/${id}`}>
+                <button
+                  type="button"
+                  className="font-bold bg-accent rounded-full py-2 px-4 text-sm hover:bg-primary transition-colors"
+                >
+                  Responder
+                </button>
+              </Link>
             </div>
           </S.QuestionWrapper>
         ))}
