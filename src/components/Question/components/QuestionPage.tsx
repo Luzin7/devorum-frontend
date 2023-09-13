@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import * as S from './styleds';
 import { QuestionDetails } from './QuestionDetails';
-import Comments from './Comments';
+// import Comments from './Comments';
 import { type QuestionProps } from '../../../types';
 
 export function QuestionPage(): ReactElement {
@@ -35,7 +35,7 @@ export function QuestionPage(): ReactElement {
         <S.FormWrapper>
           <S.InputField type="text" placeholder="Ajude com sua resposta" />
         </S.FormWrapper>
-        <Comments comments={questionInfo.comments} />
+        {/* <Comments comments={questionInfo.comments} /> */}
       </section>
     </main>
   );

@@ -8,8 +8,8 @@ const middlewares = jsonServer.defaults();
 const port = 8080;
 
 server.use(middlewares);
-server.use(users);
 server.use(questions);
+server.use(users);
 
 server.listen(port, () => {
   console.log(`JSON Server está rodando na porta ${port}`);

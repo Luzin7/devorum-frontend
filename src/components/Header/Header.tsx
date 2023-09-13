@@ -1,9 +1,11 @@
 import { useState, type ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 
 import Logo from './components/Logo';
 import NavLinks from './components/NavLinks';
 import ThemeSwitchButton from '../ThemeSwitchButton';
 import { MenuButton } from './components/MenuButton';
+import { CREATE_QUESTION } from '../../utils/routePaths';
 
 export function Header(): ReactElement {
   const [isAriaActive, setIsAriaActive] = useState<boolean>(false);
@@ -24,13 +26,15 @@ export function Header(): ReactElement {
           <NavLinks />
           <div className="flex items-center justify-around">
             <ThemeSwitchButton />
-            <button
-              type="button"
-              className="bg-primary rounded-full w-[7vh] h-[7vh] flex items-center
+            <Link to={CREATE_QUESTION}>
+              <button
+                type="button"
+                className="bg-primary rounded-full w-[7vh] h-[7vh] flex items-center
              justify-center text-2xl font-bold"
-            >
-              ?
-            </button>
+              >
+                ?
+              </button>
+            </Link>
           </div>
         </div>
       </div>

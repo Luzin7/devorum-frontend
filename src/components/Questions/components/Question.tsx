@@ -36,7 +36,7 @@ export function Question(): ReactElement {
     axios
       .get(`${API_URL_BASE}${QUESTIONS_ENDPOINT}`)
       .then((response) => {
-        setData(response.data);
+        setData(response.data.questions);
         localStorage.setItem(lastFetchCacheKey, currentTime.toString());
         localStorage.setItem(questionsStored, JSON.stringify(response.data));
       })
@@ -61,7 +61,7 @@ export function Question(): ReactElement {
         <span>{data.length}</span>
       </div>
       <S.QuestionsWrapper>
-        {data.map(({ id, author, title, question, date }: DataProps) => (
+        {/* {data.map(({ id, author, title, question, date }: DataProps) => (
           <S.QuestionWrapper key={author}>
             <div>
               <div className="flex flex-col gap-1">
@@ -90,7 +90,7 @@ export function Question(): ReactElement {
               </Link>
             </div>
           </S.QuestionWrapper>
-        ))}
+        ))} */}
       </S.QuestionsWrapper>
     </>
   );

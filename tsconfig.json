@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "json-server.cjs"],
+  "include": ["src", "json-server.cjs", "json-server-questions.cjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

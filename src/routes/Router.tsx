@@ -7,6 +7,8 @@ import {
   REGISTER,
   ROOT,
   ABOUT_US,
+  USER_PROFILE,
+  CREATE_QUESTION,
 } from '../utils/routePaths';
 import { ErrorPage } from '../components/ErrorPage/ErrorPage';
 import { PrivateRoutes } from '../helpers/privateRoutes';
@@ -15,6 +17,8 @@ import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Question from '../components/Question';
 import AboutUs from '../pages/AboutUs';
+import { Profile } from '../pages/Profile';
+import Form from '../components/formQuestion';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +43,26 @@ const router = createBrowserRouter([
           {
             path: '',
             element: <AboutUs />,
+          },
+        ],
+      },
+      {
+        path: USER_PROFILE,
+        element: <Layout />,
+        children: [
+          {
+            path: '',
+            element: <Profile />,
+          },
+        ],
+      },
+      {
+        path: CREATE_QUESTION,
+        element: <Layout />,
+        children: [
+          {
+            path: '',
+            element: <Form />,
           },
         ],
       },
