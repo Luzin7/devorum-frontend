@@ -1,4 +1,4 @@
 import { PersonCard } from './PersonCard';
-import { PersonList } from './PersonCardList';
+import { PersonCardList } from './PersonCardList';
 
-export default { PersonCard, PersonList };
+export default { PersonCard, PersonCardList };

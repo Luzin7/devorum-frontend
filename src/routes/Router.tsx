@@ -7,6 +7,7 @@ import {
   REGISTER,
   ROOT,
   ABOUT_US,
+  ABOUT_PROJECT,
 } from '../utils/routePaths';
 import { ErrorPage } from '../components/ErrorPage/ErrorPage';
 import { PrivateRoutes } from '../helpers/privateRoutes';
@@ -15,6 +16,7 @@ import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Question from '../components/Question';
 import AboutUs from '../pages/AboutUs';
+import AboutProject from '../pages/AboutProject';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,16 @@ const router = createBrowserRouter([
           {
             path: '',
             element: <AboutUs />,
+          },
+        ],
+      },
+      {
+        path: ABOUT_PROJECT,
+        element: <Layout />,
+        children: [
+          {
+            path: '',
+            element: <AboutProject />,
           },
         ],
       },
