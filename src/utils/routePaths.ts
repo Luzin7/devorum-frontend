@@ -6,3 +6,4 @@ export const REGISTER: string = '/register';
 export const ABOUT_US: string = '/about-us';
 export const USER_PROFILE: string = '/profile/:username';
 export const CREATE_QUESTION: string = '/questions/create';
+export const ABOUT_PROJECT: string = '/about-project';
