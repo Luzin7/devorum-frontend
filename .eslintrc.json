@@ -29,6 +29,7 @@
     }
   },
   "rules": {
+    "react/react-in-jsx-scope": "off",
     "no-unused-vars": "error",
     "prettier/prettier": "error",
     "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
@@ -50,13 +51,6 @@
           ["parent", "sibling", "index"]
         ],
         "newlines-between": "always"
-      }
-    ],
-    "eslint-plugin-naming-convention/naming-convention": [
-      "error",
-      {
-        "selector": "variable",
-        "format": ["camelCase"]
       }
     ]
   }

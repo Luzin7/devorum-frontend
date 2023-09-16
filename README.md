@@ -8,11 +8,15 @@ Esta é a documentação do projeto TurmaQA, que descreve o frontend do projeto.
 
 O projeto frontend está organizado da seguinte forma:
 
+- `assets`: Contém recursos estáticos, como imagens, fontes e outros arquivos de mídia.
 - `components`: Contém componentes reutilizáveis da aplicação.
 - `contexts`: Armazena os contextos globais da aplicação.
 - `data`: Pode ser utilizado para armazenar dados estáticos, se necessário.
 - `functions`: Local para funções utilitárias da aplicação.
+- `helpers`: Contém funções auxiliares e utilitárias para ajudar na lógica do aplicativo.
+- `models`: Armazena modelos de dados ou definições de estruturas de dados.
 - `pages`: Cada página da aplicação possui um arquivo nesta pasta.
+- `routes`: Contém as definições de rotas da aplicação, como o roteamento do React Router.
 - `styles`: Armazena estilos globais, como cores e configurações do Tailwind CSS.
 - `types`: Contém definições de tipos TypeScript utilizadas em toda a aplicação.
 - `utils`: Utilizado para funções auxiliares e utilitárias.
@@ -21,11 +25,20 @@ O projeto frontend está organizado da seguinte forma:
 ## Ferramentas e Tecnologias
 
 - [React](https://reactjs.org/): Biblioteca JavaScript para criação de interfaces de usuário.
+- [Axios](https://axios-http.com/): Cliente HTTP para fazer requisições AJAX.
+- [json-server](https://github.com/typicode/json-server): Biblioteca para criar uma API REST fake a partir de um arquivo JSON.
+- [Zod](https://github.com/colinhacks/zod): Biblioteca TypeScript para validação de dados.
+- [Sass](https://sass-lang.com/): Pré-processador CSS.
+- [React Router DOM](https://reactrouter.com/): Biblioteca de roteamento para React.
+- [React Icons](https://react-icons.github.io/react-icons/): Conjunto de ícones para React.
+- [React Hook Form](https://react-hook-form.com/): Biblioteca para gerenciamento de formulários no React.
+- [Vite](https://vitejs.dev/): Build tool para desenvolvimento web rápido.
 - [Tailwind CSS](https://tailwindcss.com/): Framework CSS utilizado para estilização.
 - [TypeScript](https://www.typescriptlang.org/): Linguagem de programação para JavaScript tipada.
 - [ESLint](https://eslint.org/): Ferramenta para análise de código.
 - [Prettier](https://prettier.io/): Formatador de código.
 - [Stylelint](https://stylelint.io/): Ferramenta para análise de estilos CSS.
+
 
 ## Pré-requisitos
 

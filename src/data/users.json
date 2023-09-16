@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "name": "Victor",
+      "contact": "nicklegal",
+      "password": "aaaaaaaaaaa",
+      "questions": [],
+      "id": 1
+    },
+    {
+      "name": "Victor",
+      "contact": "nicklegal",
+      "password": "aaaaaaa",
+      "questions": [],
+      "id": 2
+    }
+  ]
+}
