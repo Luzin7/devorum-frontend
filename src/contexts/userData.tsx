@@ -1,5 +1,7 @@
 import { type ReactElement, createContext, useState } from 'react';
 
+import { type User } from '../types';
+
 const isUserThemeDark = window.matchMedia(
   '(prefers-color-scheme: dark)',
 ).matches;
@@ -10,21 +12,14 @@ interface ProviderProp {
   children: React.ReactNode;
 }
 
-interface PublicUserProps {
-  id: string;
-  name: string;
-  contact: string;
-  questions: string[];
-}
-
-const initialUser: PublicUserProps = {
+const initialUser: User = {
   id: '',
   name: '',
   contact: '',
   questions: [],
 };
 
-const prevUserInfo = (): PublicUserProps => {
+const prevUserInfo = (): User => {
   if (userInfo !== null && userInfo !== undefined) {
     return JSON.parse(userInfo);
   } else {
@@ -33,8 +28,8 @@ const prevUserInfo = (): PublicUserProps => {
 };
 
 export const UserDataContext = createContext<{
-  userData: PublicUserProps;
-  setUserData: React.Dispatch<React.SetStateAction<PublicUserProps>>;
+  userData: User;
+  setUserData: React.Dispatch<React.SetStateAction<User>>;
   isUserLoggedIn: boolean;
   setIsUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }>({

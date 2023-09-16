@@ -2,12 +2,12 @@ import axios from 'axios';
 
 import { API_URL_BASE, LOGIN_ENDPOINT } from '../../../../utils/api';
 import { type loginProps } from '../schemas';
-import { type PublicUserProps } from '../../../../types/IUser';
+import { type User } from '../../../../types';
 
 interface loginResponseProps {
   success: boolean;
   message: string | any;
-  user?: PublicUserProps;
+  user?: User;
 }
 
 const handleLoginSubmit = async (

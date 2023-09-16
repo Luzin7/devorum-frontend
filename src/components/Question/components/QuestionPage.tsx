@@ -40,7 +40,7 @@ export function QuestionPage(): ReactElement {
     isError,
   } = useGetQuestionComments(questionId);
 
-  const { data: question } = useGetQuestionById(questionId);
+  const { data: question = '' } = useGetQuestionById(questionId);
 
   if (isLoading) {
     return <p>Carregando...</p>;
@@ -51,15 +51,17 @@ export function QuestionPage(): ReactElement {
   }
 
   const onSubmit = async (data: commentProps): Promise<void> => {
-    await handleCommentSubmit(data, userData.id, questionId);
-    window.location.reload();
+    if (typeof questionId === 'string') {
+      await handleCommentSubmit(data, userData.id, questionId);
+      window.location.reload();
+    }
   };
 
   return (
     <main>
       {question !== undefined ? (
         <>
-          <QuestionDetails questionDetails={question[0]} />
+          {question !== '' && <QuestionDetails questionDetails={question} />}
           <section className=" flex flex-col ">
             <S.FormWrapper onSubmit={handleSubmit(onSubmit)}>
               <S.InputField

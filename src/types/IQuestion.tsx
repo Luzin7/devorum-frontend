@@ -1,4 +1,5 @@
 interface Question {
+  length: number;
   created_at: number;
   id: string;
   author_id: string;

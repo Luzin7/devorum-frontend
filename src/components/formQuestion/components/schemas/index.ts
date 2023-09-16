@@ -1,9 +1,3 @@
-import { type loginProps, schemaLoginForm } from './questionSchema';
-import { type registerProps, schemaRegisterForm } from './registerSchema';
+import { questionSchema, type questionProps } from './questionSchema';
 
-export {
-  schemaLoginForm,
-  schemaRegisterForm,
-  type loginProps,
-  type registerProps,
-};
+export { type questionProps, questionSchema };

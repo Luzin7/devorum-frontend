@@ -35,7 +35,7 @@ export function QuestionMap(): ReactElement {
         <span>{data.length}</span>
       </div> */}
       <S.QuestionsWrapper>
-        {questions?.length > 0 ? (
+        {questions !== undefined && questions?.length > 0 ? (
           questions.map(
             // eslint-disable-next-line @typescript-eslint/naming-convention
             ({ id, title, question, created_at }: Question) => (
