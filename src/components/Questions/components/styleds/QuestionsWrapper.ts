@@ -8,7 +8,6 @@ const QuestionsWrapper = styled.div`
   overflow-y: scroll;
   width: 100%;
   max-height: 90vh;
-  background-color: ${(props) => props.theme.colors.secondary};
   border-radius: 1.5rem;
   cursor: default;
 

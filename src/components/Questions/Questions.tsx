@@ -1,11 +1,11 @@
 import { type ReactElement } from 'react';
 
-import { Question } from './components/Question';
+import { QuestionMap } from './components/Question';
 
 export function Questions(): ReactElement {
   return (
     <section>
-      <Question />
+      <QuestionMap />
     </section>
   );
 }

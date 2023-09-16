@@ -1,13 +1,15 @@
-import { useState, type ReactElement } from 'react';
+import { useState, type ReactElement, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { questionSubmit } from './functions';
 import * as S from './styleds';
 import { type questionProps, questionSchema } from './schemas/questionSchema';
+import { UserDataContext } from '../../../contexts/userData';
 
 export default function FormQuestion(): ReactElement {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { userData } = useContext(UserDataContext);
 
   const {
     handleSubmit,
@@ -27,7 +29,7 @@ export default function FormQuestion(): ReactElement {
 
   const onSubmit = async (data: questionProps): Promise<void> => {
     setIsLoading(true);
-    await questionSubmit(data);
+    await questionSubmit(data, userData.id);
     setIsLoading(false);
   };
 
@@ -60,7 +62,6 @@ export default function FormQuestion(): ReactElement {
             {errors.userData?.question?.message}
           </span>
         )}
-
         <S.Button type="submit" disabled={!!isLoading} className="mt-7">
           {isLoading ? 'Publicando...' : 'Publicar pergunta'}
         </S.Button>

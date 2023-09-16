@@ -23,28 +23,23 @@ const handleLoginSubmit = async (
       },
     });
 
-    const user = response.data.find(
-      (u: { name: string; password: string }) =>
-        u.name === userData.name && u.password === userData.password,
-    );
-
-    if (user !== undefined) {
-      const publicUser: PublicUserProps = {
-        name: user.name,
-        contact: user.contact,
-        questions: user.questions,
-      };
-
+    if (response.status === 200) {
       return {
         success: true,
-        message: 'Login bem-sucedido!',
-        user: publicUser,
+        message: 'Login concluido!',
+        user: response.data,
       };
     } else {
-      return { success: false, message: 'Credenciais inválidas.' };
+      return {
+        success: false,
+        message: 'Ocorreu um erro ao fazer login.',
+      };
     }
   } catch (error) {
-    return { success: false, message: error };
+    return {
+      success: false,
+      message: error,
+    };
   }
 };
 

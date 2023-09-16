@@ -1,10 +1,10 @@
-interface CommentProps {
-  date: number;
+interface Comment {
+  created_at: number;
   id: string;
-  authorId: string;
-  author: string;
+  author_id: string;
+  author_name: string;
+  question_id: string;
   comment: string;
-  upvotes: number;
 }
 
-export default CommentProps;
+export default Comment;

@@ -1,7 +1,5 @@
 import { type ReactElement, createContext, useState } from 'react';
 
-import { type PublicUserProps } from '../types/IUser';
-
 const isUserThemeDark = window.matchMedia(
   '(prefers-color-scheme: dark)',
 ).matches;
@@ -12,7 +10,15 @@ interface ProviderProp {
   children: React.ReactNode;
 }
 
+interface PublicUserProps {
+  id: string;
+  name: string;
+  contact: string;
+  questions: string[];
+}
+
 const initialUser: PublicUserProps = {
+  id: '',
   name: '',
   contact: '',
   questions: [],

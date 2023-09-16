@@ -8,8 +8,8 @@ const QuestionWrapper = styled.div`
 
   & {
     @media (min-width: 768px) {
-      padding: 1.5rem 0.5rem;
-      justify-content: space-around;
+      padding: 1rem 2rem;
+      justify-content: space-between;
     }
   }
 `;

@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 const QuestionWrapper = styled.div`
-  background-color: ${(props) => props.theme.colors.text};
+  border-bottom: 1px solid ${(props) => props.theme.colors.primary};
   display: flex;
+  flex-flow: column;
+  margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 1.5rem;
+  width: 100%;
 
   & {
     @media (min-width: 768px) {

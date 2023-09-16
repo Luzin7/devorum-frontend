@@ -1,12 +1,10 @@
-interface QuestionProps {
-  date: number;
+interface Question {
+  created_at: number;
   id: string;
-  authorId: string;
-  author: string;
+  author_id: string;
+  author_name: string;
   title: string;
   question: string;
-  upvotes: number;
-  comments: string[];
 }
 
-export default QuestionProps;
+export default Question;

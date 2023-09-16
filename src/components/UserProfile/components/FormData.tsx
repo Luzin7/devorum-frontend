@@ -29,9 +29,9 @@ export default function FormData(): ReactElement {
     },
   });
 
-  const handleEditStatusChange = (): void => {
-    setIsEditOn(!isEditOn);
-  };
+  // const handleEditStatusChange = (): void => {
+  //   setIsEditOn(!isEditOn);
+  // };
 
   const handlePasswordChange = (data: UpdatePasswordProps): void => {
     setIsLoading(!isLoading);
@@ -82,11 +82,12 @@ export default function FormData(): ReactElement {
         <S.Button
           type={isEditOn ? 'submit' : 'button'}
           className="mt-7"
-          onClick={() => {
-            isEditOn ? handlePasswordChange() : handleEditStatusChange();
-          }}
+          disabled
+          // onClick={() => {
+          //   isEditOn ? handlePasswordChange() : handleEditStatusChange();
+          // }}
         >
-          {isEditOn ? 'Confirmar mudança' : 'Alterar minha senha'}
+          {isEditOn ? 'Confirmar mudança' : 'Em breve alteração de senha'}
         </S.Button>
       </div>
     </S.FormWrapper>

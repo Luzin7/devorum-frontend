@@ -36,7 +36,6 @@ export default function Login(): ReactElement {
     const result = await handleLoginSubmit(data);
 
     if (!result.success) {
-      console.log(result.message);
       setIsLoading(false);
     }
 

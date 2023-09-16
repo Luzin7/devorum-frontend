@@ -24,40 +24,50 @@ import AboutProject from '../pages/AboutProject';
 
 const router = createBrowserRouter([
   {
+    path: HOME,
+    element: <Layout />,
+    children: [
+      {
+        path: '',
+        element: <Home />,
+      },
+    ],
+  },
+  {
+    path: QUESTION,
+    element: <Layout />,
+    children: [
+      {
+        path: ':questionId',
+        element: <Question />,
+      },
+    ],
+  },
+  {
+    path: ABOUT_US,
+    element: <Layout />,
+    children: [
+      {
+        path: '',
+        element: <AboutUs />,
+      },
+    ],
+  },
+  {
+    path: ABOUT_PROJECT,
+    element: <Layout />,
+    children: [
+      {
+        path: '',
+        element: <AboutProject />,
+      },
+    ],
+  },
+  {
     path: ROOT,
     element: <PrivateRoutes />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: HOME,
-        element: <Layout />,
-        children: [
-          {
-            path: '',
-            element: <Home />,
-          },
-        ],
-      },
-      {
-        path: ABOUT_US,
-        element: <Layout />,
-        children: [
-          {
-            path: '',
-            element: <AboutUs />,
-          },
-        ],
-      },
-      {
-        path: ABOUT_PROJECT,
-        element: <Layout />,
-        children: [
-          {
-            path: '',
-            element: <AboutProject />,
-          },
-        ],
-      },
       {
         path: USER_PROFILE,
         element: <Layout />,
@@ -78,16 +88,7 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: QUESTION,
-        element: <Layout />,
-        children: [
-          {
-            path: ':questionId',
-            element: <Question />,
-          },
-        ],
-      },
+
       { path: REGISTER, element: <Register /> },
       { path: LOGIN, element: <Register /> },
     ],

@@ -3,15 +3,15 @@ import axios from 'axios';
 import { API_URL_BASE, QUESTIONS_ENDPOINT } from '../../../../utils/api';
 import { type questionProps } from '../schemas/questionSchema';
 
-const questionSubmit = async (data: questionProps): Promise<object> => {
+const questionSubmit = async (
+  data: questionProps,
+  userId: string,
+): Promise<object> => {
   const { userData } = data;
 
   try {
     const response = await axios.post(`${API_URL_BASE}${QUESTIONS_ENDPOINT}`, {
-      date: 1097501950857,
-      id: '99823598982392akfjakjfb92497',
-      authorId: '19845bfkjbkdf89769872nbnmi237',
-      authorName: 'fodase',
+      author_id: userId,
       title: userData.title,
       question: userData.question,
     });

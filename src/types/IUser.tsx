@@ -1,14 +1,10 @@
-interface UserProps {
+interface User {
+  created_at: number;
+  id: string;
   name: string;
-  password: string;
+  password?: string;
+  salt?: string;
   contact: string;
-  questions?: string[];
 }
 
-interface PublicUserProps {
-  name: string;
-  contact: string;
-  questions?: string[];
-}
-
-export type { UserProps, PublicUserProps };
+export default User;
