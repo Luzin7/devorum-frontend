@@ -19,17 +19,17 @@ import Register from '../pages/Register';
 import Question from '../components/Question';
 import AboutUs from '../pages/AboutUs';
 import { Profile } from '../pages/Profile';
-import Form from '../components/formQuestion';
+import Form from '../components/FormQuestion';
 import AboutProject from '../pages/AboutProject';
 
 const router = createBrowserRouter([
   {
     path: ROOT,
     element: <Navigate to={HOME} replace />,
+    errorElement: <ErrorPage />,
   },
   {
     element: <Layout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         path: HOME,
