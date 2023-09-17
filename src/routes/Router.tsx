@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 
 import {
   HOME,
@@ -24,75 +24,46 @@ import AboutProject from '../pages/AboutProject';
 
 const router = createBrowserRouter([
   {
-    path: HOME,
-    element: <Layout />,
-    children: [
-      {
-        path: '',
-        element: <Home />,
-      },
-    ],
-  },
-  {
-    path: QUESTION,
-    element: <Layout />,
-    children: [
-      {
-        path: ':questionId',
-        element: <Question />,
-      },
-    ],
-  },
-  {
-    path: ABOUT_US,
-    element: <Layout />,
-    children: [
-      {
-        path: '',
-        element: <AboutUs />,
-      },
-    ],
-  },
-  {
-    path: ABOUT_PROJECT,
-    element: <Layout />,
-    children: [
-      {
-        path: '',
-        element: <AboutProject />,
-      },
-    ],
-  },
-  {
     path: ROOT,
-    element: <PrivateRoutes />,
+    element: <Navigate to={HOME} replace />,
+  },
+  {
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: USER_PROFILE,
-        element: <Layout />,
+        path: HOME,
+        element: <Home />,
+      },
+      {
+        path: QUESTION,
         children: [
           {
-            path: '',
-            element: <Profile />,
+            path: ':questionId',
+            element: <Question />,
           },
         ],
       },
       {
-        path: CREATE_QUESTION,
-        element: <Layout />,
-        children: [
-          {
-            path: '',
-            element: <Form />,
-          },
-        ],
+        path: ABOUT_US,
+        element: <AboutUs />,
       },
-
-      { path: REGISTER, element: <Register /> },
-      { path: LOGIN, element: <Register /> },
+      {
+        path: ABOUT_PROJECT,
+        element: <AboutProject />,
+      },
+      {
+        path: USER_PROFILE,
+        element: <Profile />,
+      },
+      {
+        path: CREATE_QUESTION,
+        element: <Form />,
+      },
     ],
   },
+  { path: REGISTER, element: <Register /> },
+  { path: LOGIN, element: <Register /> },
 ]);
 
 export default router;
