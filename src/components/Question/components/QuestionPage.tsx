@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useContext, type ReactElement } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { BiSolidSend } from 'react-icons/bi';
@@ -14,10 +14,12 @@ import { schemaCommentForm } from './schemas';
 import { type commentProps } from './schemas/commentSchema';
 import handleCommentSubmit from './functions/commentSubmit';
 import { UserDataContext } from '../../../contexts/userData';
+import { LOGIN } from '../../../utils/routePaths';
 
 export function QuestionPage(): ReactElement {
   const { questionId } = useParams();
-  const { userData } = useContext(UserDataContext);
+  const navigate = useNavigate();
+  const { userData, isUserLoggedIn } = useContext(UserDataContext);
 
   const {
     handleSubmit,
@@ -68,6 +70,11 @@ export function QuestionPage(): ReactElement {
                 type="text"
                 className="relative"
                 placeholder="Responda este tópico"
+                onClick={() => {
+                  if (!isUserLoggedIn) {
+                    navigate(LOGIN);
+                  }
+                }}
                 {...register('commentData.comment')}
               />
               <button
