@@ -45,20 +45,25 @@ const router = createBrowserRouter([
         ],
       },
       {
+        element: <PrivateRoutes />,
+        children: [
+          {
+            path: USER_PROFILE,
+            element: <Profile />,
+          },
+          {
+            path: CREATE_QUESTION,
+            element: <Form />,
+          },
+        ],
+      },
+      {
         path: ABOUT_US,
         element: <AboutUs />,
       },
       {
         path: ABOUT_PROJECT,
         element: <AboutProject />,
-      },
-      {
-        path: USER_PROFILE,
-        element: <Profile />,
-      },
-      {
-        path: CREATE_QUESTION,
-        element: <Form />,
       },
     ],
   },
