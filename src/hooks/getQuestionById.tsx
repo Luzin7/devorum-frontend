@@ -10,6 +10,10 @@ export function useGetQuestionById(
     if (questionId === undefined) {
       throw new Error('ID da pergunta não especificado');
     }
-    return await getQuestionById(questionId);
+    const response = await getQuestionById(questionId);
+    if (Array.isArray(response)) {
+      return response[0];
+    }
+    return response;
   });
 }
