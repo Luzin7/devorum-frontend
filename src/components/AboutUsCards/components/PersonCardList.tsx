@@ -44,7 +44,7 @@ export function PersonCardList(): ReactElement {
           abrangentes."
           musicName="Congratulations"
           musicLink="https://open.spotify.com/intl-pt/track/3a1lNhkSLSkpJE4MSHpDu9?si=6092b81a062e4f3a"
-          quote="A minha magia é não desistir, jamais."
+          quote="Com resiliência incansável e ambição ardente, alcançarei o que desejo."
           gitHub="https://github.com/stormlig"
           linkedin="https://www.linkedin.com/in/herrison-souza-630118187/"
         />
