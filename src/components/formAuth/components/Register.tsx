@@ -30,7 +30,6 @@ export default function Register(): ReactElement {
   });
 
   const onSubmit = async (data: registerProps): Promise<void> => {
-    console.log('chegou no registro inicial');
     setIsLoading(true);
     await handleRegisterSubmit(data);
     setIsLoading(false);

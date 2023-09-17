@@ -32,7 +32,7 @@ export function QuestionMap(): ReactElement {
     <>
       {/* <div className="flex m-auto justify-between text-text opacity-70 text-sm lg:w-3/5 xl:w-2/4 2xl:w-2/5">
         <span>Total de dúvidas</span>
-        <span>{data.length}</span>
+        <span>{questions.length}</span>
       </div> */}
       <S.QuestionsWrapper>
         {questions !== undefined && questions?.length > 0 ? (
@@ -71,7 +71,7 @@ export function QuestionMap(): ReactElement {
           )
         ) : (
           <p className="text-center text-text">
-            Ainda não há perguntas! Que tal publicar a sua?
+            Ainda não há tópicos publicados! Que tal publicar o seu?
           </p>
         )}
       </S.QuestionsWrapper>

@@ -17,7 +17,7 @@ export default function NavLinks(): ReactElement {
               <Link to={HOME}>Início</Link>
             </li>
             <li className="text-white hover:text-accent active:text-primary transition-colors">
-              <Link to={CREATE_QUESTION}>Perguntar</Link>
+              <Link to={CREATE_QUESTION}>Publicar</Link>
             </li>
             <li className="text-white hover:text-accent active:text-primary transition-colors">
               <Link to={`/profile/${name}`}>Perfil</Link>

@@ -8,10 +8,14 @@ import { type loginProps, schemaLoginForm } from './schemas';
 import { handleLoginSubmit } from './functions';
 import { UserDataContext } from '../../../contexts/userData';
 import * as S from './styleds';
+import Modal from '../../Modal';
 
 export default function Login(): ReactElement {
   const { setUserData, setIsUserLoggedIn } = useContext(UserDataContext);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(true);
+
   const navigate = useNavigate();
 
   const {
@@ -37,6 +41,8 @@ export default function Login(): ReactElement {
 
     if (!result.success) {
       setIsLoading(false);
+      setIsSuccess(!isSuccess);
+      setIsModalOpen(!isModalOpen);
     }
 
     if (result.success && result.user !== undefined) {
@@ -54,6 +60,14 @@ export default function Login(): ReactElement {
   return (
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <S.FormWrapper onSubmit={handleSubmit(onSubmit)}>
+      <Modal
+        isOpen={isModalOpen}
+        setOpen={setIsModalOpen}
+        btnMessage="Tentar novamente"
+        description="A senha ou nome que você informou parecem não estarem corretas,
+         verifique suas credenciais e tente novamente. Se o erro persistir chame o suporte."
+        title="Algo deu errado!"
+      />
       <h2 className="font-bold text-text text-2xl lg:text-3xl xl:text-4xl pt-10">
         Acessar Conta
       </h2>

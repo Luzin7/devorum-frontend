@@ -67,7 +67,7 @@ export function QuestionPage(): ReactElement {
               <S.InputField
                 type="text"
                 className="relative"
-                placeholder="Ajude com sua resposta"
+                placeholder="Responda este tópico"
                 {...register('commentData.comment')}
               />
               <button

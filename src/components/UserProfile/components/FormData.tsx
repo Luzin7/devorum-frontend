@@ -87,7 +87,7 @@ export default function FormData(): ReactElement {
           //   isEditOn ? handlePasswordChange() : handleEditStatusChange();
           // }}
         >
-          {isEditOn ? 'Confirmar mudança' : 'Em breve alteração de senha'}
+          {isEditOn ? 'Confirmar mudança' : 'Alterar senha (em breve)'}
         </S.Button>
       </div>
     </S.FormWrapper>

@@ -9,7 +9,10 @@ export const questionSchema = z.object({
     question: z
       .string()
       .min(4, 'Por favor, informe uma senha válida')
-      .max(500, 'Por favor, seja mais preciso com sua pergunta'),
+      .max(
+        500,
+        'Por favor, seja mais preciso com sua pergunta (máximo 500 caracteres',
+      ),
   }),
 });
 

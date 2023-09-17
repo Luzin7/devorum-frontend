@@ -2,8 +2,13 @@ import axios from 'axios';
 
 import { type registerProps } from '../schemas';
 import { API_URL_BASE, REGISTER_ENDPOINT } from '../../../../utils/api';
-
-const handleRegisterSubmit = async (data: registerProps): Promise<object> => {
+interface responseProps {
+  success: boolean;
+  message: string;
+}
+const handleRegisterSubmit = async (
+  data: registerProps,
+): Promise<responseProps> => {
   const { userData } = data;
 
   try {
@@ -24,7 +29,7 @@ const handleRegisterSubmit = async (data: registerProps): Promise<object> => {
   } catch (error) {
     return {
       success: false,
-      message: error,
+      message: 'Ocorreu um erro interno.',
     };
   }
 };
