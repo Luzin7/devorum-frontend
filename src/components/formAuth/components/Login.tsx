@@ -10,7 +10,7 @@ import { UserDataContext } from '../../../contexts/userData';
 import * as S from './styleds';
 
 export default function Login(): ReactElement {
-  const { setUserData } = useContext(UserDataContext);
+  const { setUserData, setIsUserLoggedIn } = useContext(UserDataContext);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -43,6 +43,7 @@ export default function Login(): ReactElement {
       setUserData(result.user);
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('l_storage.user_info', JSON.stringify(result.user));
+      setIsUserLoggedIn(true);
 
       setIsLoading(false);
 
