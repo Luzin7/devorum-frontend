@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import { ThemeProvider } from 'styled-components';
-import { RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import router from './routes/Router';
 import { UserDataProvider } from './contexts/userData';
 import { theme } from './styles/theme';
+import Index from './routes';
 
 const queryClient = new QueryClient();
 
@@ -17,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <UserDataProvider>
-          <RouterProvider router={router} />
+          <Index />
         </UserDataProvider>
       </QueryClientProvider>
     </ThemeProvider>
