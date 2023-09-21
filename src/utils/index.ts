@@ -1,0 +1,21 @@
+import {
+  HOME,
+  ABOUT_PROJECT,
+  ABOUT_US,
+  CREATE_TOPIC,
+  LOGIN,
+  TOPIC,
+  REGISTER,
+  USER_PROFILE,
+} from './localRoutePaths'
+
+export {
+  HOME,
+  ABOUT_PROJECT,
+  ABOUT_US,
+  CREATE_TOPIC,
+  LOGIN,
+  TOPIC,
+  REGISTER,
+  USER_PROFILE,
+}
