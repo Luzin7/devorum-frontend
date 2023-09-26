@@ -21,7 +21,8 @@ export function Header() {
         <Dropdown.Root>
           <Dropdown.Links>
             <Dropdown.Link href={CREATE_TOPIC} title="Publicar novo tópico" />
-            <Dropdown.Link href={USER_PROFILE} title="Editar perfil" />
+            <Dropdown.Link href={CREATE_TOPIC} title="Editar perfil" />
+            <Dropdown.Link href={CREATE_TOPIC} title="Minhas publicações" />
             <hr />
             <Dropdown.Action />
           </Dropdown.Links>

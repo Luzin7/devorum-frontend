@@ -1,5 +1,7 @@
+import Topics from '@components/Topics'
+import { fakeTopics } from 'data/fakeTopics'
 import React from 'react'
 
 export default function Root() {
-  return <div>s</div>
+  return <Topics content={fakeTopics} />
 }
