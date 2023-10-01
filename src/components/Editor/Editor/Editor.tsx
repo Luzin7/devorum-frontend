@@ -1,14 +1,21 @@
 'use client';
 
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
 import EditorMenuBar from '@components/Editor/EditorMenuBar';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { sanitize } from 'dompurify';
 import { setLocalStorage } from 'functions/setLocalStorage';
 import { useTopicStore } from 'store/topic';
+import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
+import * as GS from '@styles/globalStyledComponents';
+import { useLoading } from 'hooks/useLoading';
 
 export function Editor() {
   const { state, actions } = useTopicStore();
+  const { isLoading, setIsLoading } = useLoading();
   const editor = useEditor({
     autofocus: true,
     extensions: [StarterKit],
@@ -23,8 +30,23 @@ export function Editor() {
     }
   });
 
+  const {
+    handleSubmit,
+    register,
+    formState: { errors }
+  } = useForm<topicTitleData>({
+    resolver: zodResolver(topicTitleSchema)
+  });
+
+  const createNewTopic = async (data: topicTitleData) => {
+    setIsLoading((prevState) => !prevState);
+    // ...requisicaoAqui
+    console.error(data);
+    setIsLoading((prevState) => !prevState);
+  };
+
   return (
-    <>
+    <form onSubmit={handleSubmit(createNewTopic)}>
       <div className="my-5">
         <input
           type="text"
@@ -34,7 +56,11 @@ export function Editor() {
           onInput={({ target }: React.ChangeEvent<HTMLInputElement>) =>
             actions.updateTopic({ title: target.value })
           }
+          {...register('title')}
         />
+        {errors.title?.message !== undefined && (
+          <GS.Error errorMessage={errors.title.message} />
+        )}
       </div>
       <div className="flex bg-topicBackground justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
@@ -44,6 +70,14 @@ export function Editor() {
           <EditorContent editor={editor} />
         </div>
       </div>
-    </>
+      <GS.Button
+        type="submit"
+        bgColor="accent"
+        txtHoverColor="text"
+        isLoading={isLoading}
+      >
+        Publicar
+      </GS.Button>
+    </form>
   );
 }
