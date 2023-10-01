@@ -1,17 +1,17 @@
-import React from 'react'
-import Topic from 'types'
-import { dateConverter } from './../../../functions/dateConverter'
+import React from 'react';
+import Topic from 'types';
+import { dateConverter } from './../../../functions/dateConverter';
 
 type TopicDetailsProps = Pick<
   Topic,
   'title' | 'content' | 'authorName' | 'createdAt'
->
+>;
 
 export default function TopicDetail({
   authorName,
   content,
   createdAt,
-  title,
+  title
 }: TopicDetailsProps) {
   return (
     <div>
@@ -20,8 +20,8 @@ export default function TopicDetail({
           {authorName} {dateConverter(createdAt)}
         </span>
       </div>
-      <h1>{title}</h1>
-      <p>{content}</p>
+      <h1 className="text-2xl font-bold">{title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: content }}></div>
     </div>
-  )
+  );
 }
