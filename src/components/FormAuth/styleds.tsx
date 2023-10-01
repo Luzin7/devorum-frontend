@@ -1,6 +1,5 @@
 import React, {
   forwardRef,
-  ButtonHTMLAttributes,
   FormHTMLAttributes,
   ReactNode,
   Ref,
@@ -8,9 +7,7 @@ import React, {
 } from 'react';
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement>;
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading: boolean;
-}
+
 interface FormWrapperProps extends FormHTMLAttributes<HTMLFormElement> {
   children: ReactNode;
 }
@@ -46,24 +43,3 @@ export const FormWrapper = forwardRef(function FormWrapper(
 });
 
 FormWrapper.displayName = 'FormWrapper';
-
-export const Button = forwardRef(function Button(
-  { isLoading, ...props }: ButtonProps,
-  ref: Ref<HTMLButtonElement>
-) {
-  return (
-    <button
-      {...props}
-      ref={ref}
-      className={`bg-secondary mt-7 font-bold py-4 min-w-full rounded-lg text-xl text-text hover:text-primary ${
-        isLoading && 'animate-pulse'
-      }`}
-    ></button>
-  );
-});
-
-Button.displayName = 'Button';
-
-export const Error = ({ errorMessage }: { errorMessage: string }) => {
-  return <span className="text-red-400">{errorMessage}</span>;
-};
