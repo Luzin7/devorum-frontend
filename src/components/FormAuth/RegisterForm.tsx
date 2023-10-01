@@ -1,15 +1,16 @@
 'use client';
 
-import { useState, type ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LOGIN } from 'utils';
 import Link from 'next/link';
 import * as S from './styleds';
+import * as GS from '@styles/globalStyledComponents';
 import { userRegisterData, userRegisterSchema } from 'schemas/register';
+import { useLoading } from 'hooks/useLoading';
 
-export function RegisterForm(): ReactElement {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export function RegisterForm() {
+  const { isLoading, setIsLoading } = useLoading();
 
   const {
     register,
@@ -20,7 +21,7 @@ export function RegisterForm(): ReactElement {
   const onSubmit = async (data: userRegisterData) => {
     setIsLoading((prevState) => !prevState);
     // ...requisicaoAqui
-    console.error(data); // deve retornar um array com todos os dados digitados corretamente e trasnformados
+    console.error(data); // deve retornar um array de objetos com todos os dados digitados corretamente e trasnformados
     setIsLoading((prevState) => !prevState);
   };
 
@@ -38,7 +39,7 @@ export function RegisterForm(): ReactElement {
             autoComplete="true"
           />
           {errors.name?.message !== undefined && (
-            <S.Error errorMessage={errors.name.message} />
+            <GS.Error errorMessage={errors.name.message} />
           )}
           <S.InputField
             type="email"
@@ -47,7 +48,7 @@ export function RegisterForm(): ReactElement {
             {...register('email')}
           />
           {errors.email?.message !== undefined && (
-            <S.Error errorMessage={errors.email.message} />
+            <GS.Error errorMessage={errors.email.message} />
           )}
         </div>
         <S.InputField
@@ -57,11 +58,11 @@ export function RegisterForm(): ReactElement {
           {...register('password')}
         />
         {errors.password?.message !== undefined && (
-          <S.Error errorMessage={errors.password.message} />
+          <GS.Error errorMessage={errors.password.message} />
         )}
-        <S.Button type="submit" disabled={!!isLoading} isLoading={isLoading}>
+        <GS.Button type="submit" disabled={!!isLoading} isLoading={isLoading}>
           {isLoading ? 'Criando...' : 'Criar conta'}
-        </S.Button>
+        </GS.Button>
       </div>
       <span className="my-8 text-primary underline text-lg hover:text-accent transition-colors">
         <Link href={LOGIN}>Já tenho uma conta</Link>

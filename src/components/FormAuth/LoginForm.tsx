@@ -1,16 +1,17 @@
 'use client';
 
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import * as S from './styleds';
+import * as GS from '@styles/globalStyledComponents';
 import Link from 'next/link';
 import { REGISTER } from 'utils';
 import { userLoginData, userLoginSchema } from 'schemas/login';
+import { useLoading } from 'hooks/useLoading';
 
 export function LoginForm() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { isLoading, setIsLoading } = useLoading();
   // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const {
@@ -51,7 +52,7 @@ export function LoginForm() {
           {...register('email')}
         />
         {errors.email?.message !== undefined && (
-          <S.Error errorMessage={errors.email.message} />
+          <GS.Error errorMessage={errors.email.message} />
         )}
         <S.InputField
           type="password"
@@ -59,11 +60,11 @@ export function LoginForm() {
           {...register('password')}
         />
         {errors.password?.message !== undefined && (
-          <S.Error errorMessage={errors.password.message} />
+          <GS.Error errorMessage={errors.password.message} />
         )}
-        <S.Button type="submit" disabled={!!isLoading} isLoading={isLoading}>
+        <GS.Button type="submit" disabled={!!isLoading} isLoading={isLoading}>
           {isLoading ? 'Acessando...' : 'Acessar'}
-        </S.Button>
+        </GS.Button>
       </div>
       <span className="my-8 text-primary underline text-lg hover:text-accent transition-colors ">
         <Link href={REGISTER}>Não tenho uma conta</Link>
