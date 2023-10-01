@@ -2,7 +2,7 @@
 
 import Logo from '@components/Logo';
 import React, { useState } from 'react';
-import { CREATE_TOPIC } from 'utils';
+import { CREATE_TOPIC, USER_PROFILE } from 'utils';
 import { BiMessageAltAdd, BiSolidUserRectangle } from 'react-icons/bi';
 import { Dropdown } from '@components/Dropdown';
 import Link from 'next/link';
@@ -20,11 +20,17 @@ export function Header() {
       {isDropdownOpen && (
         <Dropdown.Root>
           <Dropdown.Links>
-            <Dropdown.Link href={`/profile/Luzin`} title="Meu perfil" />
+            <Dropdown.Link
+              href={`${USER_PROFILE}/userName`}
+              title="Meu perfil"
+            />
             <hr />
             <Dropdown.Link href={CREATE_TOPIC} title="Publicar novo tópico" />
             <Dropdown.Link href={CREATE_TOPIC} title="Editar perfil" />
-            <Dropdown.Link href={CREATE_TOPIC} title="Minhas publicações" />
+            <Dropdown.Link
+              href={`${USER_PROFILE}/userName`}
+              title="Minhas publicações"
+            />
             <hr />
             <Dropdown.Action />
           </Dropdown.Links>
