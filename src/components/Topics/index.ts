@@ -1,3 +1,3 @@
-import { Topics } from './Topics'
+import { Topics } from './Topics';
 
-export default Topics
+export default Topics;
