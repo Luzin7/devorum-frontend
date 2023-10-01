@@ -1,15 +1,15 @@
-import { API_URL_BASE } from './apiConnection'
+import { API_URL_BASE } from './apiConnection';
 import {
   LOGIN_ENDPOINT,
   COMMENTS_ENDPOINT,
   QUESTIONS_ENDPOINT,
-  REGISTER_ENDPOINT,
-} from './apiEndpoints'
+  REGISTER_ENDPOINT
+} from './apiEndpoints';
 
 export {
   API_URL_BASE,
   COMMENTS_ENDPOINT,
   LOGIN_ENDPOINT,
   QUESTIONS_ENDPOINT,
-  REGISTER_ENDPOINT,
-}
+  REGISTER_ENDPOINT
+};

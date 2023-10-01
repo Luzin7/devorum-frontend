@@ -1,10 +1,10 @@
-import React from 'react'
-import Topic from 'types'
-import TopicDetail from './components/TopicDetail'
-import CommentsSection from './components/CommentsSection'
+import React from 'react';
+import Topic from 'types';
+import TopicDetail from './components/TopicDetail';
+import CommentsSection from './components/CommentsSection';
 
 interface TopicProps {
-  data: Topic
+  data: Topic;
 }
 
 export default function Topic({ data }: TopicProps) {
@@ -19,5 +19,5 @@ export default function Topic({ data }: TopicProps) {
       <hr />
       <CommentsSection />
     </>
-  )
+  );
 }

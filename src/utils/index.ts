@@ -6,8 +6,8 @@ import {
   LOGIN,
   TOPIC,
   REGISTER,
-  USER_PROFILE,
-} from './localRoutePaths'
+  USER_PROFILE
+} from './localRoutePaths';
 
 export {
   HOME,
@@ -17,5 +17,5 @@ export {
   LOGIN,
   TOPIC,
   REGISTER,
-  USER_PROFILE,
-}
+  USER_PROFILE
+};

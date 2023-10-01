@@ -1,5 +1,5 @@
 interface DropdownActionProps {
-  btnTitle?: string
+  btnTitle?: string;
 }
 
 export function DropdownAction({ btnTitle = 'Sair' }: DropdownActionProps) {
@@ -7,7 +7,7 @@ export function DropdownAction({ btnTitle = 'Sair' }: DropdownActionProps) {
     <button type="button" className="text-left text-red-400">
       {btnTitle}
     </button>
-  )
+  );
 }
 
 // depois criar um subcomponente de login e logout e trasnformar esse num root desses caba

@@ -1,9 +1,9 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 interface DropdownLinksProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export function DropdownLinks({ children }: DropdownLinksProps) {
-  return <ul className="flex flex-col gap-2">{children}</ul>
+  return <ul className="flex flex-col gap-2">{children}</ul>;
 }

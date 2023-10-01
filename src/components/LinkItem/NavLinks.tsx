@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import React, { ComponentProps } from 'react'
+import Link from 'next/link';
+import React, { ComponentProps } from 'react';
 
 interface LinksProps extends ComponentProps<typeof Link> {
-  title: string
+  title: string;
 }
 
 export function LinkItem({ title, ...props }: LinksProps) {
@@ -10,5 +10,5 @@ export function LinkItem({ title, ...props }: LinksProps) {
     <Link {...props}>
       <li>{title}</li>
     </Link>
-  )
+  );
 }

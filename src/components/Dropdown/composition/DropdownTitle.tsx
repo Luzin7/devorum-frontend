@@ -1,5 +1,5 @@
 interface DropdownTitleProps {
-  title: string
+  title: string;
 }
 
 export function DropdownTitle({ title }: DropdownTitleProps) {
@@ -7,5 +7,5 @@ export function DropdownTitle({ title }: DropdownTitleProps) {
     <div>
       <h1>{title}</h1>
     </div>
-  )
+  );
 }

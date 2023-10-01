@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import { HOME } from 'utils'
+import Link from 'next/link';
+import { HOME } from 'utils';
 
 interface LogoProps {
-  content: string
+  content: string;
 }
 
 export function Logo({ content }: LogoProps) {
@@ -10,5 +10,5 @@ export function Logo({ content }: LogoProps) {
     <Link href={HOME}>
       <h1 className="font-semibold text-lg">{content}</h1>
     </Link>
-  )
+  );
 }

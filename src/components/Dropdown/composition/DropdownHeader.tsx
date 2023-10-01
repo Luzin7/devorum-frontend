@@ -1,8 +1,8 @@
-import { ElementType } from 'react'
+import { ElementType } from 'react';
 
 interface DropdownHeaderProps {
-  icon: ElementType
-  title: string
+  icon: ElementType;
+  title: string;
 }
 
 export function DropdownHeader({ icon: Icon, title }: DropdownHeaderProps) {
@@ -11,5 +11,5 @@ export function DropdownHeader({ icon: Icon, title }: DropdownHeaderProps) {
       <Icon />
       <p>{title}</p>
     </div>
-  )
+  );
 }

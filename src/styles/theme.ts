@@ -10,6 +10,6 @@ export const theme = {
     accent: 'var(--accent)',
     footerUp: 'var(--footer-up)',
     footerMid: 'var(--footer-mid)',
-    footerDown: 'var(--footer-down)',
-  },
-}
+    footerDown: 'var(--footer-down)'
+  }
+};
