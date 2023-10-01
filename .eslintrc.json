@@ -1,3 +1,13 @@
 {
-  "extends": ["@rocketseat/eslint-config/next", "next/core-web-vitals"]
+  "extends": ["@rocketseat/eslint-config/next", "next/core-web-vitals"],
+  "rules": {
+    "semi": ["error", "always"],
+
+    "prettier/prettier": [
+      "error",
+      {
+        "parser": "flow"
+      }
+    ]
+  }
 }
