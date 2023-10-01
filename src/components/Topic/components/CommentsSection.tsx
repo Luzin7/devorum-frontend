@@ -1,5 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function CommentsSection() {
-  return <div>CommentsSection</div>
+  return <div>CommentsSection</div>;
 }

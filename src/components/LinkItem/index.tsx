@@ -1,3 +1,3 @@
-import { LinkItem } from './NavLinks'
+import { LinkItem } from './NavLinks';
 
-export default LinkItem
+export default LinkItem;

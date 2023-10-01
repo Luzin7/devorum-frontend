@@ -1,3 +1,3 @@
-import { TopicPreview } from './TopicPreview'
+import { TopicPreview } from './TopicPreview';
 
-export default TopicPreview
+export default TopicPreview;
