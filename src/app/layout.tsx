@@ -1,5 +1,7 @@
+import Footer from '@components/Footer';
 import Header from '@components/Header';
 import '@styles/globals.css';
+import { getThemeBySystem } from 'functions/getUserSystemTheme';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -15,13 +17,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  getThemeBySystem();
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <>
-          <Header />
-          {children}
-        </>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

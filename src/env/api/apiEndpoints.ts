@@ -1,6 +1,4 @@
-import 'dotenv/config';
-
-export const LOGIN_ENDPOINT = process.env.VITE_REACT_APP_LOGIN_ENDPOINT;
-export const REGISTER_ENDPOINT = process.env.VITE_REACT_APP_REGISTER_ENDPOINT;
-export const TOPICS_ENDPOINT = process.env.VITE_REACT_APP_QUESTIONS_ENDPOINT;
-export const COMMENTS_ENDPOINT = process.env.VITE_REACT_APP_COMMENTS_ENDPOINT;
+export const LOGIN_ENDPOINT = '/sessions';
+export const CREATE_USER_ENDPOINT = '/users';
+export const TOPICS_ENDPOINT = '/topics';
+export const COMMENTS_ENDPOINT = process.env.COMMENTS_ENDPOINT;

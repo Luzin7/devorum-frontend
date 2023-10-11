@@ -1,3 +1,1 @@
-import 'dotenv/config';
-
-export const API_URL_BASE = process.env.VITE_REACT_APP_API_URL_BASE;
+export const API_URL_BASE = process.env.NEXT_PUBLIC_API_URL_BASE;

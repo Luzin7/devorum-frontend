@@ -4,11 +4,11 @@ import { dateConverter } from './../../../functions/dateConverter';
 
 type TopicDetailsProps = Pick<
   Topic,
-  'title' | 'content' | 'authorName' | 'createdAt'
+  'title' | 'content' | 'author' | 'createdAt'
 >;
 
 export default function TopicDetail({
-  authorName,
+  author,
   content,
   createdAt,
   title
@@ -17,7 +17,7 @@ export default function TopicDetail({
     <div className="prose prose-strong:text-text prose-code:text-text prose-code:bg-secondary prose-code:rounded-sm m-auto text-text">
       <div>
         <span>
-          {authorName} {dateConverter(createdAt)}
+          {author.name} {dateConverter(createdAt)}
         </span>
       </div>
       <h1 className="text-2xl font-bold text-text">{title}</h1>
