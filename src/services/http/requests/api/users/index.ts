@@ -1,4 +1,3 @@
-'use client'
 
 import { CREATE_USER_ENDPOINT, LOGIN_ENDPOINT } from 'env/api';
 import httpClient from '../../axios-conf';
@@ -44,19 +43,16 @@ export async function login(data: LoginProps) {
   const { email, password } = data;
 
   try {
-    await httpClient.post(
+    const {data} = await httpClient.post(
       LOGIN_ENDPOINT,
       {
         email,
         password
       },
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json'
-        }
-      }
     );
+
+    httpClient.defaults.headers.Authorization = `Bearer ${data.accessToken}`
+    httpClient.defaults.headers.refresh_token = data.refreshToken
 
     const userData = await getUserData();
 
