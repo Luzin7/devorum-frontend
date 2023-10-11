@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.js"
-  ],
+, "src/app/_app.tsx"  ],
   "exclude": ["node_modules", "cypress"]
 }

@@ -1,33 +1,34 @@
-import Topic from 'types';
+import TopicProps from 'types';
 import { create } from 'zustand';
 
-type TopicProps = Pick<Topic, 'title' | 'content'>;
+type Topic = Pick<TopicProps, 'title' | 'content' | 'authorId'>;
 
 type ActionsProps = {
   updateTopic: (update: Partial<TopicProps>) => void
 };
 
 interface StoreProps {
-  state: {
-    topic: TopicProps
+  topicState: {
+    topic: Topic
   };
-  actions: ActionsProps;
+  topicActions: ActionsProps;
 }
 
 export const useTopicStore = create<StoreProps>((set) => ({
-  state: {
+  topicState: {
     topic: {
       title: '',
-      content: ''
+      content: '',
+      authorId: ''
     }
   },
-  actions: {
+  topicActions: {
     updateTopic: (update) =>
-      set(({ state }) => ({
-        state: {
-          ...state,
+      set(({ topicState }) => ({
+        topicState: {
+          ...topicState,
           topic: {
-            ...state.topic,
+            ...topicState.topic,
             ...update
           }
         }

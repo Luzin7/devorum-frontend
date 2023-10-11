@@ -1,3 +1,3 @@
-import { Topic } from './Topic';
+import { TopicProps } from './ITopic';
 
-export default Topic;
+export default TopicProps;

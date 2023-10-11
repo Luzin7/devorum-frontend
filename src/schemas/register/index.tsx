@@ -24,7 +24,7 @@ export const userRegisterSchema = z.object({
     .min(8, 'A senha deve ter, no mínimo, 8 caracteres')
     .regex(/[a-z]/, 'Deve conter pelo menos uma letra minúscula')
     .regex(/[A-Z]/, 'Deve conter pelo menos uma letra maiúscula')
-    .regex(/[0-9]/, 'Deve conter pelo menos um número')
+    .regex(/[0-9]/, 'Deve conter pelo menos um número').trim()
 });
 
 export type userRegisterData = z.infer<typeof userRegisterSchema>;

@@ -12,20 +12,23 @@ import { useTopicStore } from 'store/topic';
 import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
 import * as GS from '@styles/globalStyledComponents';
 import { useLoading } from 'hooks/useLoading';
+import { useUserStore } from 'store/user';
+import { createTopic } from 'services/http/requests/api/topics';
 
 export function Editor() {
-  const { state, actions } = useTopicStore();
+  const { topicState, topicActions } = useTopicStore();
+  const { userState } = useUserStore();
   const { isLoading, setIsLoading } = useLoading();
   const editor = useEditor({
     autofocus: true,
     extensions: [StarterKit],
-    content: state.topic.content,
+    content: topicState.topic.content,
     onUpdate: ({ editor }) => {
       const cleanHtml = sanitize(editor.getHTML());
-      actions.updateTopic({ content: cleanHtml });
+      topicActions.updateTopic({ content: cleanHtml });
       setLocalStorage({
         storageKey: 'newTopic',
-        storageContent: { body: state.topic.content }
+        storageContent: { body: topicState.topic.content }
       });
     }
   });
@@ -38,10 +41,11 @@ export function Editor() {
     resolver: zodResolver(topicTitleSchema)
   });
 
-  const createNewTopic = async (data: topicTitleData) => {
+  const createNewTopic = async () => {
     setIsLoading((prevState) => !prevState);
     // ...requisicaoAqui
-    console.error(data);
+    createTopic(topicState.topic);
+    console.log(topicState.topic);
     setIsLoading((prevState) => !prevState);
   };
 
@@ -51,10 +55,10 @@ export function Editor() {
         <input
           type="text"
           className="w-full py-2 px-1 rounded-sm bg-input"
-          value={state.topic.title}
+          value={topicState.topic.title}
           placeholder="Título"
           onInput={({ target }: React.ChangeEvent<HTMLInputElement>) =>
-            actions.updateTopic({ title: target.value })
+            topicActions.updateTopic({ title: target.value })
           }
           {...register('title')}
         />
@@ -75,6 +79,9 @@ export function Editor() {
         bgColor="accent"
         txtHoverColor="text"
         isLoading={isLoading}
+        onClick={() =>
+          topicActions.updateTopic({ authorId: userState.user.userId })
+        }
       >
         Publicar
       </GS.Button>

@@ -6,10 +6,8 @@ import { CREATE_TOPIC, USER_PROFILE } from 'utils';
 import { BiMessageAltAdd, BiSolidUserRectangle } from 'react-icons/bi';
 import { Dropdown } from '@components/Dropdown';
 import Link from 'next/link';
-import { getThemeBySystem } from 'functions/getUserSystemTheme';
 
 export function Header() {
-  getThemeBySystem();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   const toggleDropdown = () => {
@@ -26,7 +24,7 @@ export function Header() {
             />
             <hr />
             <Dropdown.Link href={CREATE_TOPIC} title="Publicar novo tópico" />
-            <Dropdown.Link href={CREATE_TOPIC} title="Editar perfil" />
+            {/* <Dropdown.Link href={CREATE_TOPIC} title="Editar perfil" /> */}
             <Dropdown.Link
               href={`${USER_PROFILE}/userName`}
               title="Minhas publicações"

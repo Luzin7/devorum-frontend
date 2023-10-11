@@ -6,12 +6,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as S from './styleds';
 import * as GS from '@styles/globalStyledComponents';
 import Link from 'next/link';
-import { REGISTER } from 'utils';
+import { HOME, REGISTER } from 'utils';
 import { userLoginData, userLoginSchema } from 'schemas/login';
 import { useLoading } from 'hooks/useLoading';
+import { login } from 'services/http/requests/api';
+import { useUserStore } from 'store/user';
+import { useRouter } from 'next/navigation';
 
 export function LoginForm() {
   const { isLoading, setIsLoading } = useLoading();
+  const { actions } = useUserStore();
+  const router = useRouter();
+
   // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const {
@@ -24,12 +30,18 @@ export function LoginForm() {
 
   const onSubmit = async (data: userLoginData) => {
     setIsLoading((prevState) => !prevState);
-    // ...requisicaoAqui
-    // salvar dados do usuario no estado em após sucesso no login
-    console.error(data); // deve retornar um array com todos os dados digitados corretamente e trasnformados
-    setIsLoading((prevState) => !prevState);
+    const userData = await login(data);
 
-    // redirecionar usuario para a home após sucesso no login
+    // ADICIONAR LOGICA PARA MODAL EM CASO DE ERRO
+
+    actions.updateUser({
+      name: userData?.name,
+      notifications: userData?.notifications,
+      id: userData?.id
+    });
+
+    setIsLoading((prevState) => !prevState);
+    router.push(HOME);
   };
 
   return (
@@ -42,7 +54,7 @@ export function LoginForm() {
          verifique suas credenciais e tente novamente. Se o erro persistir chame o suporte."
         title="Algo deu errado!"
       /> */}
-      <div className="flex py-7 gap-7 flex-col w-11/12 lg:w-3/4">
+      <div className="flex py-7 gap-7 bg flex-col w-11/12 lg:w-3/4">
         <h2 className="font-bold text-text text-2xl lg:text-3xl xl:text-4xl pt-10">
           Acessar Conta
         </h2>
@@ -50,6 +62,7 @@ export function LoginForm() {
           type="email"
           placeholder="E-mail"
           {...register('email')}
+          autoComplete="email"
         />
         {errors.email?.message !== undefined && (
           <GS.Error errorMessage={errors.email.message} />
@@ -58,6 +71,7 @@ export function LoginForm() {
           type="password"
           placeholder="Senha"
           {...register('password')}
+          autoComplete="current-password"
         />
         {errors.password?.message !== undefined && (
           <GS.Error errorMessage={errors.password.message} />

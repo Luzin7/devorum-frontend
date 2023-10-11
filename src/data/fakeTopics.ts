@@ -13,7 +13,7 @@ export const fakeTopics: Topic[] = [
     Suspendisse lacinia sit amet justo in rhoncus. Nullam ac ex sit amet sapien gravida fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam consequat, felis a tincidunt fringilla, tortor ipsum lacinia tellus, sed viverra odio orci eu odio. Proin auctor quam vitae arcu tincidunt, vel bibendum ligula venenatis. Nullam ac nisl ac risus facilisis facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce suscipit mi eget felis bibendum, ut vestibulum libero convallis.
     `,
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: null
   },
   {
     authorId: 'authorId2',
@@ -22,42 +22,6 @@ export const fakeTopics: Topic[] = [
     title: 'title2',
     content: 'content2',
     createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    authorId: 'authorId3',
-    authorName: 'authorName3',
-    id: 'id3',
-    title: 'title3',
-    content: 'content3',
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    authorId: 'authorId4',
-    authorName: 'authorName4',
-    id: 'id4',
-    title: 'title4',
-    content: 'content4',
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    authorId: 'authorId5',
-    authorName: 'authorName5',
-    id: 'id5',
-    title: 'title5',
-    content: 'content5',
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    authorId: 'authorId7',
-    authorName: 'authorName7',
-    id: 'id7',
-    title: 'title7',
-    content: 'content7',
-    createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: null
   }
 ];

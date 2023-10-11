@@ -1,23 +1,22 @@
 import React from 'react';
-import Topic from 'types';
 import TopicDetail from './components/TopicDetail';
-import CommentsSection from './components/CommentsSection';
+// import CommentsSection from './components/CommentsSection';
+import { getTopicById } from 'services/http/requests/api';
+import { UUID } from 'crypto';
 
-interface TopicProps {
-  data: Topic;
-}
-
-export default function Topic({ data }: TopicProps) {
+export default async function Topic({ id }: { id: UUID }) {
+  const topic = await getTopicById(id);
+  const { author, content, createdAt, title } = topic;
   return (
     <>
       <TopicDetail
-        authorName={data.authorName}
-        content={data.content}
-        createdAt={data.createdAt}
-        title={data.title}
+        author={author}
+        content={content}
+        createdAt={createdAt}
+        title={title}
       />
       <hr />
-      <CommentsSection />
+      {/* <CommentsSection topicId={id} /> */}
     </>
   );
 }
