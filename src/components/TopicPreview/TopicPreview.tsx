@@ -1,4 +1,4 @@
-import { dateConverter, reduceText } from 'functions';
+import { dateConverter, reduceText, slugUrlMaker } from 'functions';
 import Link from 'next/link';
 import React from 'react';
 import { TopicPreviewProps } from 'types/ITopic';
@@ -23,17 +23,16 @@ export function TopicPreview({
       <div>
         <div className="flex flex-col gap-1">
           <p className="text-text opacity-70 text-sm">{title}</p>
-          <div
-            className="font-bold text-text"
-            dangerouslySetInnerHTML={{ __html: assertion }}
-          ></div>
+          <p className="font-bold text-text">{reduceText(assertion, 45)}</p>
         </div>
         <p className="text-text opacity-40 text-xs mt-2 2xl:mt-5">
           {dateConverter(createdAt)}
         </p>
       </div>
       <div className="flex flex-col justify-end">
-        <Link href={`topic/${author.name}/${id}}`}>
+        <Link
+          href={`topic/${slugUrlMaker(author.name)}/${id.replace('%7D', '')}`}
+        >
           <button
             type="button"
             className="font-bold bg-accent text-blue-100 rounded-full py-2 px-4 text-sm hover:bg-primary transition-colors"

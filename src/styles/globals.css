@@ -64,29 +64,30 @@ body {
   background: var(--bg);
 }
 
-
 * {
   font-family: Inter, sans-serif;
 }
 
-::-webkit-scrollbar {
-  background-color: var(--bg);
-  width: 8px;
-}
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background-color: var(--input);
-}
 
 .tiptap.ProseMirror {
   outline: none;
 }
+
+  ::-webkit-scrollbar {
+    background-color: var(--bg);
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--input);
+  }

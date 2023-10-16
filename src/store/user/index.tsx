@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { UserProps } from '../../types/IUser';
+import { UUID } from 'crypto';
 
-type User = Pick<UserProps, 'name' | 'userId' | 'notifications'>;
+type User = Pick<UserProps, 'name' | 'id' | 'notifications'>;
 
 type ActionsProps = {
   updateUser: (update: Partial<UserProps>) => void
@@ -18,7 +19,7 @@ export const useUserStore = create<StoreProps>((set) => ({
   userState: {
     user: {
       name: '',
-      userId: '',
+      id: '' as string as UUID,
       notifications: []
     }
   },

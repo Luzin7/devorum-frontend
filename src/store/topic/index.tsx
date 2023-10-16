@@ -1,7 +1,8 @@
+import { UUID } from 'crypto';
 import TopicProps from 'types';
 import { create } from 'zustand';
 
-type Topic = Pick<TopicProps, 'title' | 'content' | 'authorId'>;
+type Topic = Pick<TopicProps, 'title' | 'content'>;
 
 type ActionsProps = {
   updateTopic: (update: Partial<TopicProps>) => void
@@ -19,7 +20,7 @@ export const useTopicStore = create<StoreProps>((set) => ({
     topic: {
       title: '',
       content: '',
-      authorId: ''
+      author: '' as UUID
     }
   },
   topicActions: {

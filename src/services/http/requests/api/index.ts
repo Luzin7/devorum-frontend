@@ -1,4 +1,12 @@
 import { getTopics, createTopic, getTopicById } from './topics';
-import { createUser, login, getUserData } from './users';
+import { createUser, login, getUserData, refreshSession } from './users';
 
-export { getTopics, createUser, login, createTopic, getTopicById, getUserData };
+export {
+  getTopics,
+  createUser,
+  login,
+  createTopic,
+  getTopicById,
+  getUserData,
+  refreshSession
+};

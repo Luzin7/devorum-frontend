@@ -1,16 +1,14 @@
 import React from 'react';
-import { fakeComments } from 'data/fakeComments';
 import { dateConverter } from 'functions';
 import { Comment } from 'types/IComments';
 
 type CommentProps = Pick<Comment, 'topicId'>;
 
 export default function CommentsSection({ topicId }: CommentProps) {
-  const topicComments = fakeComments.filter(
-    (comment) => comment.topicId === topicId
-  );
+  // const comments = await getCommentsByTopicId(id);
+  // const { author, content, createdAt } = comments;
 
-  return topicComments.map(({ authorId, createdAt, content }) => (
+  return comments.map(({ authorId, createdAt, content }) => (
     <div key={authorId}>
       <span>
         {authorId} {dateConverter(createdAt)}

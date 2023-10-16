@@ -4,6 +4,8 @@ import { slugUrlMaker } from './slugUrlMaker';
 import { setLocalStorage } from 'functions/setLocalStorage';
 import { getLocalStorage } from './getLocalStorage';
 import { themeSwitcher } from './themeSwitcher';
+import { getThemeBySystem } from './getUserSystemTheme';
+import { checkAuth } from './checkAuth';
 
 export {
   reduceText,
@@ -11,5 +13,7 @@ export {
   slugUrlMaker,
   setLocalStorage,
   getLocalStorage,
-  themeSwitcher
+  themeSwitcher,
+  getThemeBySystem,
+  checkAuth
 };
