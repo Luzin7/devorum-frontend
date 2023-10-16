@@ -14,14 +14,22 @@ export default function TopicDetail({
   title
 }: TopicDetailsProps) {
   return (
-    <div className="prose prose-strong:text-text prose-code:text-text prose-code:bg-secondary prose-code:rounded-sm m-auto text-text">
-      <div>
-        <span>
-          {author.name} {dateConverter(createdAt)}
-        </span>
+    <section>
+      <div className="text-text">
+        <div>
+          <span className="block mb-2 text-xs opacity-70 text-center">
+            {author.name} - {dateConverter(createdAt)}
+          </span>
+        </div>
+        <div className="flex flex-col justify-evenly gap-2">
+          <h1 className="text-2xl font-bold">{title}</h1>
+          <hr className="opacity-50" />
+          <div
+            className="prose prose-invert prose-blockquote:text-text prose-headings:text-text prose-strong:text-text prose-pink prose-code:bg-secondary prose-code:rounded-sm text-text"
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></div>
+        </div>
       </div>
-      <h1 className="text-2xl font-bold text-text">{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: content }}></div>
-    </div>
+    </section>
   );
 }

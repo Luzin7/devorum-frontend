@@ -33,9 +33,6 @@ export async function createTopic(data: Pick<TopicProps, 'title' | 'content' | '
         content,
         title
       },
-      {
-        withCredentials: true,
-      }
     );
 
   } catch (error) {

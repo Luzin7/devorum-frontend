@@ -12,13 +12,15 @@ import { useLoading } from 'hooks/useLoading';
 import { login } from 'services/http/requests/api';
 import { useUserStore } from 'store/user';
 import { useRouter } from 'next/navigation';
+import Modal from '@components/Modal';
+import { useState } from 'react';
 
 export function LoginForm() {
   const { isLoading, setIsLoading } = useLoading();
   const { actions } = useUserStore();
   const router = useRouter();
 
-  // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const {
     handleSubmit,
@@ -30,30 +32,32 @@ export function LoginForm() {
 
   const onSubmit = async (data: userLoginData) => {
     setIsLoading((prevState) => !prevState);
-    const userData = await login(data);
+    try {
+      const userData = await login(data);
+      actions.updateUser({
+        name: userData?.name,
+        notifications: userData?.notifications,
+        id: userData?.id
+      });
 
-    // ADICIONAR LOGICA PARA MODAL EM CASO DE ERRO
-
-    actions.updateUser({
-      name: userData?.name,
-      notifications: userData?.notifications,
-      id: userData?.id
-    });
-
-    setIsLoading((prevState) => !prevState);
-    router.push(HOME);
+      setIsLoading((prevState) => !prevState);
+      router.push(HOME);
+    } catch (error) {
+      setIsLoading((prevState) => !prevState);
+      setIsModalOpen((prev) => !prev);
+    }
   };
 
   return (
     <S.FormWrapper onSubmit={handleSubmit(onSubmit)}>
-      {/* <Modal
+      <Modal
         isOpen={isModalOpen}
         setOpen={setIsModalOpen}
         btnMessage="Tentar novamente"
-        description="A senha ou nome que você informou parecem não estarem corretas,
-         verifique suas credenciais e tente novamente. Se o erro persistir chame o suporte."
+        description="A senha ou email que você informou parecem incorretos,
+         verifique suas credenciais e tente novamente."
         title="Algo deu errado!"
-      /> */}
+      />
       <div className="flex py-7 gap-7 bg flex-col w-11/12 lg:w-3/4">
         <h2 className="font-bold text-text text-2xl lg:text-3xl xl:text-4xl pt-10">
           Acessar Conta

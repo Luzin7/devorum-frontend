@@ -7,7 +7,6 @@ import EditorMenuBar from '@components/Editor/EditorMenuBar';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { sanitize } from 'dompurify';
-import { setLocalStorage } from 'functions/setLocalStorage';
 import { useTopicStore } from 'store/topic';
 import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
 import * as GS from '@styles/globalStyledComponents';
@@ -26,10 +25,6 @@ export function Editor() {
     onUpdate: ({ editor }) => {
       const cleanHtml = sanitize(editor.getHTML());
       topicActions.updateTopic({ content: cleanHtml });
-      setLocalStorage({
-        storageKey: 'newTopic',
-        storageContent: { body: topicState.topic.content }
-      });
     }
   });
 
@@ -43,9 +38,7 @@ export function Editor() {
 
   const createNewTopic = async () => {
     setIsLoading((prevState) => !prevState);
-    // ...requisicaoAqui
     createTopic(topicState.topic);
-    console.log(topicState.topic);
     setIsLoading((prevState) => !prevState);
   };
 
@@ -70,7 +63,7 @@ export function Editor() {
         {editor && <EditorMenuBar editor={editor} />}
       </div>
       <div className="border-2 border-primary rounded-md bg-primary">
-        <div className="prose prose-strong:text-text prose-code:text-text prose-code:bg-secondary prose-code:rounded-sm m-auto text-text px-2 min-h-[25vh]">
+        <div className="prose prose-invert m-auto text-text px-2 py-6 min-h-[25vh]">
           <EditorContent editor={editor} />
         </div>
       </div>
@@ -78,12 +71,12 @@ export function Editor() {
         type="submit"
         bgColor="accent"
         txtHoverColor="text"
+        className="min-w-full mt-5"
+        disabled={!!isLoading}
         isLoading={isLoading}
-        onClick={() =>
-          topicActions.updateTopic({ authorId: userState.user.userId })
-        }
+        onClick={() => topicActions.updateTopic({ author: userState.user.id })}
       >
-        Publicar
+        {isLoading ? 'Publicando...' : 'Publicar'}
       </GS.Button>
     </form>
   );

@@ -1,9 +1,9 @@
-
 import { CREATE_USER_ENDPOINT, LOGIN_ENDPOINT } from 'env/api';
 import httpClient from '../../axios-conf';
 import { userRegisterData } from 'schemas/register';
 import { userLoginData } from 'schemas/login';
 import { UserProps } from 'types/IUser';
+import { ZodError } from 'zod';
 type NewUserProps = userRegisterData;
 type LoginProps = userLoginData;
 
@@ -17,7 +17,7 @@ export async function createUser(data: NewUserProps): Promise<void> {
       password
     });
   } catch (error) {
-    throw new Error('Erro ao criar usuário');
+    throw new Error('Erro ao criar usuário', error as ZodError);
   }
 }
 
@@ -26,16 +26,42 @@ export async function getUserData(): Promise<UserProps> {
     const { data } = await httpClient.get('/users');
 
     const userSessionInfo = {
-      account: [{id: data.user.userId, name: data.user.name}]
-    }
+      account: [{ id: data.user.id, name: data.user.name }]
+    };
 
-    localStorage.setItem("isLoggedIn", 'true');
-    localStorage.setItem("session_info-user", JSON.stringify(userSessionInfo));
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('u_i', JSON.stringify(userSessionInfo));
     return data.user;
   } catch (error) {
-    console.error('Erro na requisição:', error);
-    localStorage.setItem("isLoggedIn", 'false');
-    return error as UserProps;
+    localStorage.setItem('isLoggedIn', 'false');
+    throw new Error('Erro na requisição', error as ZodError);
+  }
+}
+
+export async function refreshSession() {
+  try {
+    const { data } = await httpClient.post('/sessions/refresh');
+
+    httpClient.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
+    httpClient.defaults.headers.refresh_token = data.refreshToken;
+
+    const expiresDate = new Date();
+    expiresDate.setDate(expiresDate.getDate() + 7);
+    const expiresMinutes = new Date();
+    expiresMinutes.setMinutes(expiresDate.getMinutes() + 5);
+
+    document.cookie = `acess-token=Bearer ${
+      data.accessToken
+    }; expires=${expiresMinutes.toUTCString()}; path=/`;
+    document.cookie = `refresh-token=${
+      data.refreshToken
+    }; expires=${expiresDate.toUTCString()}; path=/`;
+
+    const userData = await getUserData();
+
+    return userData;
+  } catch (error) {
+    throw new Error('Erro na requisição:', error as ZodError);
   }
 }
 
@@ -43,21 +69,30 @@ export async function login(data: LoginProps) {
   const { email, password } = data;
 
   try {
-    const {data} = await httpClient.post(
-      LOGIN_ENDPOINT,
-      {
-        email,
-        password
-      },
-    );
+    const { data } = await httpClient.post(LOGIN_ENDPOINT, {
+      email,
+      password
+    });
 
-    httpClient.defaults.headers.Authorization = `Bearer ${data.accessToken}`
-    httpClient.defaults.headers.refresh_token = data.refreshToken
+    httpClient.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
+    httpClient.defaults.headers.refresh_token = data.refreshToken;
+
+    const expiresDate = new Date();
+    expiresDate.setDate(expiresDate.getDate() + 7);
+    const expiresMinutes = new Date();
+    expiresMinutes.setMinutes(expiresDate.getMinutes() + 5);
+
+    document.cookie = `acess-token=Bearer ${
+      data.accessToken
+    }; expires=${expiresMinutes.toUTCString()}; path=/`;
+    document.cookie = `refresh-token=${
+      data.refreshToken
+    }; expires=${expiresDate.toUTCString()}; path=/`;
 
     const userData = await getUserData();
 
-    return userData
+    return userData;
   } catch (error) {
-    console.error('Erro na requisição:', error);
+    throw new Error('Erro ao fazer login', error as ZodError)
   }
 }

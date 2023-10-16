@@ -1,5 +1,5 @@
 export const slugUrlMaker = (url: string) => {
-  const slugUrl = url.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const slugUrl = url.replace(/[^aA-zZ-Z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
   return slugUrl;
 };

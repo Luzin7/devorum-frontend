@@ -6,9 +6,12 @@ import { CREATE_TOPIC, USER_PROFILE } from 'utils';
 import { BiMessageAltAdd, BiSolidUserRectangle } from 'react-icons/bi';
 import { Dropdown } from '@components/Dropdown';
 import Link from 'next/link';
+import { useUserStore } from 'store/user';
+import { slugUrlMaker } from 'functions';
 
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const { userState } = useUserStore();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -19,7 +22,7 @@ export function Header() {
         <Dropdown.Root>
           <Dropdown.Links>
             <Dropdown.Link
-              href={`${USER_PROFILE}/userName`}
+              href={`${USER_PROFILE}/${slugUrlMaker(userState.user.name)}`}
               title="Meu perfil"
             />
             <hr />

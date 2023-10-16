@@ -11,6 +11,7 @@ export const Button = forwardRef(function Button(
     bgColor = 'secondary',
     txtColor = 'text',
     txtHoverColor = 'primary',
+    txtSize = 'xl',
     ...props
   }: ButtonProps,
   ref: Ref<HTMLButtonElement>
@@ -19,7 +20,7 @@ export const Button = forwardRef(function Button(
     <button
       {...props}
       ref={ref}
-      className={`bg-${bgColor} mt-7 font-bold py-4 min-w-full rounded-lg text-xl text-${txtColor} hover:text-${txtHoverColor}${
+      className={`bg-${bgColor} mt-7 font-bold py-4 min-w-full rounded-lg text-${txtSize} text-${txtColor} hover:text-${txtHoverColor} ${
         isLoading && 'animate-pulse'
       }`}
     ></button>

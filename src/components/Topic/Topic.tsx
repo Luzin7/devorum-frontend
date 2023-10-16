@@ -1,8 +1,9 @@
 import React from 'react';
 import TopicDetail from './components/TopicDetail';
-// import CommentsSection from './components/CommentsSection';
+import CommentInput from './components/CommentInput';
 import { getTopicById } from 'services/http/requests/api';
 import { UUID } from 'crypto';
+import CommentsSection from './components/CommentsSection';
 
 export default async function Topic({ id }: { id: UUID }) {
   const topic = await getTopicById(id);
@@ -15,7 +16,7 @@ export default async function Topic({ id }: { id: UUID }) {
         createdAt={createdAt}
         title={title}
       />
-      <hr />
+      <CommentInput />
       {/* <CommentsSection topicId={id} /> */}
     </>
   );
