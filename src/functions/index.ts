@@ -5,7 +5,8 @@ import { setLocalStorage } from 'functions/setLocalStorage';
 import { getLocalStorage } from './getLocalStorage';
 import { themeSwitcher } from './themeSwitcher';
 import { getThemeBySystem } from './getUserSystemTheme';
-import { checkAuth } from './checkAuth';
+import { CheckAuth } from './checkAuth';
+import { PersistAuth } from './persistAuth';
 
 export {
   reduceText,
@@ -15,5 +16,6 @@ export {
   getLocalStorage,
   themeSwitcher,
   getThemeBySystem,
-  checkAuth
+  CheckAuth,
+  PersistAuth
 };
