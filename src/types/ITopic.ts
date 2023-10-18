@@ -1,4 +1,5 @@
 import { type UUID } from 'crypto';
+import { CommentWithAuthor } from './IComments';
 
 interface TopicAuthor {
   id: UUID;
@@ -23,4 +24,5 @@ export interface TopicProps {
   createdAt: Date;
   updatedAt: null | Date;
   numberOfComments: number;
+  comments: CommentWithAuthor[];
 }
