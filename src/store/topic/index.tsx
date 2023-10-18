@@ -2,7 +2,7 @@ import { UUID } from 'crypto';
 import TopicProps from 'types';
 import { create } from 'zustand';
 
-type Topic = Pick<TopicProps, 'title' | 'content'>;
+type Topic = Pick<TopicProps, 'title' | 'content' | 'author'>;
 
 type ActionsProps = {
   updateTopic: (update: Partial<TopicProps>) => void

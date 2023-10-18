@@ -7,7 +7,9 @@ import CommentsSection from './components/CommentsSection';
 
 export default async function Topic({ id }: { id: UUID }) {
   const topic = await getTopicById(id);
-  const { author, content, createdAt, title } = topic;
+
+  const { author, content, createdAt, title, comments } = topic;
+
   return (
     <>
       <TopicDetail
@@ -16,8 +18,8 @@ export default async function Topic({ id }: { id: UUID }) {
         createdAt={createdAt}
         title={title}
       />
-      <CommentInput />
-      {/* <CommentsSection topicId={id} /> */}
+      <CommentInput topicId={id} />
+      <CommentsSection topicComments={comments} />
     </>
   );
 }

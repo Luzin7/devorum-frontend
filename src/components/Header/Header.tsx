@@ -12,6 +12,7 @@ import { slugUrlMaker } from 'functions';
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const { userState } = useUserStore();
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -21,19 +22,23 @@ export function Header() {
       {isDropdownOpen && (
         <Dropdown.Root>
           <Dropdown.Links>
-            <Dropdown.Link
-              href={`${USER_PROFILE}/${slugUrlMaker(userState.user.name)}`}
-              title="Meu perfil"
-            />
-            <hr />
+            {isLoggedIn && (
+              <>
+                <Dropdown.Link
+                  href={`${USER_PROFILE}/${slugUrlMaker(userState.user.name)}`}
+                  title="Meu perfil"
+                />
+                <hr />
+              </>
+            )}
             <Dropdown.Link href={CREATE_TOPIC} title="Publicar novo tópico" />
             {/* <Dropdown.Link href={CREATE_TOPIC} title="Editar perfil" /> */}
-            <Dropdown.Link
+            {/* <Dropdown.Link
               href={`${USER_PROFILE}/userName`}
               title="Minhas publicações"
-            />
+            /> */}
             <hr />
-            <Dropdown.Action />
+            <Dropdown.Action btnTitle={isLoggedIn ? 'Sair' : 'Entrar'} />
           </Dropdown.Links>
         </Dropdown.Root>
       )}
