@@ -14,7 +14,7 @@ export default function TopicDetail({
   title
 }: TopicDetailsProps) {
   return (
-    <section>
+    <section className="mb-8">
       <div className="text-text">
         <div>
           <span className="block mb-2 text-xs opacity-70 text-center">

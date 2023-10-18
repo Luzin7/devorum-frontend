@@ -1,19 +1,22 @@
 import React from 'react';
 import { dateConverter } from 'functions';
-import { Comment } from 'types/IComments';
+import { CommentWithAuthor } from 'types/IComments';
 
-type CommentProps = Pick<Comment, 'topicId'>;
+interface CommentProps {
+  topicComments: CommentWithAuthor[];
+}
 
-export default function CommentsSection({ topicId }: CommentProps) {
-  // const comments = await getCommentsByTopicId(id);
-  // const { author, content, createdAt } = comments;
-
-  return comments.map(({ authorId, createdAt, content }) => (
-    <div key={authorId}>
-      <span>
-        {authorId} {dateConverter(createdAt)}
-      </span>
-      <p>{content}</p>
-    </div>
+export default function CommentsSection({ topicComments }: CommentProps) {
+  return topicComments.map(({ author, content, createdAt, id }) => (
+    <article key={id} className="py-4">
+      <div className="flex flex-col gap-2">
+        <span>
+          <b>{author.name}</b>{' '}
+          <span className="opacity-70">{dateConverter(createdAt)}</span>
+        </span>
+        <p>{content}</p>
+        <hr className="bg-text dark:opacity-20" />
+      </div>
+    </article>
   ));
 }
