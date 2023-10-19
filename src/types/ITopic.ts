@@ -26,3 +26,9 @@ export interface TopicProps {
   numberOfComments: number;
   comments: CommentWithAuthor[];
 }
+
+export interface NewTopicProps {
+  author: UUID;
+  title: string;
+  content: string;
+}
