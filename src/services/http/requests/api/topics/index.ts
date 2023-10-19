@@ -1,6 +1,6 @@
 import { TOPICS_ENDPOINT } from 'env/api';
 import httpClient from '../../axios-conf';
-import { TopicPreviewProps, TopicProps } from 'types/ITopic';
+import { NewTopicProps, TopicPreviewProps, TopicProps } from 'types/ITopic';
 import { UUID } from 'crypto';
 
 export async function getTopics(): Promise<TopicPreviewProps[]> {
@@ -23,18 +23,16 @@ export async function getTopicById(id: UUID): Promise<TopicProps> {
   }
 }
 
-export async function createTopic(data: Pick<TopicProps, 'title' | 'content' | 'author'>): Promise<void> {
-  const {author, content, title} = data
+export async function createTopic(
+  data: Pick<NewTopicProps, 'title' | 'content' | 'author'>
+): Promise<void> {
+  const { author, content, title } = data;
   try {
-    await httpClient.post(
-      TOPICS_ENDPOINT,
-      {
-        author: author.id,
-        content,
-        title
-      },
-    );
-
+    await httpClient.post(TOPICS_ENDPOINT, {
+      author,
+      content,
+      title
+    });
   } catch (error) {
     throw new Error('Erro ao publicar tópico', error as ErrorOptions);
   }

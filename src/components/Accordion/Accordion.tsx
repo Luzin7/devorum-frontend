@@ -3,14 +3,19 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 
-// ajustar tipagem disso depois to com preguiça
-
-export function Accordion({ items }: { items: any }) {
+export function Accordion({
+  items
+}: {
+  items: {
+    title: string;
+    content: string;
+  }[];
+}) {
   const [activeItem, setActiveItem] = useState<number>(0);
 
   return (
     <div className="p-5">
-      {items.map((item: typeof items, index: number) => (
+      {items.map((item, index: number) => (
         <div key={index} className="w-full max-w-screen-xl mx-auto">
           <button
             type="button"

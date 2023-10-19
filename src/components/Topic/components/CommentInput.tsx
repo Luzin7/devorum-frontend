@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import * as GS from '@styles/globalStyledComponents';
 import { useForm } from 'react-hook-form';
@@ -20,6 +20,8 @@ export default function CommentInput({ topicId }: CommentInputProps) {
   const {
     handleSubmit,
     register,
+    // FAZ O MODAL PEGAR O ERRO AI PAPAI
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formState: { errors }
   } = useForm<commentContentData>({
     resolver: zodResolver(commentContentSchema)
@@ -32,7 +34,7 @@ export default function CommentInput({ topicId }: CommentInputProps) {
 
       setIsLoading((prevState) => !prevState);
       // ADICIONAR MODAL
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       setIsLoading((prevState) => !prevState);
       // ADICIONAR MODAL
@@ -53,8 +55,13 @@ export default function CommentInput({ topicId }: CommentInputProps) {
           required
         ></textarea>
       </div>
-      <GS.Button txtColor="white" bgColor="accent" txtSize="sm" isLoading={isLoading}>
-        {isLoading ? "Publicando..." : "Publicar comentário"}
+      <GS.Button
+        txtColor="white"
+        bgColor="accent"
+        txtSize="sm"
+        isLoading={isLoading}
+      >
+        {isLoading ? 'Publicando...' : 'Publicar comentário'}
       </GS.Button>
     </form>
   );

@@ -93,6 +93,6 @@ export async function login(data: LoginProps) {
 
     return userData;
   } catch (error) {
-    throw new Error('Erro ao fazer login', error as ZodError)
+    throw new Error('Erro ao fazer login', error as ZodError);
   }
 }
