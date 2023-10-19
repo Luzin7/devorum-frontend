@@ -5,12 +5,12 @@ import { UUID } from 'crypto';
 type User = Pick<UserProps, 'name' | 'id' | 'notifications'>;
 
 type ActionsProps = {
-  updateUser: (update: Partial<UserProps>) => void
+  updateUser: (update: Partial<UserProps>) => void;
 };
 
 interface StoreProps {
   userState: {
-    user: User
+    user: User;
   };
   actions: ActionsProps;
 }
