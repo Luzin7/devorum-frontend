@@ -6,7 +6,7 @@
     "prettier/prettier": [
       "error",
       {
-        "parser": "flow"
+        "parser": "typescript"
       }
     ]
   }
