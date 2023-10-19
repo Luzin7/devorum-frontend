@@ -12,7 +12,7 @@ import { slugUrlMaker } from 'functions';
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const { userState } = useUserStore();
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === 'true';
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);

@@ -1,25 +1,43 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import TopicDetail from './components/TopicDetail';
 import CommentInput from './components/CommentInput';
 import { getTopicById } from 'services/http/requests/api';
 import { UUID } from 'crypto';
 import CommentsSection from './components/CommentsSection';
+import { useParams } from 'next/navigation';
+import TopicProps from 'types';
 
-export default async function Topic({ id }: { id: UUID }) {
-  const topic = await getTopicById(id);
+export function Topic() {
+  const params = useParams();
+  const topicId = params.topicId as UUID;
+  const [topic, setTopic] = useState<TopicProps>();
 
-  const { author, content, createdAt, title, comments } = topic;
+  const fetchTopic = async () => {
+    const response = await getTopicById(topicId);
+
+    setTopic(response);
+  };
+
+  useEffect(() => {
+    fetchTopic();
+  }, [topicId]);
+
+  if (!topic) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <>
       <TopicDetail
-        author={author}
-        content={content}
-        createdAt={createdAt}
-        title={title}
+        author={topic.author}
+        content={topic.content}
+        createdAt={topic.createdAt}
+        title={topic.title}
       />
-      <CommentInput topicId={id} />
-      <CommentsSection topicComments={comments} />
+      <CommentInput topicId={topic.id} />
+      <CommentsSection topicComments={topic.comments} />
     </>
   );
 }

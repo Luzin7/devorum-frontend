@@ -1,11 +1,11 @@
 import { UUID } from 'crypto';
-import TopicProps from 'types';
+import { NewTopicProps } from 'types/ITopic';
 import { create } from 'zustand';
 
-type Topic = Pick<TopicProps, 'title' | 'content' | 'author'>;
+type Topic = Pick<NewTopicProps, 'title' | 'content' | 'author'>;
 
 type ActionsProps = {
-  updateTopic: (update: Partial<TopicProps>) => void
+  updateTopic: (update: Partial<NewTopicProps>) => void
 };
 
 interface StoreProps {
