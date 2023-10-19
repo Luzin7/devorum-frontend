@@ -5,12 +5,12 @@ import { create } from 'zustand';
 type Topic = Pick<NewTopicProps, 'title' | 'content' | 'author'>;
 
 type ActionsProps = {
-  updateTopic: (update: Partial<NewTopicProps>) => void
+  updateTopic: (update: Partial<NewTopicProps>) => void;
 };
 
 interface StoreProps {
   topicState: {
-    topic: Topic
+    topic: Topic;
   };
   topicActions: ActionsProps;
 }

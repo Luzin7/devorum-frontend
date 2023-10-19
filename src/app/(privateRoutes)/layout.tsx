@@ -4,7 +4,7 @@ import { CheckAuth } from 'functions';
 export default function PrivateLayout({
   children
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const lastFetchCacheKey = 'LAST_FETCH_CACHE_KEY';
   const fetchInterval = 300000;
