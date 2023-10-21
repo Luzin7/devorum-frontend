@@ -13,9 +13,7 @@ export default function CommentsSection({ topicComments }: CommentProps) {
         <article key={id} className="py-4">
           <div className="flex flex-col gap-2">
             <span>
-              {author.map((user) => (
-                <b key={user.id}>{user.name}</b>
-              ))}{' '}
+              <b>{author.name}</b>{' '}
               <span className="opacity-70">{dateConverter(createdAt)}</span>
             </span>
             <p>{content}</p>
