@@ -2,6 +2,7 @@ import { TOPICS_ENDPOINT } from 'env/api';
 import httpClient from '../../axios-conf';
 import { NewTopicProps, TopicPreviewProps, TopicProps } from 'types/ITopic';
 import { UUID } from 'crypto';
+import { ZodError } from 'zod';
 
 export async function getTopics(): Promise<TopicPreviewProps[]> {
   try {
@@ -34,6 +35,6 @@ export async function createTopic(
       title
     });
   } catch (error) {
-    throw new Error('Erro ao publicar tópico', error as ErrorOptions);
+    throw new Error('Erro ao publicar tópico', error as ZodError);
   }
 }
