@@ -18,5 +18,5 @@ export interface CommentWithAuthor {
   content: string;
   createdAt: Date;
   updatedAt: null | Date;
-  author: CommentAuthor[];
+  author: CommentAuthor;
 }
