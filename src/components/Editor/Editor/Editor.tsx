@@ -13,11 +13,15 @@ import * as GS from '@styles/globalStyledComponents';
 import { useLoading } from 'hooks/useLoading';
 import { useUserStore } from 'store/user';
 import { createTopic } from 'services/http/requests/api/topics';
+import Modal from '@components/Modal';
+import { useState } from 'react';
 
 export function Editor() {
   const { topicState, topicActions } = useTopicStore();
   const { userState } = useUserStore();
-  const { isLoading, setIsLoading } = useLoading();
+  const { isLoading, setIsLoading, isSuccess, setIsSuccess } = useLoading();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   const editor = useEditor({
     autofocus: true,
     extensions: [StarterKit],
@@ -38,12 +42,31 @@ export function Editor() {
 
   const createNewTopic = async () => {
     setIsLoading((prevState) => !prevState);
-    createTopic(topicState.topic);
-    setIsLoading((prevState) => !prevState);
+    try {
+      await createTopic(topicState.topic);
+      setIsLoading((prevState) => !prevState);
+      setIsSuccess(true);
+      setIsModalOpen((prev) => !prev);
+    } catch (error) {
+      setIsLoading((prevState) => !prevState);
+      setIsSuccess(false);
+      setIsModalOpen((prev) => !prev);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(createNewTopic)}>
+      <Modal
+        isOpen={isModalOpen}
+        setOpen={setIsModalOpen}
+        btnMessage={isSuccess ? 'Fechar' : 'Tentar novamente'}
+        description={
+          isSuccess
+            ? 'Ficamos felizes de te ver participando da comunidade!'
+            : 'Não foi possível publicar seu tópico. Tente novamente e, caso o erro persista, entre em contato conosco.'
+        }
+        title={isSuccess ? 'Enviado com sucesso!' : 'Algo deu errado 😭'}
+      />
       <div className="my-5">
         <input
           type="text"
