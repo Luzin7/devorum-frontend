@@ -22,7 +22,7 @@ export function Modal({
            h-2/4 md:h-1/4 lg:h-2/5 flex flex-col justify-evenly
         "
         >
-          <h2 className="text-4xl font-bold">{title}</h2>
+          <h2 className="text-4xl font-bold text-center">{title}</h2>
           <p>{description}</p>
           <button
             type="button"
