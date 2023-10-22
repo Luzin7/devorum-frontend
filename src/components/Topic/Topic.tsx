@@ -38,7 +38,7 @@ export function Topic() {
         title={topic.title}
       />
       <CommentInput topicId={topic.id} />
-      <CommentsSection topicComments={topic.comments} />
+      <CommentsSection topicComments={topic.comments} topicId={topic.id} />
     </>
   );
 }
