@@ -15,7 +15,7 @@ export function Modal({
 }: ModalProps) {
   if (isOpen) {
     return (
-      <div className="fixed top-0 bottom-0 left-0 right-0 bg-[#00000091]">
+      <div className="fixed top-0 bottom-0 left-0 right-0 bg-[#00000091] z-50">
         <div
           className="fixed top-2/4 left-2/4 translate-x-[-50%] translate-y-[-50%]
           bg-text text-background p-8 rounded-3xl w-11/12 md:w-3/6 xl:w-1/5
