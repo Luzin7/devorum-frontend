@@ -1,4 +1,4 @@
-import { createComment } from './comments';
+import { createComment, deleteComment } from './comments';
 import { getTopics, createTopic, getTopicById } from './topics';
 import { createUser, login, getUserData, refreshSession } from './users';
 
@@ -10,5 +10,6 @@ export {
   getTopicById,
   getUserData,
   refreshSession,
-  createComment
+  createComment,
+  deleteComment
 };

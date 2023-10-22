@@ -13,6 +13,17 @@ export async function createComment(
       content
     });
   } catch (error) {
-    throw new Error('Erro ao publicar tópico', error as ZodError);
+    throw new Error('Erro ao criar comentário', error as ZodError);
+  }
+}
+
+export async function deleteComment(
+  topicId: UUID,
+  commentId: UUID
+): Promise<void> {
+  try {
+    await httpClient.delete(`/topics/${topicId}/comments/${commentId}`);
+  } catch (error) {
+    throw new Error('Erro ao remover comentário', error as ZodError);
   }
 }
