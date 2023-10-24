@@ -73,7 +73,7 @@ export default function CommentInput({ topicId }: CommentInputProps) {
         <Link href={REGISTER}>
           <GS.Button
             txtColor="white"
-            bgColor="accent"
+            bgColor="primary"
             txtSize="sm"
             type="button"
           >
