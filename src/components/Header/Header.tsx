@@ -7,7 +7,7 @@ import { BiMessageAltAdd, BiSolidUserRectangle } from 'react-icons/bi';
 import { Dropdown } from '@components/Dropdown';
 import Link from 'next/link';
 import { useUserStore } from 'store/user';
-import { slugUrlMaker } from 'functions';
+import { logout, slugUrlMaker } from 'functions';
 import { UUID } from 'crypto';
 
 export function Header() {
@@ -20,7 +20,7 @@ export function Header() {
   return (
     <header className="flex bg-secondary gap-4 items-center justify-between h-[7vh] px-4 text-whiteText">
       {isDropdownOpen && (
-        <Dropdown.Root>
+        <Dropdown.Root className="absolute z-50 flex flex-col right-2 top-[6vh] bg-secondary rounded-xl w-2/4 md:w-1/4 lg:w-1/6 xl:w-[10%] py-2 px-4">
           <Dropdown.Links>
             <>
               <Dropdown.Link
@@ -36,7 +36,7 @@ export function Header() {
               title="Minhas publicações"
             /> */}
             <hr />
-            {/* <Dropdown.Action btnTitle="Sair" /> */}
+            <Dropdown.Action btnTitle="Sair" action={() => logout()} />
           </Dropdown.Links>
         </Dropdown.Root>
       )}
