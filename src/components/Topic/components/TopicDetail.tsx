@@ -14,7 +14,7 @@ export default function TopicDetail({
   title
 }: TopicDetailsProps) {
   return (
-    <section className="mb-8">
+    <section className="my-8">
       <div className="text-text">
         <div>
           <span className="block mb-2 text-xs opacity-70 text-center">
@@ -25,7 +25,7 @@ export default function TopicDetail({
           <h1 className="text-2xl font-bold">{title}</h1>
           <hr className="opacity-50" />
           <div
-            className="prose prose-invert prose-blockquote:text-text prose-headings:text-text prose-strong:text-text prose-pink prose-code:bg-secondary prose-code:rounded-sm text-text"
+            className="min-w-full prose prose-invert prose-blockquote:text-text prose-headings:text-text prose-strong:text-text prose-pink prose-code:bg-secondary prose-code:rounded-sm text-text"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>
