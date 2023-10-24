@@ -1,19 +1,23 @@
-import { useRouter } from 'next/navigation';
-import { LOGIN } from 'utils';
+import { MouseEventHandler } from 'react';
+
 interface DropdownActionProps {
   btnTitle?: string;
+  color?: string;
+  action: MouseEventHandler<HTMLButtonElement>;
 }
 
-export function DropdownAction({ btnTitle = 'Sair' }: DropdownActionProps) {
-  const router = useRouter();
-
+export function DropdownAction({
+  btnTitle,
+  color = 'red-400',
+  action
+}: DropdownActionProps) {
   return (
     <button
       type="button"
-      className="text-left text-red-400"
-      onClick={() =>
-        btnTitle === 'Sair' ? 'Not implemented' : router.push(LOGIN)
-      }
+      className={`text-left ${
+        btnTitle === 'Sair' ? 'text-red-400' : `text-${color}`
+      }`}
+      onClick={action}
     >
       {btnTitle}
     </button>
