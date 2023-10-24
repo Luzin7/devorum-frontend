@@ -30,7 +30,7 @@ export function Topic() {
   }
 
   return (
-    <>
+    <main className="pb-16">
       <TopicDetail
         author={topic.author}
         content={topic.content}
@@ -39,6 +39,6 @@ export function Topic() {
       />
       <CommentInput topicId={topic.id} />
       <CommentsSection topicComments={topic.comments} topicId={topic.id} />
-    </>
+    </main>
   );
 }
