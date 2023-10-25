@@ -16,7 +16,7 @@
 
 8. **Alterações na Política:** Notificaremos os usuários sobre quaisquer alterações nesta política por meio de um aviso em nosso site.
 
-9. **Contato para Perguntas:** Para perguntas ou preocupações relacionadas à privacidade, entre em contato conosco através do nosso endereço de e-mail de suporte: [EMAIL LEGAL AQUI].
+9. **Contato para Perguntas:** Para perguntas ou preocupações relacionadas à privacidade, entre em contato conosco através dos links que disponibilizamos na página "Sobre".
 
 10. **Alterações na Política:** Notificaremos os usuários sobre quaisquer alterações nesta política por meio de um aviso em nosso site.
-**Última atualização:** 03/10/2023
+**Última atualização:** 25/10/2023

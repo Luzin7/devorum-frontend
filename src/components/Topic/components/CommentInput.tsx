@@ -11,11 +11,14 @@ import {
   commentContentSchema
 } from 'schemas/comment/content';
 import { UUID } from 'crypto';
+import Link from 'next/link';
+import { REGISTER } from 'utils';
 
 type CommentInputProps = Pick<Comment, 'topicId'>;
 
 export default function CommentInput({ topicId }: CommentInputProps) {
   const { isLoading, setIsLoading } = useLoading();
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
   const {
     handleSubmit,
@@ -52,17 +55,32 @@ export default function CommentInput({ topicId }: CommentInputProps) {
           className="p-4 dark:bg-secondary w-full text-sm text-text border-0 outline-none"
           placeholder="Escreva seu comentário..."
           {...register('content')}
+          disabled={!isLoggedIn}
           required
         ></textarea>
       </div>
-      <GS.Button
-        txtColor="white"
-        bgColor="accent"
-        txtSize="sm"
-        isLoading={isLoading}
-      >
-        {isLoading ? 'Publicando...' : 'Publicar comentário'}
-      </GS.Button>
+      {isLoggedIn ? (
+        <GS.Button
+          txtColor="white"
+          bgColor="accent"
+          txtSize="sm"
+          type="submit"
+          isLoading={isLoading}
+        >
+          {isLoading ? 'Publicando...' : 'Publicar comentário'}
+        </GS.Button>
+      ) : (
+        <Link href={REGISTER}>
+          <GS.Button
+            txtColor="white"
+            bgColor="primary"
+            txtSize="sm"
+            type="button"
+          >
+            Faça sua conta e participe da comunidade!
+          </GS.Button>
+        </Link>
+      )}
     </form>
   );
 }

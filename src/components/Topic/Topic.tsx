@@ -30,15 +30,16 @@ export function Topic() {
   }
 
   return (
-    <>
+    <main className="pb-16">
       <TopicDetail
         author={topic.author}
         content={topic.content}
         createdAt={topic.createdAt}
         title={topic.title}
+        id={topic.id}
       />
       <CommentInput topicId={topic.id} />
-      <CommentsSection topicComments={topic.comments} />
-    </>
+      <CommentsSection topicComments={topic.comments} topicId={topic.id} />
+    </main>
   );
 }

@@ -4,7 +4,7 @@ import { ABOUT } from 'utils/localRoutePaths';
 export function Footer() {
   const currYear = new Date().getFullYear();
   return (
-    <footer className="bg-secondary">
+    <footer className="bg-secondary fixed bottom-0 left-0 w-full">
       <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-white sm:text-center">
           {currYear} - Quantum
@@ -16,15 +16,25 @@ export function Footer() {
             </Link>
           </li>
           <li>
-            <a href="#" className="mr-4 hover:underline md:mr-6">
+            <a
+              href="https://drive.google.com/file/d/1CdEekRh1J-ARyBRh6_9T-URbi88nhTWg/view?usp=sharing"
+              rel="noreferrer"
+              target="_blank"
+              className="mr-4 hover:underline md:mr-6"
+            >
               Termos de uso
             </a>
           </li>
-          {/* <li>
-            <a href="#" className="hover:underline">
-              Contact
+          <li>
+            <a
+              href="https://drive.google.com/file/d/18GS-gzn4GlNPJB1nROOcq6R-8d30dXLp/view?usp=sharing"
+              rel="noreferrer"
+              target="_blank"
+              className="mr-4 hover:underline md:mr-6"
+            >
+              Privacidade
             </a>
-          </li> */}
+          </li>
         </ul>
       </div>
     </footer>

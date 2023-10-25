@@ -7,6 +7,7 @@ import { themeSwitcher } from './themeSwitcher';
 import { getThemeBySystem } from './getUserSystemTheme';
 import { CheckAuth } from './checkAuth';
 import { PersistAuth } from './persistAuth';
+import { logout } from './logout';
 
 export {
   reduceText,
@@ -17,5 +18,6 @@ export {
   themeSwitcher,
   getThemeBySystem,
   CheckAuth,
-  PersistAuth
+  PersistAuth,
+  logout
 };
