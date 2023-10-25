@@ -31,7 +31,6 @@ export default function CommentsSection({
 
       setIsLoading((prev) => !prev);
       setIsSuccess(true);
-
       window.location.reload();
     } catch (error) {
       setIsLoading((prev) => !prev);
