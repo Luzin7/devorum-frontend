@@ -36,6 +36,7 @@ export function Topic() {
         content={topic.content}
         createdAt={topic.createdAt}
         title={topic.title}
+        id={topic.id}
       />
       <CommentInput topicId={topic.id} />
       <CommentsSection topicComments={topic.comments} topicId={topic.id} />
