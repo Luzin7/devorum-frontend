@@ -1,5 +1,5 @@
 import { createComment, deleteComment } from './comments';
-import { getTopics, createTopic, getTopicById } from './topics';
+import { getTopics, createTopic, getTopicById, deleteTopic } from './topics';
 import { createUser, login, getUserData, refreshSession } from './users';
 
 export {
@@ -11,5 +11,6 @@ export {
   getUserData,
   refreshSession,
   createComment,
-  deleteComment
+  deleteComment,
+  deleteTopic
 };

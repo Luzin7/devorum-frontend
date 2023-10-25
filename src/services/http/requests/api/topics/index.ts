@@ -38,3 +38,11 @@ export async function createTopic(
     throw new Error('Erro ao publicar tópico', error as ZodError);
   }
 }
+
+export async function deleteTopic(topicId: UUID): Promise<void> {
+  try {
+    await httpClient.delete(`${TOPICS_ENDPOINT}/${topicId}`);
+  } catch (error) {
+    throw new Error('Erro ao apagar tópico', error as ErrorOptions);
+  }
+}
