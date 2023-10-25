@@ -15,16 +15,26 @@ export function Footer() {
               Sobre
             </Link>
           </li>
-          {/* <li>
-            <a href="#" className="mr-4 hover:underline md:mr-6">
+          <li>
+            <a
+              href="https://drive.google.com/file/d/1CdEekRh1J-ARyBRh6_9T-URbi88nhTWg/view?usp=sharing"
+              rel="noreferrer"
+              target="_blank"
+              className="mr-4 hover:underline md:mr-6"
+            >
               Termos de uso
             </a>
-          </li> */}
-          {/* <li>
-            <a href="#" className="hover:underline">
-              Contact
+          </li>
+          <li>
+            <a
+              href="https://drive.google.com/file/d/18GS-gzn4GlNPJB1nROOcq6R-8d30dXLp/view?usp=sharing"
+              rel="noreferrer"
+              target="_blank"
+              className="mr-4 hover:underline md:mr-6"
+            >
+              Privacidade
             </a>
-          </li> */}
+          </li>
         </ul>
       </div>
     </footer>
