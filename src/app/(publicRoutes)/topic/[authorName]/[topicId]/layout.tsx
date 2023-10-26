@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Devorum - Tópico`,
-  description: 'O que é o projeto Devorum?'
+  description: 'Participe da comunidade!'
 };
 
 export default function TopicLayout({
