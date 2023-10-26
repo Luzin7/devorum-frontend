@@ -50,7 +50,7 @@ export default function CommentsSection({
       />
       {topicComments.map(
         ({ author, content, createdAt, id }, index: number) => (
-          <article key={id} className="py-4">
+          <article key={id} className="py-4 text-white">
             <div className="flex flex-col relative gap-4 bg-secondary rounded-md p-2">
               <div className="flex justify-between">
                 <span className="flex flex-col  gap-1 text-sm md:flex-row md:gap-2.5 md:items-center">
