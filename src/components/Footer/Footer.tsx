@@ -17,7 +17,7 @@ export function Footer() {
           </li>
           <li>
             <a
-              href="https://drive.google.com/file/d/1CdEekRh1J-ARyBRh6_9T-URbi88nhTWg/view?usp=sharing"
+              href="https://drive.google.com/file/d/1OIwFCChciXQ3TWCTmOoYho7HFXriQBXE/view?usp=sharing"
               rel="noreferrer"
               target="_blank"
               className="mr-4 hover:underline md:mr-6"
