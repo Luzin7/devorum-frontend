@@ -82,10 +82,10 @@ export function Editor() {
           <GS.Error errorMessage={errors.title.message} />
         )}
       </div>
-      <div className="flex bg-topicBackground justify-center py-2">
+      <div className="flex bg-topicBackground rounded-t-md justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
       </div>
-      <div className="border-2 border-primary rounded-md bg-primary mb-4">
+      <div className="border-2 border-primary rounded-b-md bg-primary mb-4">
         <div className="prose prose-invert m-auto text-text px-2 py-6 min-h-[25vh]">
           <EditorContent editor={editor} />
         </div>
