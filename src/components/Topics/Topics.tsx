@@ -5,7 +5,7 @@ export async function Topics() {
   const topics = await getTopics();
 
   return (
-    <div className="py-6 flex flex-col gap-4 w-full max-h-[90vh] overflow-y-scroll rounded-2xl cursor-default md:m-auto lg:w-3/5 xl:w-2/4">
+    <div className="pt-2 flex flex-col gap-4 w-full max-h-[86vh] overflow-y-scroll rounded-2xl cursor-default md:m-auto lg:w-3/5 xl:w-2/4">
       {topics.map(
         ({ assertion, createdAt, title, id, author, numberOfComments }) => (
           <div

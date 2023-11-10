@@ -30,7 +30,7 @@ export function Topic() {
   }
 
   return (
-    <main className="pb-16">
+    <main className="min-h-screen">
       <TopicDetail
         author={topic.author}
         content={topic.content}
