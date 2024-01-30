@@ -4,8 +4,8 @@ import { ABOUT } from 'utils/localRoutePaths';
 export function Footer() {
   const currYear = new Date().getFullYear();
   return (
-    <footer className="bg-secondary fixed bottom-0 left-0 w-full">
-      <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+    <footer className="bg-secondary h-[10vh] flex items-center lg:h-[7vh]">
+      <div className="w-full text-center mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-white sm:text-center">
           {currYear} - Quantum
         </span>

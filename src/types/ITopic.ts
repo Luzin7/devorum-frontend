@@ -32,3 +32,10 @@ export interface NewTopicProps {
   title: string;
   content: string;
 }
+
+export interface UpdateTopicProps {
+  author: UUID;
+  content: string;
+  title: string;
+  topicId: UUID;
+}

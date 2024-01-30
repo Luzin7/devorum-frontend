@@ -1,6 +1,11 @@
 import { TOPICS_ENDPOINT } from 'env/api';
 import httpClient from '../../axios-conf';
-import { NewTopicProps, TopicPreviewProps, TopicProps } from 'types/ITopic';
+import {
+  NewTopicProps,
+  TopicPreviewProps,
+  TopicProps,
+  UpdateTopicProps
+} from 'types/ITopic';
 import { UUID } from 'crypto';
 import { ZodError } from 'zod';
 
@@ -33,6 +38,20 @@ export async function createTopic(
       author,
       content,
       title
+    });
+  } catch (error) {
+    throw new Error('Erro ao publicar tópico', error as ZodError);
+  }
+}
+
+export async function updateTopic(data: UpdateTopicProps): Promise<void> {
+  const { content, title, author, topicId } = data;
+
+  try {
+    await httpClient.put(`${TOPICS_ENDPOINT}/${topicId}`, {
+      content,
+      title,
+      authorId: author
     });
   } catch (error) {
     throw new Error('Erro ao publicar tópico', error as ZodError);

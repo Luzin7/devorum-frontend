@@ -11,6 +11,7 @@ import { deleteUserTopic } from '../functions';
 import Modal from '@components/Modal';
 import { useRouter } from 'next/navigation';
 import { HOME } from 'utils';
+import { useTopicStore } from 'store/topic';
 
 type TopicDetailsProps = Pick<
   Topic,
@@ -25,6 +26,7 @@ export default function TopicDetail({
   id: topicId
 }: TopicDetailsProps) {
   const { userState } = useUserStore();
+  const { topicActions } = useTopicStore();
   const [activeItem, setActiveItem] = useState<boolean>(false);
   const { isLoading, setIsLoading, setIsSuccess } = useLoading();
   const { isModalOpen, setIsModalOpen } = useModal();
@@ -44,6 +46,11 @@ export default function TopicDetail({
       setIsSuccess(false);
       setIsModalOpen((prev) => !prev);
     }
+  };
+
+  const handleUpdateTopic = async (topicId: UUID) => {
+    topicActions.updateTopic({ topicId });
+    router.push('/edit');
   };
 
   return (
@@ -82,6 +89,11 @@ export default function TopicDetail({
               </button>
               {activeItem && (
                 <Dropdown.Root className="bg-primary absolute z-50 flex flex-col right-2 top-[4vh] rounded-xl w-2/4 md:w-1/4 lg:w-1/6 xl:w-[10%] py-2 px-4">
+                  <Dropdown.Action
+                    btnTitle="Editar"
+                    color="white"
+                    action={() => handleUpdateTopic(topicId)}
+                  />
                   <Dropdown.Action
                     btnTitle="Apagar"
                     color="white"
