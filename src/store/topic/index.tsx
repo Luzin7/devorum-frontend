@@ -2,10 +2,12 @@ import { UUID } from 'crypto';
 import { NewTopicProps } from 'types/ITopic';
 import { create } from 'zustand';
 
-type Topic = Pick<NewTopicProps, 'title' | 'content' | 'author'>;
+interface Topic extends NewTopicProps {
+  topicId: UUID;
+}
 
 type ActionsProps = {
-  updateTopic: (update: Partial<NewTopicProps>) => void;
+  updateTopic: (update: Partial<Topic>) => void;
 };
 
 interface StoreProps {
@@ -20,7 +22,8 @@ export const useTopicStore = create<StoreProps>((set) => ({
     topic: {
       title: '',
       content: '',
-      author: '' as UUID
+      author: '' as UUID,
+      topicId: '' as UUID
     }
   },
   topicActions: {

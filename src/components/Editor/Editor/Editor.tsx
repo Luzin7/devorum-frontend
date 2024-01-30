@@ -12,11 +12,11 @@ import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
 import * as GS from '@styles/globalStyledComponents';
 import { useLoading } from 'hooks/useLoading';
 import { useUserStore } from 'store/user';
-import { createTopic } from 'services/http/requests/api/topics';
+import { createTopic, updateTopic } from 'services/http/requests/api/topics';
 import Modal from '@components/Modal';
 import { useState } from 'react';
 
-export function Editor() {
+export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
   const { topicState, topicActions } = useTopicStore();
   const { userState } = useUserStore();
   const { isLoading, setIsLoading, isSuccess, setIsSuccess } = useLoading();
@@ -54,8 +54,26 @@ export function Editor() {
     }
   };
 
+  const updateCurrentTopic = async () => {
+    setIsLoading((prevState) => !prevState);
+    try {
+      await updateTopic(topicState.topic);
+      setIsLoading((prevState) => !prevState);
+      setIsSuccess(true);
+      setIsModalOpen((prev) => !prev);
+    } catch (error) {
+      setIsLoading((prevState) => !prevState);
+      setIsSuccess(false);
+      setIsModalOpen((prev) => !prev);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit(createNewTopic)}>
+    <form
+      onSubmit={handleSubmit(
+        isEditorMode ? updateCurrentTopic : createNewTopic
+      )}
+    >
       <Modal
         isOpen={isModalOpen}
         setOpen={setIsModalOpen}
