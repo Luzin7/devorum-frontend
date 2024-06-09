@@ -4,12 +4,12 @@ import { ABOUT } from 'utils/localRoutePaths';
 export function Footer() {
   const currYear = new Date().getFullYear();
   return (
-    <footer className="bg-secondary h-[10vh] flex items-center lg:h-[7vh]">
+    <footer className="flex items-center">
       <div className="w-full text-center mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-white sm:text-center">
-          {currYear} - Quantum
+          {currYear} - Todos os direitos reservados.
         </span>
-        <ul className="flex flex-wrap items-center text-sm font-medium text-white">
+        <ul className="flex flex-wrap justify-center items-center text-sm font-medium text-white">
           <li>
             <Link href={ABOUT} className="mr-4 hover:underline md:mr-6 ">
               Sobre
