@@ -1,15 +1,17 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { Button } from '@components/ui/button';
+import { Input } from '@components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LOGIN } from 'utils';
-import Link from 'next/link';
-import * as S from './styleds';
 import * as GS from '@styles/globalStyledComponents';
-import { userRegisterData, userRegisterSchema } from 'schemas/register';
 import { useLoading } from 'hooks/useLoading';
-import { createUser } from 'services/http/requests/api';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { userRegisterData, userRegisterSchema } from 'schemas/register';
+import { createUser } from 'services/http/requests/api';
+import { LOGIN } from 'utils';
+import * as S from './styleds';
 
 export function RegisterForm() {
   const router = useRouter();
@@ -34,7 +36,7 @@ export function RegisterForm() {
           Criar Conta
         </h2>
         <div className="flex gap-7 flex-col xl:flex-row">
-          <S.InputField
+          <Input
             type="text"
             placeholder="Seu nome"
             {...register('name')}
@@ -43,7 +45,7 @@ export function RegisterForm() {
           {errors.name?.message !== undefined && (
             <GS.Error errorMessage={errors.name.message} />
           )}
-          <S.InputField
+          <Input
             type="email"
             placeholder="E-mail"
             autoComplete="email"
@@ -53,7 +55,7 @@ export function RegisterForm() {
             <GS.Error errorMessage={errors.email.message} />
           )}
         </div>
-        <S.InputField
+        <Input
           type="password"
           placeholder="Senha"
           autoComplete="new-password"
@@ -62,9 +64,9 @@ export function RegisterForm() {
         {errors.password?.message !== undefined && (
           <GS.Error errorMessage={errors.password.message} />
         )}
-        <GS.Button type="submit" disabled={!!isLoading} isLoading={isLoading}>
+        <Button type="submit" disabled={!!isLoading}>
           {isLoading ? 'Criando...' : 'Criar conta'}
-        </GS.Button>
+        </Button>
       </div>
       <span className="my-8 text-primary underline text-lg hover:text-accent transition-colors">
         <Link href={LOGIN}>Já tenho uma conta</Link>

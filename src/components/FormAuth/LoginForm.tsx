@@ -1,19 +1,21 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
-import * as S from './styleds';
+import Modal from '@components/Modal';
+import { Button } from '@components/ui/button';
+import { Input } from '@components/ui/input';
 import * as GS from '@styles/globalStyledComponents';
-import Link from 'next/link';
-import { HOME, REGISTER } from 'utils';
-import { userLoginData, userLoginSchema } from 'schemas/login';
 import { useLoading } from 'hooks/useLoading';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { userLoginData, userLoginSchema } from 'schemas/login';
 import { login } from 'services/http/requests/api';
 import { useUserStore } from 'store/user';
-import { useRouter } from 'next/navigation';
-import Modal from '@components/Modal';
-import { useState } from 'react';
+import { HOME, REGISTER } from 'utils';
+import * as S from './styleds';
 
 export function LoginForm() {
   const { isLoading, setIsLoading } = useLoading();
@@ -62,7 +64,7 @@ export function LoginForm() {
         <h2 className="font-bold text-text text-2xl lg:text-3xl xl:text-4xl pt-10">
           Acessar Conta
         </h2>
-        <S.InputField
+        <Input
           type="email"
           placeholder="E-mail"
           {...register('email')}
@@ -71,7 +73,7 @@ export function LoginForm() {
         {errors.email?.message !== undefined && (
           <GS.Error errorMessage={errors.email.message} />
         )}
-        <S.InputField
+        <Input
           type="password"
           placeholder="Senha"
           {...register('password')}
@@ -80,9 +82,9 @@ export function LoginForm() {
         {errors.password?.message !== undefined && (
           <GS.Error errorMessage={errors.password.message} />
         )}
-        <GS.Button type="submit" disabled={!!isLoading} isLoading={isLoading}>
+        <Button variant="default" type="submit" disabled={!!isLoading}>
           {isLoading ? 'Acessando...' : 'Acessar'}
-        </GS.Button>
+        </Button>
       </div>
       <span className="my-8 text-primary underline text-lg hover:text-accent transition-colors ">
         <Link href={REGISTER}>Não tenho uma conta</Link>
