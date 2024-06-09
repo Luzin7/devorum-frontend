@@ -1,25 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import Accordion from '@components/Accordion/Accordion';
 import { items } from './data';
 import { team } from './data/team';
+import FaqAbout from '@components/FaqAbout';
 
 export function AboutProject() {
   return (
-    <section className="pb-16">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:pt-16">
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-text md:text-5xl lg:text-6xl">
-          De alunos para todos
+    <section className="pb-16 container">
+      <div className="py-8 mx-auto text-center lg:pt-16">
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+          Impulsionando o Futuro Juntos
         </h1>
         <p className="mb-8 text-lg text-text opacity-70 lg:text-xl sm:px-16 lg:px-48">
-          Feito para melhorar nossa comunidade e ajudar quem precisa.
+          Colaborando para um amanhã mais tecnológico.
         </p>
       </div>
 
       <div>
-        <h2 className="mb-8 text-2xl font-semibold tracking-tight leading-none text-text text-center md:text-5xl lg:text-2xl">
-          Pessoas incríveis
+        <h2 className="mb-8 text-center scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+          Por Trás dos Códigos
         </h2>
         <div className="flex flex-wrap items-center justify-center gap-4 pb-16">
           {team.map(({ name, role, image, ghUrl }) => (
@@ -40,7 +40,7 @@ export function AboutProject() {
         </div>
       </div>
 
-      <Accordion items={items} />
+      <FaqAbout items={items} />
     </section>
   );
 }
