@@ -1,6 +1,6 @@
+import { UUID } from 'crypto';
 import { create } from 'zustand';
 import { UserProps } from '../../types/IUser';
-import { UUID } from 'crypto';
 
 type User = Pick<UserProps, 'name' | 'id' | 'notifications'>;
 
