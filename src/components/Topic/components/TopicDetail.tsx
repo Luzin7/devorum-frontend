@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import Topic from 'types';
-import { dateConverter } from './../../../functions/dateConverter';
-import { useUserStore } from 'store/user';
-import { MdMoreVert } from 'react-icons/md';
 import { Dropdown } from '@components/Dropdown';
+import Modal from '@components/Modal';
+import { UUID } from 'crypto';
 import { useLoading } from 'hooks/useLoading';
 import { useModal } from 'hooks/useModal';
-import { UUID } from 'crypto';
-import { deleteUserTopic } from '../functions';
-import Modal from '@components/Modal';
 import { useRouter } from 'next/navigation';
-import { HOME } from 'utils';
+import { useState } from 'react';
+import { MdMoreVert } from 'react-icons/md';
 import { useTopicStore } from 'store/topic';
+import { useUserStore } from 'store/user';
+import Topic from 'types';
+import { HOME } from 'utils';
+import { deleteUserTopic } from '../functions';
+import { dateConverter } from './../../../functions/dateConverter';
 
 type TopicDetailsProps = Pick<
   Topic,
@@ -105,10 +105,12 @@ export default function TopicDetail({
           )}
         </div>
         <div className="flex flex-col justify-evenly gap-2">
-          <h1 className="text-2xl font-bold">{title}</h1>
+          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+            {title}
+          </h1>
           <hr className="opacity-50" />
           <div
-            className="min-w-full prose prose-invert prose-blockquote:text-text prose-headings:text-text prose-strong:text-text prose-pink prose-code:bg-secondary prose-code:rounded-sm text-text"
+            className="leading-7 [&:not(:first-child)]:mt-6 "
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>
