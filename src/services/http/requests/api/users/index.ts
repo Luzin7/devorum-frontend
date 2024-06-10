@@ -1,9 +1,10 @@
 import { CREATE_USER_ENDPOINT, LOGIN_ENDPOINT } from 'env/api';
-import httpClient from '../../axios-conf';
-import { userRegisterData } from 'schemas/register';
 import { userLoginData } from 'schemas/login';
+import { userRegisterData } from 'schemas/register';
 import { UserProps } from 'types/IUser';
 import { ZodError } from 'zod';
+import httpClient from '../../axios-conf';
+
 type NewUserProps = userRegisterData;
 type LoginProps = userLoginData;
 

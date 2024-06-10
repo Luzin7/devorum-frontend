@@ -1,23 +1,23 @@
 import { createComment, deleteComment } from './comments';
 import {
-  getTopics,
   createTopic,
-  getTopicById,
   deleteTopic,
+  getTopicById,
+  getTopics,
   updateTopic
 } from './topics';
-import { createUser, login, getUserData, refreshSession } from './users';
+import { createUser, getUserData, login, refreshSession } from './users';
 
 export {
-  getTopics,
-  createUser,
-  login,
-  createTopic,
-  getTopicById,
-  getUserData,
-  refreshSession,
   createComment,
+  createTopic,
+  createUser,
   deleteComment,
   deleteTopic,
+  getTopicById,
+  getTopics,
+  getUserData,
+  login,
+  refreshSession,
   updateTopic
 };

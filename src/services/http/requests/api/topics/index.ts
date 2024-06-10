@@ -1,13 +1,13 @@
+import { UUID } from 'crypto';
 import { TOPICS_ENDPOINT } from 'env/api';
-import httpClient from '../../axios-conf';
 import {
   NewTopicProps,
   TopicPreviewProps,
   TopicProps,
   UpdateTopicProps
 } from 'types/ITopic';
-import { UUID } from 'crypto';
 import { ZodError } from 'zod';
+import httpClient from '../../axios-conf';
 
 export async function getTopics(): Promise<TopicPreviewProps[]> {
   try {
