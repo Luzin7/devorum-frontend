@@ -1,3 +1,5 @@
+'use server';
+
 import { UUID } from 'crypto';
 import { TOPICS_ENDPOINT } from 'env/api';
 import {
