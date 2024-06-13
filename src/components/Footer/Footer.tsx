@@ -1,13 +1,13 @@
+import { ABOUT } from 'constants/localRoutePaths';
+import { CURRENT_YEAR } from 'constants/times';
 import Link from 'next/link';
-import { ABOUT } from 'utils/localRoutePaths';
 
 export function Footer() {
-  const currYear = new Date().getFullYear();
   return (
     <footer className="flex items-center">
       <div className="w-full text-center mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-white sm:text-center">
-          {currYear} - Todos os direitos reservados.
+          {CURRENT_YEAR} - Todos os direitos reservados.
         </span>
         <ul className="flex flex-wrap justify-center items-center text-sm font-medium text-white">
           <li>
