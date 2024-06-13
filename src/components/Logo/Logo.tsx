@@ -1,5 +1,5 @@
+import { HOME } from 'constants/localRoutePaths';
 import Link from 'next/link';
-import { HOME } from 'utils';
 
 interface LogoProps {
   content: string;

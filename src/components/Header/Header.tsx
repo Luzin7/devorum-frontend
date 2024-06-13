@@ -1,13 +1,12 @@
 'use client';
 
 import Logo from '@components/Logo';
-import React from 'react';
-import { CREATE_TOPIC, LOGIN } from 'utils';
-import { BiMessageAltAdd } from 'react-icons/bi';
-import Link from 'next/link';
-import { useUserStore } from 'store/user';
-import { UUID } from 'crypto';
 import ThemeModeToggle from '@components/ThemeModeToggle';
+import { CREATE_TOPIC, LOGIN } from 'constants/localRoutePaths';
+import { UUID } from 'crypto';
+import Link from 'next/link';
+import { BiMessageAltAdd } from 'react-icons/bi';
+import { useUserStore } from 'store/user';
 import DropdownMenuUserAvatar from './components/DropdownMenuUserAvatar';
 
 export function Header() {

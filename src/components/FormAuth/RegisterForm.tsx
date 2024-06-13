@@ -4,13 +4,13 @@ import { Button } from '@components/ui/button';
 import { Input } from '@components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as GS from '@styles/globalStyledComponents';
+import { LOGIN } from 'constants/localRoutePaths';
 import { useLoading } from 'hooks/useLoading';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { userRegisterData, userRegisterSchema } from 'schemas/register';
 import { createUser } from 'services/http/requests/api';
-import { LOGIN } from 'utils';
 import * as S from './styleds';
 
 export function RegisterForm() {

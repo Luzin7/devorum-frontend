@@ -7,6 +7,8 @@ import Modal from '@components/Modal';
 import { Button } from '@components/ui/button';
 import { Input } from '@components/ui/input';
 import * as GS from '@styles/globalStyledComponents';
+import { HOME, REGISTER } from 'constants/localRoutePaths';
+import { setLocalStorage } from 'functions';
 import { useLoading } from 'hooks/useLoading';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -14,7 +16,6 @@ import { useState } from 'react';
 import { userLoginData, userLoginSchema } from 'schemas/login';
 import { login } from 'services/http/requests/api';
 import { useUserStore } from 'store/user';
-import { HOME, REGISTER } from 'utils';
 import * as S from './styleds';
 
 export function LoginForm() {
@@ -40,6 +41,14 @@ export function LoginForm() {
         name: userData?.name,
         notifications: userData?.notifications,
         id: userData?.id
+      });
+
+      setLocalStorage({
+        storageKey: 'u_i',
+        storageContent: {
+          id: userData.id,
+          name: userData.name
+        }
       });
 
       setIsLoading((prevState) => !prevState);

@@ -1,24 +1,25 @@
 'use client';
 
-import * as GS from '@styles/globalStyledComponents';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import * as GS from '@styles/globalStyledComponents';
+import { REGISTER } from 'constants/localRoutePaths';
+import { UUID } from 'crypto';
 import { useLoading } from 'hooks/useLoading';
-import { createComment } from 'services/http/requests/api';
-import { Comment } from 'types/IComments';
+import Link from 'next/link';
+import { useForm } from 'react-hook-form';
 import {
   commentContentData,
   commentContentSchema
 } from 'schemas/comment/content';
-import { UUID } from 'crypto';
-import Link from 'next/link';
-import { REGISTER } from 'utils';
+import { createComment } from 'services/http/requests/api';
+import { useUserStore } from 'store/user';
+import { Comment } from 'types/IComments';
 
 type CommentInputProps = Pick<Comment, 'topicId'>;
 
 export default function CommentInput({ topicId }: CommentInputProps) {
   const { isLoading, setIsLoading } = useLoading();
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const isLoggedIn = useUserStore.getState().userState.user.id !== ('' as UUID);
 
   const {
     handleSubmit,

@@ -1,5 +1,6 @@
 import { Dropdown } from '@components/Dropdown';
 import Modal from '@components/Modal';
+import { HOME } from 'constants/localRoutePaths';
 import { UUID } from 'crypto';
 import { useLoading } from 'hooks/useLoading';
 import { useModal } from 'hooks/useModal';
@@ -9,7 +10,6 @@ import { MdMoreVert } from 'react-icons/md';
 import { useTopicStore } from 'store/topic';
 import { useUserStore } from 'store/user';
 import Topic from 'types';
-import { HOME } from 'utils';
 import { deleteUserTopic } from '../functions';
 import { dateConverter } from './../../../functions/dateConverter';
 
