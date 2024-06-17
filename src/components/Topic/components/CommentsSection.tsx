@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { dateConverter } from 'functions';
-import { CommentWithAuthor } from 'types/IComments';
-import { useUserStore } from 'store/user';
-import { MdMoreHoriz } from 'react-icons/md';
+import { Dropdown } from '@components/Dropdown';
+import Modal from '@components/Modal';
 import { UUID } from 'crypto';
-import { deleteUserComment } from '../functions';
+import { dateConverter } from 'functions';
 import { useLoading } from 'hooks/useLoading';
 import { useModal } from 'hooks/useModal';
-import Modal from '@components/Modal';
-import { Dropdown } from '@components/Dropdown';
+import { useState } from 'react';
+import { MdMoreHoriz } from 'react-icons/md';
+import { useUserStore } from 'store/user';
+import { CommentWithAuthor } from 'types/IComments';
+import { deleteUserComment } from '../functions';
 
 interface CommentProps {
   topicComments: CommentWithAuthor[];
@@ -51,9 +51,9 @@ export default function CommentsSection({
       {topicComments.map(
         ({ author, content, createdAt, id }, index: number) => (
           <article key={id} className="py-4 text-white">
-            <div className="flex flex-col relative gap-4 bg-secondary rounded-md p-2">
+            <div className="flex flex-col relative gap-4 bg-secondary rounded-lg p-2">
               <div className="flex justify-between">
-                <span className="flex flex-col  gap-1 text-sm md:flex-row md:gap-2.5 md:items-center">
+                <span className="flex flex-col gap-1 text-sm md:flex-row md:gap-2.5 md:items-center">
                   <b>{author.name}</b>{' '}
                   <span className="opacity-40 text-xs">
                     {dateConverter(createdAt)}
@@ -80,7 +80,7 @@ export default function CommentsSection({
                       />
                     </button>
                     {activeItem === index && (
-                      <Dropdown.Root className="bg-primary absolute z-50 flex flex-col right-2 top-[4vh] rounded-xl w-2/4 md:w-1/4 lg:w-1/6 xl:w-[10%] py-2 px-4">
+                      <Dropdown.Root className="bg-primary absolute z-50 flex flex-col right-2 top-[4vh] rounded-lg w-2/4 md:w-1/4 lg:w-1/6 xl:w-[10%] py-2 px-4">
                         <Dropdown.Action
                           btnTitle="Apagar"
                           color="white"

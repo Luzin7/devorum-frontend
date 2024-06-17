@@ -1,20 +1,20 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
 import EditorMenuBar from '@components/Editor/EditorMenuBar';
+import Modal from '@components/Modal';
+import * as GS from '@styles/globalStyledComponents';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { sanitize } from 'dompurify';
-import { useTopicStore } from 'store/topic';
-import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
-import * as GS from '@styles/globalStyledComponents';
 import { useLoading } from 'hooks/useLoading';
-import { useUserStore } from 'store/user';
-import { createTopic, updateTopic } from 'services/http/requests/api/topics';
-import Modal from '@components/Modal';
 import { useState } from 'react';
+import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
+import { createTopic, updateTopic } from 'services/http/requests/api/topics';
+import { useTopicStore } from 'store/topic';
+import { useUserStore } from 'store/user';
 
 export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
   const { topicState, topicActions } = useTopicStore();
@@ -88,7 +88,7 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
       <div className="my-5">
         <input
           type="text"
-          className="w-full py-2 px-1 rounded-sm bg-input"
+          className="w-full py-2 px-1 rounded-lg bg-input"
           value={topicState.topic.title}
           placeholder="Título"
           onInput={({ target }: React.ChangeEvent<HTMLInputElement>) =>
@@ -100,10 +100,10 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
           <GS.Error errorMessage={errors.title.message} />
         )}
       </div>
-      <div className="flex bg-topicBackground rounded-t-md justify-center py-2">
+      <div className="flex bg-topicBackground rounded-t-lg justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
       </div>
-      <div className="border-2 border-primary rounded-b-md bg-primary mb-4">
+      <div className="border-2 border-primary rounded-b-lg bg-primary mb-4">
         <div className="prose prose-invert m-auto text-text px-2 py-6 min-h-[25vh]">
           <EditorContent editor={editor} />
         </div>

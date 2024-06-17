@@ -1,7 +1,7 @@
 'use client';
 
+import { Button } from '@components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as GS from '@styles/globalStyledComponents';
 import { REGISTER } from 'constants/localRoutePaths';
 import { UUID } from 'crypto';
 import { useLoading } from 'hooks/useLoading';
@@ -46,7 +46,7 @@ export default function CommentInput({ topicId }: CommentInputProps) {
   };
   return (
     <form className="mb-6" onSubmit={handleSubmit(onSubmit)}>
-      <div className="pt-4 mb-4 dark:bg-secondary  rounded-lg rounded-t-lg border border-primary ">
+      <div className="pt-4 mb-4 dark:bg-secondary rounded-lg border border-primary ">
         <label htmlFor="comment" className="sr-only">
           Seu comentário
         </label>
@@ -61,25 +61,19 @@ export default function CommentInput({ topicId }: CommentInputProps) {
         ></textarea>
       </div>
       {isLoggedIn ? (
-        <GS.Button
-          txtColor="white"
-          bgColor="accent"
-          txtSize="sm"
-          type="submit"
-          isLoading={isLoading}
-        >
+        <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
           {isLoading ? 'Publicando...' : 'Publicar comentário'}
-        </GS.Button>
+        </Button>
       ) : (
         <Link href={REGISTER}>
-          <GS.Button
-            txtColor="white"
-            bgColor="primary"
-            txtSize="sm"
-            type="button"
+          <Button
+            type="submit"
+            className="w-full"
+            size="lg"
+            disabled={isLoading}
           >
             Faça sua conta e participe da comunidade!
-          </GS.Button>
+          </Button>
         </Link>
       )}
     </form>

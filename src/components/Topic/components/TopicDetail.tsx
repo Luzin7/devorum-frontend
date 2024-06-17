@@ -88,7 +88,7 @@ export default function TopicDetail({
                 />
               </button>
               {activeItem && (
-                <Dropdown.Root className="bg-primary absolute z-50 flex flex-col right-2 top-[4vh] rounded-xl w-2/4 md:w-1/4 lg:w-1/6 xl:w-[10%] py-2 px-4">
+                <Dropdown.Root className="bg-primary absolute z-50 flex flex-col right-2 top-[4vh] rounded-lg w-2/4 md:w-1/4 lg:w-1/6 xl:w-[10%] py-2 px-4">
                   <Dropdown.Action
                     btnTitle="Editar"
                     color="white"
