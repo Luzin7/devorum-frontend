@@ -1,3 +1,5 @@
+'use server';
+
 import { UUID } from 'crypto';
 import { Comment } from 'types/IComments';
 import { ZodError } from 'zod';
@@ -8,6 +10,7 @@ export async function createComment(
   data: Pick<Comment, 'content'>
 ): Promise<void> {
   const { content } = data;
+
   try {
     await httpClient.post(`/topics/${topicId}/comments`, {
       content
