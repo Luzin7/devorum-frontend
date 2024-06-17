@@ -4,11 +4,12 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from 'components/ui/dropdown-menu';
+import { CREATE_TOPIC } from 'constants/localRoutePaths';
 import { logout } from 'functions';
+import Link from 'next/link';
 import { BiSolidUserRectangle } from 'react-icons/bi';
 
 export function DropdownMenuUserAvatar() {
@@ -20,14 +21,14 @@ export function DropdownMenuUserAvatar() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
-        <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem disabled>Perfil</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Novo Tópico</DropdownMenuItem>
+          <Link href={CREATE_TOPIC}>
+            <DropdownMenuItem>Novo Tópico</DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="text-red-500" onClick={() => logout()}>
