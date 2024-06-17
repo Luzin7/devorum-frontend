@@ -11,7 +11,6 @@ import { setLocalStorage } from './setLocalStorage';
 
 export async function checkSession(request: NextRequest) {
   try {
-    console.log('Checking session');
     const fetchInterval = ONE_MINUTE_IN_MILLISECONDS * 5;
     const lastFetchTime = request.cookies.get(lastFetchCacheKey)?.value;
     const refreshCookieToken = request.cookies.get('@devorum/refreshToken');
