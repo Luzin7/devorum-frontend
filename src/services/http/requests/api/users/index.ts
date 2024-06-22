@@ -41,7 +41,6 @@ export async function refreshSession() {
   try {
     console.log('initiating refresh process');
     const { data } = await httpClient.post('/sessions/refresh');
-    console.log('refreshing session data received');
     console.log('persisting new session data');
     await persistAuth({
       accessToken: data.accessToken,

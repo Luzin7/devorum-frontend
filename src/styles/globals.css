@@ -57,3 +57,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+pre {
+  white-space: pre-wrap;
+  overflow-x: auto;
+  max-width: 100%;
+}
+code {
+  display: block;
+}

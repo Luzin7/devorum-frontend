@@ -25,6 +25,8 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
   const editor = useEditor({
     autofocus: true,
     extensions: [StarterKit],
+    editable: true,
+    injectCSS: false,
     content: topicState.topic.content,
     onUpdate: ({ editor }) => {
       const cleanHtml = sanitize(editor.getHTML());
@@ -100,12 +102,15 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
           <GS.Error errorMessage={errors.title.message} />
         )}
       </div>
-      <div className="flex bg-topicBackground rounded-t-lg justify-center py-2">
+      <div className="flex border border-primary rounded-t-lg justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
       </div>
-      <div className="border-2 border-primary rounded-b-lg bg-primary mb-4">
-        <div className="prose prose-invert m-auto text-text px-2 py-6 min-h-[25vh]">
-          <EditorContent editor={editor} />
+      <div className="border border-primary rounded-b-lg  mb-4">
+        <div className="prose prose-invert m-auto text-text">
+          <EditorContent
+            editor={editor}
+            className="text-lg focus:outline-none"
+          />
         </div>
       </div>
       <GS.Button

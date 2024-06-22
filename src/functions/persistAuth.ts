@@ -18,6 +18,9 @@ export async function persistAuth({
     const expiresMinutes = new Date();
     expiresMinutes.setMinutes(expiresDate.getMinutes() + 5);
 
+    httpClient.defaults.headers.Authorization = `Bearer ${accessToken}`;
+    httpClient.defaults.headers.refresh_token = refreshToken;
+
     cookies().set('@devorum/accessToken', `Bearer ${accessToken}`, {
       expires: expiresDate,
       path: '/'
@@ -31,9 +34,6 @@ export async function persistAuth({
       expires: expiresMinutes,
       path: '/'
     });
-
-    httpClient.defaults.headers.Authorization = `Bearer ${accessToken}`;
-    httpClient.defaults.headers.refresh_token = refreshToken;
   } catch (error) {
     console.error('persistAuth error', error);
     throw new Error('Erro ao persistir dados', error as ErrorOptions);

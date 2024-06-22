@@ -9,15 +9,15 @@ import {
 } from 'components/ui/dropdown-menu';
 import { CREATE_TOPIC } from 'constants/localRoutePaths';
 import { logout } from 'functions';
+import { UserIcon } from 'lucide-react';
 import Link from 'next/link';
-import { BiSolidUserRectangle } from 'react-icons/bi';
 
 export function DropdownMenuUserAvatar() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="p-0">
-          <BiSolidUserRectangle className="text-4xl" />
+        <Button variant="default" size="icon">
+          <UserIcon className="text-4xl" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
