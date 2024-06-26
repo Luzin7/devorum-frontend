@@ -16,7 +16,6 @@ import {
 } from '@components/ui/form';
 import { Input } from '@components/ui/input';
 import { HOME, REGISTER } from 'constants/localRoutePaths';
-import { setLocalStorage } from 'functions';
 import { useLoading } from 'hooks/useLoading';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -24,6 +23,7 @@ import { useState } from 'react';
 import { userLoginData, userLoginSchema } from 'schemas/login';
 import { login } from 'services/http/requests/api';
 import { useUserStore } from 'store/user';
+import { setStorageItem } from 'utils/localstorage';
 
 export default function Login() {
   const { isLoading, setIsLoading } = useLoading();
@@ -46,18 +46,19 @@ export default function Login() {
     setIsLoading((prevState) => !prevState);
     try {
       const userData = await login(data);
-      actions.updateUser({
-        name: userData?.name,
-        notifications: userData?.notifications,
-        id: userData?.id
+      useUserStore.setState({
+        userState: {
+          user: {
+            id: userData?.id,
+            name: userData?.name,
+            notifications: userData?.notifications
+          }
+        }
       });
 
-      setLocalStorage({
-        storageKey: 'u_i',
-        storageContent: {
-          id: userData.id,
-          name: userData.name
-        }
+      setStorageItem('u_i', {
+        id: userData.id,
+        name: userData.name
       });
 
       setIsLoading((prevState) => !prevState);
