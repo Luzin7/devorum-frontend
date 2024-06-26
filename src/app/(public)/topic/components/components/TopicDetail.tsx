@@ -110,7 +110,7 @@ export default function TopicDetail({
           </h1>
           <hr className="opacity-50" />
           <div
-            className="leading-7 [&:not(:first-child)]:mt-6"
+            className="leading-7 [&:not(:first-child)]:mt-6 prose dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>

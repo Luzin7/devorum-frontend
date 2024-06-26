@@ -1,5 +1,6 @@
 'use client';
 
+import Loading from 'app/loading';
 import { UUID } from 'crypto';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -26,7 +27,7 @@ export default function Topic() {
   }, [topicId]);
 
   if (!topic) {
-    return <div>Carregando...</div>;
+    return <Loading />;
   }
 
   return (
