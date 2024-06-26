@@ -9,7 +9,7 @@ import {
   UpdateTopicProps
 } from 'types/ITopic';
 import { ZodError } from 'zod';
-import httpClient from '../../axios-conf';
+import httpClient from '../../axios.config';
 
 export async function getTopics(): Promise<TopicPreviewProps[]> {
   try {
