@@ -2,7 +2,7 @@
 import { CURRENT_TIME_IN_MILLISECONDS } from 'constants/times';
 import { lastFetchCacheKey } from 'constants/variables';
 import { cookies } from 'next/headers';
-import httpClient from 'services/http/requests/axios-conf';
+import httpClient from 'services/http/requests/axios.config';
 
 export async function persistAuth({
   accessToken,

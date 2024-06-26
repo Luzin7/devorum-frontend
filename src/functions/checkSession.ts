@@ -5,7 +5,7 @@ import {
 import { lastFetchCacheKey } from 'constants/variables';
 import { NextRequest } from 'next/server';
 import { getUserData, refreshSession } from 'services/http/requests/api';
-import httpClient from 'services/http/requests/axios-conf';
+import httpClient from 'services/http/requests/axios.config';
 import { useUserStore } from 'store/user';
 import { setLocalStorage } from './setLocalStorage';
 
