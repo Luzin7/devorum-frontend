@@ -27,7 +27,6 @@ import { setStorageItem } from 'utils/localstorage';
 
 export default function Login() {
   const { isLoading, setIsLoading } = useLoading();
-  const { actions } = useUserStore();
   const router = useRouter();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
