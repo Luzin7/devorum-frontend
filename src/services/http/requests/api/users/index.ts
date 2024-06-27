@@ -1,9 +1,12 @@
+'use server';
 import { CREATE_USER_ENDPOINT, LOGIN_ENDPOINT } from 'env/api';
-import httpClient from '../../axios-conf';
-import { userRegisterData } from 'schemas/register';
+import { persistAuth } from 'functions/persistAuth';
 import { userLoginData } from 'schemas/login';
+import { userRegisterData } from 'schemas/register';
 import { UserProps } from 'types/IUser';
 import { ZodError } from 'zod';
+import httpClient from '../../axios.config';
+
 type NewUserProps = userRegisterData;
 type LoginProps = userLoginData;
 
@@ -22,45 +25,29 @@ export async function createUser(data: NewUserProps): Promise<void> {
 }
 
 export async function getUserData(): Promise<UserProps> {
+  console.log('getUserData');
   try {
     const { data } = await httpClient.get('/users');
 
-    const userSessionInfo = {
-      account: [{ id: data.user.id, name: data.user.name }]
-    };
+    console.log('user data received');
 
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('u_i', JSON.stringify(userSessionInfo));
     return data.user;
   } catch (error) {
-    localStorage.setItem('isLoggedIn', 'false');
     throw new Error('Erro na requisição', error as ZodError);
   }
 }
 
 export async function refreshSession() {
   try {
+    console.log('initiating refresh process');
     const { data } = await httpClient.post('/sessions/refresh');
-
-    httpClient.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
-    httpClient.defaults.headers.refresh_token = data.refreshToken;
-
-    const expiresDate = new Date();
-    expiresDate.setDate(expiresDate.getDate() + 7);
-    const expiresMinutes = new Date();
-    expiresMinutes.setMinutes(expiresDate.getMinutes() + 5);
-
-    document.cookie = `acess-token=Bearer ${
-      data.accessToken
-    }; expires=${expiresMinutes.toUTCString()}; path=/`;
-    document.cookie = `refresh-token=${
-      data.refreshToken
-    }; expires=${expiresDate.toUTCString()}; path=/`;
-
-    const userData = await getUserData();
-
-    return userData;
+    console.log('persisting new session data');
+    await persistAuth({
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken
+    });
   } catch (error) {
+    console.error('refresh token error', error);
     throw new Error('Erro na requisição:', error as ZodError);
   }
 }
@@ -69,30 +56,27 @@ export async function login(data: LoginProps) {
   const { email, password } = data;
 
   try {
+    console.log('Initiating login process');
     const { data } = await httpClient.post(LOGIN_ENDPOINT, {
       email,
       password
     });
+    console.log('Login success');
 
-    httpClient.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
-    httpClient.defaults.headers.refresh_token = data.refreshToken;
+    console.log('Login data received');
+    console.log('initiating persist data with login');
+    await persistAuth({
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken
+    });
 
-    const expiresDate = new Date();
-    expiresDate.setDate(expiresDate.getDate() + 7);
-    const expiresMinutes = new Date();
-    expiresMinutes.setMinutes(expiresDate.getMinutes() + 5);
-
-    document.cookie = `acess-token=Bearer ${
-      data.accessToken
-    }; expires=${expiresMinutes.toUTCString()}; path=/`;
-    document.cookie = `refresh-token=${
-      data.refreshToken
-    }; expires=${expiresDate.toUTCString()}; path=/`;
+    console.log('Login data sent to persistAuth with success');
 
     const userData = await getUserData();
 
     return userData;
   } catch (error) {
+    console.log('Login', error);
     throw new Error('Erro ao fazer login', error as ZodError);
   }
 }

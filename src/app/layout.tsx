@@ -2,8 +2,8 @@
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import { ThemeProvider } from '@components/ThemeSwitcher/ThemeSwitcher';
 import '@styles/globals.css';
-import { getThemeBySystem } from 'functions/getUserSystemTheme';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -13,13 +13,19 @@ export default function GlobalLayout({
 }: {
   children: React.ReactNode;
 }) {
-  getThemeBySystem();
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

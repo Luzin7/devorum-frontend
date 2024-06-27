@@ -1,11 +1,6 @@
-export interface TopicBody {
-  title?: string;
-  body?: string;
-}
-
 interface SetLocalStorageProps {
   storageKey: string;
-  storageContent: TopicBody;
+  storageContent: Record<string, string>;
 }
 
 export function setLocalStorage(props: SetLocalStorageProps) {
@@ -15,8 +10,8 @@ export function setLocalStorage(props: SetLocalStorageProps) {
 
   const mergedData = {
     ...existingData,
-    title: props.storageContent.title ?? existingData.title ?? '',
-    body: props.storageContent.body ?? existingData.body ?? ''
+    id: props.storageContent.id ?? existingData.id ?? '',
+    name: props.storageContent.name ?? existingData.name ?? ''
   };
 
   localStorage.setItem(props.storageKey, JSON.stringify(mergedData));

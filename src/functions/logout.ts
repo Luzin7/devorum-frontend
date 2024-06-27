@@ -1,4 +1,4 @@
-import httpClient from 'services/http/requests/axios-conf';
+import httpClient from 'services/http/requests/axios.config';
 
 function clearCookies() {
   const cookies = document.cookie.split('; ');

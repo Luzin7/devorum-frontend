@@ -1,13 +1,16 @@
-import { Comment } from 'types/IComments';
-import httpClient from '../../axios-conf';
-import { ZodError } from 'zod';
+'use server';
+
 import { UUID } from 'crypto';
+import { Comment } from 'types/IComments';
+import { ZodError } from 'zod';
+import httpClient from '../../axios.config';
 
 export async function createComment(
   topicId: UUID,
   data: Pick<Comment, 'content'>
 ): Promise<void> {
   const { content } = data;
+
   try {
     await httpClient.post(`/topics/${topicId}/comments`, {
       content

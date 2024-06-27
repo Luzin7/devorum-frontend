@@ -1,59 +1,41 @@
-import httpClient from 'services/http/requests/axios-conf';
-import { useUserStore } from 'store/user';
-import { useMemo } from 'react';
-import { CheckAuth, hasAuthCookies } from './checkAuth';
+'use server';
+import { CURRENT_TIME_IN_MILLISECONDS } from 'constants/times';
+import { lastFetchCacheKey } from 'constants/variables';
+import { cookies } from 'next/headers';
+import httpClient from 'services/http/requests/axios.config';
 
-export function hasAcessAuthCookies(cookies: string[]) {
-  return (
-    cookies.filter((cookie) => cookie.includes('acess-token')).length === 1
-  );
-}
+export async function persistAuth({
+  accessToken,
+  refreshToken
+}: {
+  accessToken: string;
+  refreshToken: string;
+}) {
+  console.log('persisting auth');
+  try {
+    const expiresDate = new Date();
+    expiresDate.setDate(expiresDate.getDate() + 7);
+    const expiresMinutes = new Date();
+    expiresMinutes.setMinutes(expiresDate.getMinutes() + 5);
 
-export function PersistAuth() {
-  const ISSERVER = typeof window === 'undefined';
+    httpClient.defaults.headers.Authorization = `Bearer ${accessToken}`;
+    httpClient.defaults.headers.refresh_token = refreshToken;
 
-  if (!ISSERVER) {
-    const cookies = document.cookie.split(';');
-    if (
-      httpClient.defaults.headers.Authorization !== undefined ||
-      httpClient.defaults.headers.refresh_token !== undefined
-    ) {
-      return;
-    }
+    cookies().set('@devorum/accessToken', `Bearer ${accessToken}`, {
+      expires: expiresDate,
+      path: '/'
+    });
+    cookies().set('@devorum/refreshToken', refreshToken, {
+      expires: expiresMinutes,
+      path: '/'
+    });
 
-    if (!hasAuthCookies(cookies)) {
-      return;
-    }
-
-    for (const cookie of cookies) {
-      const [name, value] = cookie.split('=');
-      // ESSE CODIGO DA PODRE DE FEIO ARRUMA ISSO PELO AMOR DE DEUS
-      // EVITA DEIXAR ESSA FUNCAO DEPENDENDO DE OUTRA
-
-      if (!hasAcessAuthCookies(cookies)) {
-        return CheckAuth(cookies);
-      }
-
-      if (name === 'acess-token') {
-        httpClient.defaults.headers.Authorization = value;
-      }
-      if (name === 'refresh-token') {
-        httpClient.defaults.headers.refresh_token = value;
-      }
-    }
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { actions } = useUserStore();
-
-    const userDataCached = JSON.parse(localStorage.getItem('u_i') as string)
-      .account[0];
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useMemo(() => {
-      actions.updateUser({
-        name: userDataCached.name,
-        id: userDataCached.id
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    cookies().set(lastFetchCacheKey, CURRENT_TIME_IN_MILLISECONDS.toString(), {
+      expires: expiresMinutes,
+      path: '/'
+    });
+  } catch (error) {
+    console.error('persistAuth error', error);
+    throw new Error('Erro ao persistir dados', error as ErrorOptions);
   }
 }

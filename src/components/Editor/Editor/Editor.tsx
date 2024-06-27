@@ -1,33 +1,33 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-
 import EditorMenuBar from '@components/Editor/EditorMenuBar';
+import Modal from '@components/Modal';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as GS from '@styles/globalStyledComponents';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { sanitize } from 'dompurify';
-import { useTopicStore } from 'store/topic';
-import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
-import * as GS from '@styles/globalStyledComponents';
 import { useLoading } from 'hooks/useLoading';
-import { useUserStore } from 'store/user';
-import { createTopic, updateTopic } from 'services/http/requests/api/topics';
-import Modal from '@components/Modal';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
+import { createTopic, updateTopic } from 'services/http/requests/api/topics';
+import { useTopicStore } from 'store/topic';
 
 export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
   const { topicState, topicActions } = useTopicStore();
-  const { userState } = useUserStore();
   const { isLoading, setIsLoading, isSuccess, setIsSuccess } = useLoading();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const editor = useEditor({
     autofocus: true,
     extensions: [StarterKit],
+    editable: true,
+    injectCSS: false,
     content: topicState.topic.content,
     onUpdate: ({ editor }) => {
       const cleanHtml = sanitize(editor.getHTML());
+
       topicActions.updateTopic({ content: cleanHtml });
     }
   });
@@ -40,40 +40,27 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
     resolver: zodResolver(topicTitleSchema)
   });
 
-  const createNewTopic = async () => {
-    setIsLoading((prevState) => !prevState);
+  const onSubmit = async () => {
+    setIsLoading(true);
     try {
-      await createTopic(topicState.topic);
-      setIsLoading((prevState) => !prevState);
+      if (isEditorMode) {
+        await updateTopic(topicState.topic);
+      } else {
+        await createTopic(topicState.topic);
+      }
       setIsSuccess(true);
-      setIsModalOpen((prev) => !prev);
+      setIsModalOpen(true);
     } catch (error) {
-      setIsLoading((prevState) => !prevState);
+      console.error('Error submitting topic:', error);
       setIsSuccess(false);
-      setIsModalOpen((prev) => !prev);
-    }
-  };
-
-  const updateCurrentTopic = async () => {
-    setIsLoading((prevState) => !prevState);
-    try {
-      await updateTopic(topicState.topic);
-      setIsLoading((prevState) => !prevState);
-      setIsSuccess(true);
-      setIsModalOpen((prev) => !prev);
-    } catch (error) {
-      setIsLoading((prevState) => !prevState);
-      setIsSuccess(false);
-      setIsModalOpen((prev) => !prev);
+      setIsModalOpen(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(
-        isEditorMode ? updateCurrentTopic : createNewTopic
-      )}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Modal
         isOpen={isModalOpen}
         setOpen={setIsModalOpen}
@@ -88,7 +75,7 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
       <div className="my-5">
         <input
           type="text"
-          className="w-full py-2 px-1 rounded-sm bg-input"
+          className="w-full py-2 px-1 rounded-lg bg-input"
           value={topicState.topic.title}
           placeholder="Título"
           onInput={({ target }: React.ChangeEvent<HTMLInputElement>) =>
@@ -96,16 +83,18 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
           }
           {...register('title')}
         />
-        {errors.title?.message !== undefined && (
-          <GS.Error errorMessage={errors.title.message} />
-        )}
+
+        {errors.title && <span>{errors.title.message}</span>}
       </div>
-      <div className="flex bg-topicBackground rounded-t-md justify-center py-2">
+      <div className="flex border border-primary rounded-t-lg justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
       </div>
-      <div className="border-2 border-primary rounded-b-md bg-primary mb-4">
-        <div className="prose prose-invert m-auto text-text px-2 py-6 min-h-[25vh]">
-          <EditorContent editor={editor} />
+      <div className="border border-primary rounded-b-lg overflow-y-auto">
+        <div className="prose dark:prose-invert m-auto text-text max-w-none">
+          <EditorContent
+            editor={editor}
+            className="text-lg focus:outline-none"
+          />
         </div>
       </div>
       <GS.Button
@@ -113,9 +102,8 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
         bgColor="accent"
         txtHoverColor="text"
         className="min-w-full"
-        disabled={!!isLoading}
+        disabled={isLoading}
         isLoading={isLoading}
-        onClick={() => topicActions.updateTopic({ author: userState.user.id })}
       >
         {isLoading ? 'Publicando...' : 'Publicar'}
       </GS.Button>
