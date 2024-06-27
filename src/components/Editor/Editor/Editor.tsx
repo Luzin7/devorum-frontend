@@ -1,24 +1,21 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-
 import EditorMenuBar from '@components/Editor/EditorMenuBar';
 import Modal from '@components/Modal';
+import { zodResolver } from '@hookform/resolvers/zod';
 import * as GS from '@styles/globalStyledComponents';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { sanitize } from 'dompurify';
 import { useLoading } from 'hooks/useLoading';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { topicTitleData, topicTitleSchema } from 'schemas/topic/title';
 import { createTopic, updateTopic } from 'services/http/requests/api/topics';
 import { useTopicStore } from 'store/topic';
-import { useUserStore } from 'store/user';
 
 export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
   const { topicState, topicActions } = useTopicStore();
-  const { userState } = useUserStore();
   const { isLoading, setIsLoading, isSuccess, setIsSuccess } = useLoading();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -30,6 +27,7 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
     content: topicState.topic.content,
     onUpdate: ({ editor }) => {
       const cleanHtml = sanitize(editor.getHTML());
+
       topicActions.updateTopic({ content: cleanHtml });
     }
   });
@@ -42,40 +40,27 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
     resolver: zodResolver(topicTitleSchema)
   });
 
-  const createNewTopic = async () => {
-    setIsLoading((prevState) => !prevState);
+  const onSubmit = async () => {
+    setIsLoading(true);
     try {
-      await createTopic(topicState.topic);
-      setIsLoading((prevState) => !prevState);
+      if (isEditorMode) {
+        await updateTopic(topicState.topic);
+      } else {
+        await createTopic(topicState.topic);
+      }
       setIsSuccess(true);
-      setIsModalOpen((prev) => !prev);
+      setIsModalOpen(true);
     } catch (error) {
-      setIsLoading((prevState) => !prevState);
+      console.error('Error submitting topic:', error);
       setIsSuccess(false);
-      setIsModalOpen((prev) => !prev);
-    }
-  };
-
-  const updateCurrentTopic = async () => {
-    setIsLoading((prevState) => !prevState);
-    try {
-      await updateTopic(topicState.topic);
-      setIsLoading((prevState) => !prevState);
-      setIsSuccess(true);
-      setIsModalOpen((prev) => !prev);
-    } catch (error) {
-      setIsLoading((prevState) => !prevState);
-      setIsSuccess(false);
-      setIsModalOpen((prev) => !prev);
+      setIsModalOpen(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(
-        isEditorMode ? updateCurrentTopic : createNewTopic
-      )}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Modal
         isOpen={isModalOpen}
         setOpen={setIsModalOpen}
@@ -98,15 +83,14 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
           }
           {...register('title')}
         />
-        {errors.title?.message !== undefined && (
-          <GS.Error errorMessage={errors.title.message} />
-        )}
+
+        {errors.title && <span>{errors.title.message}</span>}
       </div>
       <div className="flex border border-primary rounded-t-lg justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
       </div>
-      <div className="border border-primary rounded-b-lg  mb-4">
-        <div className="prose prose-invert m-auto text-text">
+      <div className="border border-primary rounded-b-lg overflow-y-auto">
+        <div className="prose dark:prose-invert m-auto text-text max-w-none">
           <EditorContent
             editor={editor}
             className="text-lg focus:outline-none"
@@ -118,9 +102,8 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
         bgColor="accent"
         txtHoverColor="text"
         className="min-w-full"
-        disabled={!!isLoading}
+        disabled={isLoading}
         isLoading={isLoading}
-        onClick={() => topicActions.updateTopic({ author: userState.user.id })}
       >
         {isLoading ? 'Publicando...' : 'Publicar'}
       </GS.Button>
