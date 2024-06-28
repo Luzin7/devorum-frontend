@@ -20,18 +20,23 @@ export function DropdownMenuUserAvatar() {
           <UserIcon className="text-4xl" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuItem disabled>Perfil</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <Link href={CREATE_TOPIC}>
-            <DropdownMenuItem>Novo Tópico</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              Novo Tópico
+            </DropdownMenuItem>
           </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-500" onClick={() => logout()}>
+        <DropdownMenuItem
+          className="text-destructive cursor-pointer"
+          onClick={() => logout()}
+        >
           Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
