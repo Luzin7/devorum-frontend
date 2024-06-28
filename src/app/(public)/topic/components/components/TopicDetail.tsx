@@ -1,13 +1,19 @@
-import { Dropdown } from '@components/Dropdown';
 import Modal from '@components/Modal';
-import { HOME } from 'constants/localRoutePaths';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from 'components/ui/dropdown-menu';
+import { EDIT_TOPIC, HOME } from 'constants/localRoutePaths';
 import { UUID } from 'crypto';
 import { dateConverter } from 'functions';
 import { useLoading } from 'hooks/useLoading';
 import { useModal } from 'hooks/useModal';
+import { MoreHorizontal } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { MdMoreVert } from 'react-icons/md';
 import { useTopicStore } from 'store/topic';
 import { useUserStore } from 'store/user';
 import Topic from 'types';
@@ -15,7 +21,7 @@ import { deleteUserTopic } from '../functions';
 
 type TopicDetailsProps = Pick<
   Topic,
-  'title' | 'content' | 'author' | 'createdAt' | 'id'
+  'title' | 'content' | 'author' | 'createdAt' | 'id' | 'updatedAt'
 >;
 
 export default function TopicDetail({
@@ -23,11 +29,11 @@ export default function TopicDetail({
   content,
   createdAt,
   title,
+  updatedAt,
   id: topicId
 }: TopicDetailsProps) {
   const { userState } = useUserStore();
   const { topicActions } = useTopicStore();
-  const [activeItem, setActiveItem] = useState<boolean>(false);
   const { isLoading, setIsLoading, setIsSuccess } = useLoading();
   const { isModalOpen, setIsModalOpen } = useModal();
   const router = useRouter();
@@ -50,11 +56,11 @@ export default function TopicDetail({
 
   const handleUpdateTopic = async (topicId: UUID) => {
     topicActions.updateTopic({ topicId });
-    router.push('/edit');
+    router.push(EDIT_TOPIC);
   };
 
   return (
-    <section className="my-8">
+    <section className={`my-10 ${isLoading && 'animate-pulse'}`}>
       <Modal
         isOpen={isModalOpen}
         setOpen={setIsModalOpen}
@@ -68,40 +74,30 @@ export default function TopicDetail({
             {author.name} - {dateConverter(createdAt)}
           </span>
           {userState.user.id === author.id && (
-            <>
-              <button
-                type="button"
-                disabled={!!isLoading}
-                className="absolute right-2"
-                title="Apagar comentário"
-                onClick={() => {
-                  if (activeItem === true) {
-                    setActiveItem(false);
-                    return;
-                  }
-                  setActiveItem((prev) => !prev);
-                }}
-              >
-                <MdMoreVert
-                  className="text-2xl text-text opacity-70 hover:opacity-100 transition-opacity"
-                  title="Opções"
-                />
-              </button>
-              {activeItem && (
-                <Dropdown.Root className="bg-primary absolute z-50 flex flex-col right-2 top-[4vh] rounded-lg w-2/4 md:w-1/4 lg:w-1/6 xl:w-[10%] py-2 px-4">
-                  <Dropdown.Action
-                    btnTitle="Editar"
-                    color="white"
-                    action={() => handleUpdateTopic(topicId)}
-                  />
-                  <Dropdown.Action
-                    btnTitle="Apagar"
-                    color="white"
-                    action={() => handleDeleteTopic(topicId)}
-                  />
-                </Dropdown.Root>
-              )}
-            </>
+            <div className="absolute right-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <MoreHorizontal className="text-4xl cursor-pointer" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem
+                      className="cursor-pointer"
+                      onClick={() => handleUpdateTopic(topicId)}
+                    >
+                      Editar Tópico
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    className="text-destructive cursor-pointer"
+                    onClick={() => handleDeleteTopic(topicId)}
+                  >
+                    Apagar Tópico
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           )}
         </div>
         <div className="flex flex-col gap-2">
@@ -115,6 +111,11 @@ export default function TopicDetail({
           ></div>
         </div>
       </div>
+      {updatedAt !== null && (
+        <span className="block mt-4 text-xs opacity-70 text-center">
+          Atualizado pela última vez {dateConverter(updatedAt as Date)}
+        </span>
+      )}
     </section>
   );
 }
