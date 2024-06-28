@@ -12,7 +12,7 @@ import DropdownMenuUserAvatar from './components/DropdownMenuUserAvatar';
 export function Header() {
   const { userState } = useUserStore();
   return (
-    <header className="flex  gap-4 items-center justify-between h-[7vh] px-4">
+    <header className="flex bg-primary-foreground gap-4 items-center justify-between h-[7vh] px-4">
       <Logo content="Devorum" />
 
       <div className="flex gap-4 items-center">
