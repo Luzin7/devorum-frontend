@@ -4,9 +4,13 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import { ThemeProvider } from '@components/ThemeSwitcher/ThemeSwitcher';
 import '@styles/globals.css';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const roboto = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
+  subsets: ['latin'],
+  display: 'swap'
+});
 
 export default function GlobalLayout({
   children
@@ -15,7 +19,7 @@ export default function GlobalLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
