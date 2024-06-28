@@ -24,14 +24,14 @@ export function TopicPreview({
             {reduceText(assertion, 200)}
           </p>
           <div className="flex gap-4">
-            <span className="bg-secondary py-1 px-4 rounded-lg text-foreground opacity-60 text-xs">
+            <span className="bg-primary-foreground py-1 px-4 rounded-lg text-foreground opacity-60 text-xs">
               {author.name}
             </span>
-            <span className="bg-secondary py-1 px-4 rounded-lg text-foreground opacity-60 text-xs">
+            <span className="bg-primary-foreground py-1 px-4 rounded-lg text-foreground opacity-60 text-xs">
               {numberOfComments}{' '}
               {numberOfComments !== 1 ? 'comentários' : 'comentário'}
             </span>
-            <span className="bg-secondary py-1 px-4 rounded-lg text-foreground opacity-60 text-xs">
+            <span className="bg-primary-foreground py-1 px-4 rounded-lg text-foreground opacity-60 text-xs">
               {dateConverter(createdAt)}
             </span>
           </div>
