@@ -33,6 +33,7 @@ export default function Topic() {
   return (
     <main className="container min-h-screen">
       <TopicDetail
+        updatedAt={topic.updatedAt}
         author={topic.author}
         content={topic.content}
         createdAt={topic.createdAt}
