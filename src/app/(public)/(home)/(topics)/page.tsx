@@ -16,7 +16,7 @@ export default async function Topics() {
             href={`topic/${slugUrlMaker(author.name)}/${id.replace('%7D', '')}`}
             key={id}
           >
-            <div className="bg-primary-foreground flex justify-between p-2 rounded-lg md:p-4 shadow-lg lg:hover:scale-105 transition-transform">
+            <div className="bg-secondary flex justify-between p-2 rounded-lg md:p-4 shadow-lg lg:hover:scale-105 transition-transform">
               <TopicPreview
                 author={author}
                 assertion={assertion}

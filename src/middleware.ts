@@ -1,4 +1,4 @@
-import { LOGIN } from 'constants/localRoutePaths';
+import { HOME, LOGIN } from 'constants/localRoutePaths';
 import { NextResponse, type NextRequest } from 'next/server';
 import { isAuthPages } from './middlewares/isAuthPages';
 import { isAuthvalid } from './middlewares/isAuthValid';
@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (isAuthenticated && isAuthPages(request)) {
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(new URL(HOME, request.url));
   }
 
   return NextResponse.next();

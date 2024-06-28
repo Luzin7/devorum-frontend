@@ -89,8 +89,8 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
       <div className="flex border border-primary rounded-t-lg justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
       </div>
-      <div className="border border-primary rounded-b-lg overflow-y-auto">
-        <div className="prose dark:prose-invert m-auto text-text max-w-none">
+      <div className="border border-primary rounded-b-lg overflow-y-auto bg-primary-foreground">
+        <div className="prose dark:prose-invert m-auto text-text max-w-none ">
           <EditorContent
             editor={editor}
             className="text-lg focus:outline-none"

@@ -8,7 +8,7 @@ interface LogoProps {
 export function Logo({ content }: LogoProps) {
   return (
     <Link href={HOME}>
-      <h1 className="font-bold text-lg">{content}</h1>
+      <h1 className="font-extrabold -tracking-tight text-lg">{content}</h1>
     </Link>
   );
 }

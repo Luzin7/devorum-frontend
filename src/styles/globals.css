@@ -66,3 +66,7 @@ pre {
 code {
   display: block;
 }
+
+.ProseMirror {
+  min-height: 2rem !important;
+}

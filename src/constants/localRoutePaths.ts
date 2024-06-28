@@ -5,3 +5,4 @@ export const REGISTER = '/register';
 export const ABOUT = '/about';
 export const USER_PROFILE = '/profile';
 export const CREATE_TOPIC = '/post';
+export const EDIT_TOPIC = '/edit';
