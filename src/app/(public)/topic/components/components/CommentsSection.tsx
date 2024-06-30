@@ -85,7 +85,7 @@ export default function CommentsSection({
               </div>
             )}
           </div>
-          <p className="leading-7 font-medium">{content}</p>
+          <p className="leading-7">{content}</p>
         </div>
       ))}
     </>
