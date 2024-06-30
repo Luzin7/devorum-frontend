@@ -101,12 +101,12 @@ export default function TopicDetail({
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl">
             {title}
           </h1>
           <hr className="opacity-50" />
           <div
-            className="leading-7 [&:not(:first-child)]:mt-6 prose dark:prose-invert"
+            className="leading-7 prose dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>
