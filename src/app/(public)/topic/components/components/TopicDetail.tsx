@@ -68,7 +68,7 @@ export default function TopicDetail({
         description="Não foi possível apagar o tópico."
         title="Algo deu errado!"
       />
-      <div className="text-text">
+      <div className=" mx-auto text-text">
         <div className="flex items-center justify-center relative">
           <span className="block mb-2 text-xs opacity-70">
             {author.name} - {dateConverter(createdAt)}
@@ -106,7 +106,7 @@ export default function TopicDetail({
           </h1>
           <hr className="opacity-50" />
           <div
-            className="leading-7 prose dark:prose-invert"
+            className="leading-7 min-w-full prose dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: content }}
           ></div>
         </div>

@@ -2,8 +2,10 @@
 
 import EditorMenuBar from '@components/Editor/EditorMenuBar';
 import Modal from '@components/Modal';
+import { Button } from '@components/ui/button';
+import { Input } from '@components/ui/input';
+import { Label } from '@components/ui/label';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as GS from '@styles/globalStyledComponents';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { sanitize } from 'dompurify';
@@ -73,11 +75,13 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
         title={isSuccess ? 'Enviado com sucesso!' : 'Algo deu errado 😭'}
       />
       <div className="my-5">
-        <input
+        <Label htmlFor="topicTitle">Título do Tópico</Label>
+        <Input
           type="text"
-          className="w-full py-2 px-1 rounded-lg bg-input"
+          id="topicTitle"
+          required
           value={topicState.topic.title}
-          placeholder="Título"
+          placeholder="Título do tópico"
           onInput={({ target }: React.ChangeEvent<HTMLInputElement>) =>
             topicActions.updateTopic({ title: target.value })
           }
@@ -89,24 +93,20 @@ export function Editor({ isEditorMode }: { isEditorMode: boolean }) {
       <div className="flex border border-primary rounded-t-lg justify-center py-2">
         {editor && <EditorMenuBar editor={editor} />}
       </div>
-      <div className="border border-primary rounded-b-lg overflow-y-auto bg-primary-foreground">
-        <div className="prose dark:prose-invert m-auto text-text max-w-none ">
-          <EditorContent
-            editor={editor}
-            className="text-lg focus:outline-none"
-          />
-        </div>
+      <div className="border border-primary rounded-b-lg overflow-y-auto bg-accent">
+        <EditorContent
+          editor={editor}
+          className="text-lg focus:outline-none prose dark:prose-invert m-auto text-text max-w-none"
+        />
       </div>
-      <GS.Button
+      <Button
+        size={'lg'}
         type="submit"
-        bgColor="accent"
-        txtHoverColor="text"
-        className="min-w-full"
+        className="min-w-full mt-8"
         disabled={isLoading}
-        isLoading={isLoading}
       >
         {isLoading ? 'Publicando...' : 'Publicar'}
-      </GS.Button>
+      </Button>
     </form>
   );
 }
